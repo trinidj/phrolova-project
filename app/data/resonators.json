@@ -1,0 +1,35 @@
+{
+  "resonators": [
+    {
+      "id": "calcharo",
+      "name": "Calcharo",
+      "rarity": 5,
+      "attribute": "Electro",
+      "weaponType": "Broadblade",
+      "description": "...",
+      "imageUrl": "/assets/resonators/Calcharo/Calcharo.png",
+      "attributeUrl": "/assets/attributes/Electro.png",
+      "spriteUrl": "/assets/resonators/Calcharo/sprite.png"
+    },
+    {
+      "id": "verina",
+      "name": "Verina",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Rectifier",
+      "description": "...",
+      "imageUrl": "/assets/resonators/Verina/Verina.png",
+      "attributeUrl": "/assets/attributes/Spectro.png"
+    },
+    {
+      "id": "jianxin",
+      "name": "Jianxin",
+      "rarity": 5,
+      "attribute": "Aero",
+      "weaponType": "Gauntlet",
+      "description": "...",
+      "imageUrl": "/assets/resonators/Jianxin/Jianxin.png",
+      "attributeUrl": "/assets/attributes/Aero.png"
+    }
+  ]
+}
