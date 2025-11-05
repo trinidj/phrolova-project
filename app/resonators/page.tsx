@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { Filter, Search } from "lucide-react"
 
 import {
@@ -30,9 +31,16 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+
 import { FieldGroup, FieldSet, Field, FieldLabel } from "@/components/ui/field"
 import Link from "next/link"
 import resonatorsData from "@/app/data/resonators.json"
+import { Resonator, getResonatorAssets } from "@/app/types/resonator"
 
 import Image from "next/image"
 
@@ -49,7 +57,7 @@ export default function ResonatorsPage() {
   const [tempRarities, setTempRarities] = useState<string[]>([])
 
   // Filter resonators based on search query and filters
-  const filteredResonators = resonatorsData.resonators.filter((resonator) => {
+  const filteredResonators = (resonatorsData.resonators as Resonator[]).filter((resonator) => {
     const searchLower = searchQuery.toLowerCase()
     const matchesSearch = resonator.name.toLowerCase().includes(searchLower)
 
@@ -288,34 +296,69 @@ export default function ResonatorsPage() {
       </header>
 
       <main className="grid grid-cols-8 gap-4">
-        {filteredResonators.map((resonator) => (
-          <Link
-            href={`/resonators/${resonator.name}`} key={resonator.id}
-          >
-            <Card
-              className={
-                `transition-transform rounded-lg duration-200 hover:scale-105 will-change-transform p-0 gap-0 border-0 overflow-hidden ${getRarityGradient(resonator.rarity)}`
-              }
-            >
-              <div className="absolute right-1 top-1 z-10">
-                <Image
-                  alt="Attribute"
-                  width={32}
-                  height={32}
-                  src={resonator.attributeUrl}
-                />
-              </div>
-              <img
-                alt="Resonator"
-                src={resonator.imageUrl}
-                className="object-contain w-full h-full transition-transform duration-200 hover:scale-110"
-              />
-              <div className="bg-sidebar/73 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2">
-                <CardTitle className="text-sm">{resonator.name}</CardTitle>
-              </div>
-            </Card>
-          </Link>
-        ))}
+        {filteredResonators.map((resonator) => {
+          const assets = getResonatorAssets(resonator);
+          return (
+            <HoverCard key={resonator.id}>
+              <HoverCardTrigger
+                href={`/resonators/${resonator.name}`}
+              >
+                <Card
+                  className={
+                    `transition-transform rounded-lg duration-200 hover:scale-105 will-change-transform p-0 gap-0 border-0 overflow-hidden ${getRarityGradient(resonator.rarity)}`
+                  }
+                >
+                  <div className="absolute left-1 top-1 z-10">
+                    <Image
+                      alt="Attribute"
+                      width={32}
+                      height={32}
+                      src={assets.attribute}
+                    />
+                  </div>
+                  <img
+                    alt="Resonator"
+                    src={assets.image}
+                    className="object-contain w-full h-full transition-transform duration-200 hover:scale-110"
+                  />
+                  <div className="bg-sidebar/73 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2">
+                    <CardTitle className="text-sm">{resonator.name}</CardTitle>
+                  </div>
+                </Card>
+              </HoverCardTrigger>
+              <HoverCardContent side="top" className="w-fit">
+                <div className="flex items-center gap-4">
+                  <img
+                    src={assets.image}
+                    width={64}
+                    className="rounded"
+                  />
+
+                  <div className="flex flex-col gap-2">
+                    <h2 className="text-2xl font-medium">{resonator.name}</h2>
+
+                    <div className="flex gap-2">
+                      <Badge variant="outline" className="flex gap-2 text-sm">
+                        <img
+                          src={assets.attribute}
+                          width={20}
+                        />
+                        {resonator.attribute}
+                      </Badge>
+                      <Badge variant="outline" className="flex gap-2 text-sm">
+                        <img
+                          src={assets.weaponType}
+                          width={20}
+                        />
+                        {resonator.weaponType}
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+          );
+        })}
       </main>
     </div>
   )

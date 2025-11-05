@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { Slider } from "@/components/ui/slider"
+import { Resonator, calculateStat } from "@/app/types/resonator"
 import {
   Table,
   TableBody,
@@ -9,44 +10,21 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-interface ResonatorStats {
-  HP?: { title: string; min: number; max: number }
-  ATK?: { title: string; min: number; max: number }
-  DEF?: { title: string; min: number; max: number }
-  ENERGY?: number
-  CR?: number
-  CD?: number
-  HEALING_BONUS?: number
-}
-
-export default function LevelSlider({ resonator }: { resonator: ResonatorStats }) {
+export default function LevelSlider({ resonator }: { resonator: Resonator }) {
   const [level, setLevel] = useState([1]);
   const currentLevel = level[0];
 
   const currentHP = useMemo(() => {
-    if (!resonator.HP) return 0;
-    const { min, max } = resonator.HP;
-
-    const hp = min + ((currentLevel - 1) * (max - min)) / 89;
-    return Math.round(hp);
-  }, [level, resonator.HP]);
-
+    return calculateStat(resonator.stats.hp, currentLevel);
+  }, [currentLevel, resonator.stats.hp]);
 
   const currentATK = useMemo(() => {
-    if (!resonator.ATK) return 0;
-    const { min, max } = resonator.ATK;
-
-    const atk = min + ((currentLevel - 1) * (max - min)) / 89;
-    return Math.round(atk);
-  }, [level, resonator.ATK]);
+    return calculateStat(resonator.stats.atk, currentLevel);
+  }, [currentLevel, resonator.stats.atk]);
 
   const currentDEF = useMemo(() => {
-    if (!resonator.DEF) return 0;
-    const { min, max } = resonator.DEF;
-
-    const def = min + ((currentLevel - 1) * (max - min)) / 89;
-    return Math.round(def);
-  }, [level, resonator.DEF])
+    return calculateStat(resonator.stats.def, currentLevel);
+  }, [currentLevel, resonator.stats.def])
 
   return (
     <div className="flex flex-col gap-6">
@@ -75,7 +53,7 @@ export default function LevelSlider({ resonator }: { resonator: ResonatorStats }
                 width={20}
                 alt="HP"
               />
-              {resonator.HP?.title}
+              HP
             </TableCell>
             <TableCell>{currentHP.toLocaleString()}</TableCell>
           </TableRow>
@@ -88,7 +66,7 @@ export default function LevelSlider({ resonator }: { resonator: ResonatorStats }
                 width={20}
                 alt="ATK"
               />
-              {resonator.ATK?.title}
+              ATK
             </TableCell>
             <TableCell>{currentATK.toLocaleString()}</TableCell>
           </TableRow>
@@ -99,9 +77,9 @@ export default function LevelSlider({ resonator }: { resonator: ResonatorStats }
               <img
                 src="/assets/stats/stat_def.png"
                 width={20}
-                alt="ATK"
+                alt="DEF"
               />
-              {resonator.DEF?.title}
+              DEF
             </TableCell>
             <TableCell>{currentDEF.toLocaleString()}</TableCell>
           </TableRow>

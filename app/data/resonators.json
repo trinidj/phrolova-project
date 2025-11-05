@@ -1,53 +1,33 @@
 {
   "resonators": [
     {
-      "id": "calcharo",
-      "name": "Calcharo",
+      "id": "augusta",
+      "name": "Augusta",
       "rarity": 5,
       "attribute": "Electro",
       "weaponType": "Broadblade",
       "description": "...",
-      "imageUrl": "/assets/resonators/Calcharo/Calcharo.png",
-      "attributeUrl": "/assets/attributes/Electro.png",
-      "spriteUrl": "/assets/resonators/Calcharo/sprite.png",
-      "HP": {
-        "title": "HP",
-        "min": 840,
-        "max": 10500
-      },
-      "ATK": {
-        "title": "ATK",
-        "min": 35,
-        "max": 438
-      },
-      "DEF": {
-        "title": "DEF",
-        "min": 97,
-        "max": 1186
+      "stats": {
+        "hp": { "min": 824, "max": 10300 },
+        "atk": { "min": 37, "max": 463 },
+        "def": { "min": 91, "max": 1112 }
       }
     },
     {
-      "id": "verina",
-      "name": "Verina",
+      "id": "brant",
+      "name": "Brant",
       "rarity": 5,
-      "attribute": "Spectro",
-      "weaponType": "Rectifier",
+      "attribute": "Fusion",
+      "weaponType": "Sword",
       "description": "...",
-      "imageUrl": "/assets/resonators/Verina/Verina.png",
-      "attributeUrl": "/assets/attributes/Spectro.png",
-      "spriteUrl": "/assets/resonators/Verina/sprite.png"
+      "stats": {
+        "hp": { "min": 934, "max": 11675 },
+        "atk": { "min": 30, "max": 375 },
+        "def": { "min": 107, "max": 1308 }
+      }
     },
-    {
-      "id": "jianxin",
-      "name": "Jianxin",
-      "rarity": 5,
-      "attribute": "Aero",
-      "weaponType": "Gauntlet",
-      "description": "...",
-      "imageUrl": "/assets/resonators/Jianxin/Jianxin.png",
-      "attributeUrl": "/assets/attributes/Aero.png",
-      "spriteUrl": "/assets/resonators/Jianxin/sprite.png"
-    },
+    
+    
     {
       "id": "chixia",
       "name": "Chixia",
@@ -55,23 +35,140 @@
       "attribute": "Fusion",
       "weaponType": "Pistol",
       "description": "...",
-      "imageUrl": "/assets/resonators/Chixia/Chixia.png",
-      "attributeUrl": "/assets/attributes/Fusion.png",
-      "spriteUrl": "/assets/resonators/Chixia/sprite.png",
-      "HP": {
-        "title": "HP",
-        "min": 727,
-        "max": 9088
-      },
-      "ATK": {
-        "title": "ATK",
-        "min": 24,
-        "max": 300
-      },
-      "DEF": {
-        "title": "DEF",
-        "min": 78,
-        "max": 953
+      "stats": {
+        "hp": { "min": 727, "max": 9088 },
+        "atk": { "min": 24, "max": 300 },
+        "def": { "min": 78, "max": 953 }
+      }
+    },
+    {
+      "id": "aalto",
+      "name": "Aalto",
+      "rarity": 4,
+      "attribute": "Aero",
+      "weaponType": "Pistol",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 788, "max": 9850 },
+        "atk": { "min": 21, "max": 263 },
+        "def": { "min": 88, "max": 1076 }
+      }
+    },
+    {
+      "id": "baizhi",
+      "name": "Baizhi",
+      "rarity": 4,
+      "attribute": "Glacio",
+      "weaponType": "Rectifier",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 1025, "max": 12813 },
+        "atk": { "min": 17, "max": 213 },
+        "def": { "min": 82, "max": 1002 }
+      }
+    },
+    {
+      "id": "danjin",
+      "name": "Danjin",
+      "rarity": 4,
+      "attribute": "Havoc",
+      "weaponType": "Sword",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 755, "max": 9438 },
+        "atk": { "min": 21, "max": 263 },
+        "def": { "min": 94, "max": 1149 }
+      }
+    },
+    {
+      "id": "lumi",
+      "name": "Lumi",
+      "rarity": 4,
+      "attribute": "Electro",
+      "weaponType": "Broadblade",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 680, "max": 8500 },
+        "atk": { "min": 27, "max": 338 },
+        "def": { "min": 72, "max": 880 }
+      }
+    },
+    {
+      "id": "mortefi",
+      "name": "Mortefi",
+      "rarity": 4,
+      "attribute": "Fusion",
+      "weaponType": "Pistol",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 802, "max": 10025 },
+        "atk": { "min": 20, "max": 250 },
+        "def": { "min": 93, "max": 1137 }
+      }
+    },
+    {
+      "id": "sanhua",
+      "name": "Sanhua",
+      "rarity": 4,
+      "attribute": "Glacio",
+      "weaponType": "Sword",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 805, "max": 10063 },
+        "atk": { "min": 22, "max": 275 },
+        "def": { "min": 77, "max": 941 }
+      }
+    },
+    {
+      "id": "taoqi",
+      "name": "Taoqi",
+      "rarity": 4,
+      "attribute": "Havoc",
+      "weaponType": "Broadblade",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 716, "max": 8950 },
+        "atk": { "min": 18, "max": 225 },
+        "def": { "min": 128, "max": 1564 }
+      }
+    },
+    {
+      "id": "yangyang",
+      "name": "Yangyang",
+      "rarity": 4,
+      "attribute": "Aero",
+      "weaponType": "Sword",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 816, "max": 10200 },
+        "atk": { "min": 20, "max": 250 },
+        "def": { "min": 90, "max": 1100 }
+      }
+    },
+    {
+      "id": "youhu",
+      "name": "Youhu",
+      "rarity": 4,
+      "attribute": "Glacio",
+      "weaponType": "Gaunlet",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 798, "max": 9975 },
+        "atk": { "min": 21, "max": 263 },
+        "def": { "min": 86, "max": 1051 }
+      }
+    },
+    {
+      "id": "yuanwu",
+      "name": "Yuanwu",
+      "rarity": 4,
+      "attribute": "Electro",
+      "weaponType": "Gauntlet",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 682, "max": 8525 },
+        "atk": { "min": 18, "max": 225 },
+        "def": { "min": 134, "max": 1638 }
       }
     }
   ]
