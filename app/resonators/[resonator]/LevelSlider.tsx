@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/table"
 
 interface ResonatorStats {
-  HP?: { name: string; min: number; max: number }
-  ATK?: { name: string; min: number; max: number }
-  DEF?: { name: string; min: number; max: number }
+  HP?: { title: string; min: number; max: number }
+  ATK?: { title: string; min: number; max: number }
+  DEF?: { title: string; min: number; max: number }
   ENERGY?: number
   CR?: number
   CD?: number
