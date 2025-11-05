@@ -35,14 +35,14 @@ export function getResonatorAssets(resonator: Resonator): ResonatorAssets {
   const weaponIconMap: Record<WeaponType, string> = {
     Pistol: "Pistols_Icon.png",
     Sword: "Sword_Icon.png",
-    Broadblade: "Broadblade_icon.png",
+    Broadblade: "Broadblade_Icon.png",
     Rectifier: "Rectifier_Icon.png",
     Gauntlet: "Gauntlets_Icon.png",
   };
 
   return {
-    image: `/assets/resonators/${resonator.name}/${resonator.name}.png`,
-    sprite: `/assets/resonators/${resonator.name}/sprite.png`,
+    image: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/icon.png`,
+    sprite: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/sprite.png`,
     attribute: `/assets/attributes/${resonator.attribute}.png`,
     weaponType: `/assets/weapons/${weaponIconMap[resonator.weaponType]}`,
   };

@@ -26,7 +26,19 @@
         "def": { "min": 107, "max": 1308 }
       }
     },
-    
+    {
+      "id": "calcharo",
+      "name": "Calcharo",
+      "rarity": 5,
+      "attribute": "Electro",
+      "weaponType": "Broadblade",
+      "description": "...",
+      "stats": {
+        "hp": { "min": 840, "max": 10500 },
+        "atk": { "min": 35, "max": 438 },
+        "def": { "min": 97, "max": 1186 }
+      }
+    },
     
     {
       "id": "chixia",
