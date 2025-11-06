@@ -32,7 +32,7 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
 
   const assets = getResonatorSkillAssets(resonator)
 
-  const skillItems = [
+  const skillItems = [  
     { type: "Normal Attack", asset: assets.normalAttack, talent: talents?.normalAttack },
     { type: "Resonance Skill", asset: assets.resonanceSkill, talent: talents?.resonanceSkill },
     { type: "Resonance Liberation", asset: assets.resonanceLiberation, talent: talents?.resonanceLiberation },
