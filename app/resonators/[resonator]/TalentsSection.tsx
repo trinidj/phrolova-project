@@ -53,21 +53,21 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
   if (!talents) {
     return (
       <section id="skills">
-        <h2 className="text-2xl font-bold mb-6">Skills & Talents</h2>
-        <p className="text-muted-foreground">Talent information not yet available for this resonator.</p>
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Skills & Talents</h2>
+        <p className="text-sm sm:text-base text-muted-foreground">Talent information not yet available for this resonator.</p>
       </section>
     )
   }
 
   return (
     <section id="skills">
-      <h2 className="text-2xl font-bold mb-6">Skills & Talents</h2>
+      <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Skills & Talents</h2>
 
       {/* Skill Content */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4 sm:gap-6">
         {/* Skills */}
         <div className="flex flex-col">
-          <h3 className="text-xl font-bold">Active Skills</h3>
+          <h3 className="text-lg sm:text-xl font-bold">Active Skills</h3>
           {skillItems.map((skill) => {
             if (!skill.talent) return null
 
@@ -82,22 +82,25 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
                           src={skill.asset || ''}
                           width={64}
                           height={64}
+                          className="size-12 sm:size-16"
                         />
                       </ItemMedia>
                       <ItemContent>
-                        <ItemTitle className="text-lg">{skill.talent.name}</ItemTitle>
-                        <ItemDescription>{skill.type}</ItemDescription>
+                        <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
+                        <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
                       </ItemContent>
                     </Item>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
@@ -107,7 +110,7 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
 
         {/* Inherit Skills */}
         <div className="flex flex-col">
-          <h3 className="text-xl font-bold">Inherit Skills</h3>
+          <h3 className="text-lg sm:text-xl font-bold">Inherit Skills</h3>
 
           {inheritSkillItems.map((skill) => {
             if (!skill.talent) return null
@@ -123,22 +126,25 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
                           src={skill.asset || ''}
                           width={64}
                           height={64}
+                          className="size-12 sm:size-16"
                         />
                       </ItemMedia>
                       <ItemContent>
-                        <ItemTitle className="text-lg">{skill.talent.name}</ItemTitle>
-                        <ItemDescription>{skill.type}</ItemDescription>
+                        <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
+                        <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
                       </ItemContent>
                     </Item>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
@@ -148,7 +154,7 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
 
         {/* Concerto Skills */}
         <div className="flex flex-col">
-          <h3 className="text-xl font-bold">Concerto Skills</h3>
+          <h3 className="text-lg sm:text-xl font-bold">Concerto Skills</h3>
 
           {concertoSkillItems.map((skill) => {
             if (!skill.talent) return null
@@ -164,22 +170,25 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
                           src={skill.asset || ''}
                           width={64}
                           height={64}
+                          className="size-12 sm:size-16"
                         />
                       </ItemMedia>
                       <ItemContent>
-                        <ItemTitle className="text-lg">{skill.talent.name}</ItemTitle>
-                        <ItemDescription>{skill.type}</ItemDescription>
+                        <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
+                        <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
                       </ItemContent>
                     </Item>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
 
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>

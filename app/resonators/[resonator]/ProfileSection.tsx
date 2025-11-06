@@ -31,7 +31,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
             <div className="flex flex-col gap-1">
               <h1 className="font-bold text-2xl sm:text-3xl">{resonator.name}</h1>
               <p className="text-muted-foreground font-medium text-sm sm:text-base">
-                {resonator.attribute}
+                {resonator.description}
               </p>
             </div>
           </div>

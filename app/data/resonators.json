@@ -6,7 +6,7 @@
       "rarity": 5,
       "attribute": "Electro",
       "weaponType": "Broadblade",
-      "description": "...",
+      "description": "Magnetism Before Light",
       "stats": {
         "hp": { "min": 824, "max": 10300 },
         "atk": { "min": 37, "max": 463 },
@@ -53,7 +53,7 @@
       "rarity": 5,
       "attribute": "Fusion",
       "weaponType": "Sword",
-      "description": "...",
+      "description": "Flamebound Compass",
       "stats": {
         "hp": { "min": 934, "max": 11675 },
         "atk": { "min": 30, "max": 375 },
@@ -66,7 +66,7 @@
       "rarity": 5,
       "attribute": "Electro",
       "weaponType": "Broadblade",
-      "description": "...",
+      "description": "Phantom Hunter",
       "stats": {
         "hp": { "min": 840, "max": 10500 },
         "atk": { "min": 35, "max": 438 },
@@ -79,53 +79,11 @@
       "rarity": 5,
       "attribute": "Havoc",
       "weaponType": "Sword",
-      "description": "...",
+      "description": "Crimson Blossom",
       "stats": {
         "hp": { "min": 840, "max": 10325 },
         "atk": { "min": 36, "max": 450 },
         "def": { "min": 95, "max": 1161 }
-      },
-      "talents": {
-        "normalAttack": {
-          "name": "Crimson Blossom",
-          "type": "Normal Attack",
-          "description": "Performs up to 5 consecutive strikes, dealing Havoc damage.",
-          "icon": "/assets/talents/camellya/normal_attack.png",
-          "scaling": [
-            { "level": 1, "damage1": 23.1, "damage2": 28.5, "damage3": 35.7, "damage4": 47.2, "damage5": 59.6 },
-            { "level": 2, "damage1": 25.0, "damage2": 30.8, "damage3": 38.6, "damage4": 51.0, "damage5": 64.4 },
-            { "level": 3, "damage1": 26.9, "damage2": 33.2, "damage3": 41.6, "damage4": 54.9, "damage5": 69.3 }
-          ]
-        },
-        "resonanceSkill": {
-          "name": "Ephemeral Bloom",
-          "type": "Resonance Skill",
-          "description": "Camellya unleashes a devastating slash that deals Havoc damage in an area.",
-          "icon": "/assets/talents/camellya/resonance_skill.png",
-          "scaling": [
-            { "level": 1, "damage": 115.5, "cooldown": 8 },
-            { "level": 2, "damage": 125.1, "cooldown": 8 },
-            { "level": 3, "damage": 134.6, "cooldown": 8 }
-          ]
-        },
-        "resonanceLiberation": {
-          "name": "Dance of Ruin",
-          "type": "Resonance Liberation",
-          "description": "Camellya enters a frenzied state, gaining increased attack speed and damage.",
-          "icon": "/assets/talents/camellya/resonance_liberation.png"
-        },
-        "introSkill": {
-          "name": "Scarlet Entrance",
-          "type": "Intro Skill",
-          "description": "Attacks the target, dealing Havoc damage.",
-          "icon": "/assets/talents/camellya/intro_skill.png"
-        },
-        "outroSkill": {
-          "name": "Crimson Farewell",
-          "type": "Outro Skill",
-          "description": "The next character gains increased Havoc damage.",
-          "icon": "/assets/talents/camellya/outro_skill.png"
-        }
       }
     },
     {
@@ -134,7 +92,7 @@
       "rarity": 5,
       "attribute": "Havoc",
       "weaponType": "Rectifier",
-      "description": "...",
+      "description": "Sea of Dreams",
       "stats": {
         "hp": { "min": 928, "max": 11600 },
         "atk": { "min": 32, "max": 400 },
@@ -147,7 +105,7 @@
       "rarity": 5,
       "attribute": "Glacio",
       "weaponType": "Pistol",
-      "description": "...",
+      "description": "Crystal Remorph",
       "stats": {
         "hp": { "min": 996, "max": 12450 },
         "atk": { "min": 37, "max": 463 },
@@ -161,7 +119,7 @@
       "rarity": 4,
       "attribute": "Fusion",
       "weaponType": "Pistol",
-      "description": "...",
+      "description": "Gallant Blaze",
       "stats": {
         "hp": { "min": 727, "max": 9088 },
         "atk": { "min": 24, "max": 300 },
@@ -174,7 +132,7 @@
       "rarity": 4,
       "attribute": "Aero",
       "weaponType": "Pistol",
-      "description": "...",
+      "description": "Mistcloak Strike",
       "stats": {
         "hp": { "min": 788, "max": 9850 },
         "atk": { "min": 21, "max": 263 },
@@ -187,7 +145,7 @@
       "rarity": 4,
       "attribute": "Glacio",
       "weaponType": "Rectifier",
-      "description": "...",
+      "description": "Healing You’tan",
       "stats": {
         "hp": { "min": 1025, "max": 12813 },
         "atk": { "min": 17, "max": 213 },
@@ -200,7 +158,7 @@
       "rarity": 4,
       "attribute": "Havoc",
       "weaponType": "Sword",
-      "description": "...",
+      "description": "Scarlet Shade",
       "stats": {
         "hp": { "min": 755, "max": 9438 },
         "atk": { "min": 21, "max": 263 },
@@ -213,7 +171,7 @@
       "rarity": 4,
       "attribute": "Electro",
       "weaponType": "Broadblade",
-      "description": "...",
+      "description": "Kaleido Refraction",
       "stats": {
         "hp": { "min": 680, "max": 8500 },
         "atk": { "min": 27, "max": 338 },
@@ -226,7 +184,7 @@
       "rarity": 4,
       "attribute": "Fusion",
       "weaponType": "Pistol",
-      "description": "...",
+      "description": "Dragon’s Breath",
       "stats": {
         "hp": { "min": 802, "max": 10025 },
         "atk": { "min": 20, "max": 250 },
@@ -239,7 +197,7 @@
       "rarity": 4,
       "attribute": "Glacio",
       "weaponType": "Sword",
-      "description": "...",
+      "description": "Snow Waltz",
       "stats": {
         "hp": { "min": 805, "max": 10063 },
         "atk": { "min": 22, "max": 275 },
@@ -252,7 +210,7 @@
       "rarity": 4,
       "attribute": "Havoc",
       "weaponType": "Broadblade",
-      "description": "...",
+      "description": "Blossom of Slashes ",
       "stats": {
         "hp": { "min": 716, "max": 8950 },
         "atk": { "min": 18, "max": 225 },
@@ -265,7 +223,7 @@
       "rarity": 4,
       "attribute": "Aero",
       "weaponType": "Sword",
-      "description": "...",
+      "description": "Breath of Winds",
       "stats": {
         "hp": { "min": 816, "max": 10200 },
         "atk": { "min": 20, "max": 250 },
@@ -278,7 +236,7 @@
       "rarity": 4,
       "attribute": "Glacio",
       "weaponType": "Gaunlet",
-      "description": "...",
+      "description": "Cryogenic Wonders ",
       "stats": {
         "hp": { "min": 798, "max": 9975 },
         "atk": { "min": 21, "max": 263 },
@@ -291,7 +249,7 @@
       "rarity": 4,
       "attribute": "Electro",
       "weaponType": "Gauntlet",
-      "description": "...",
+      "description": "Fist of Thunder",
       "stats": {
         "hp": { "min": 682, "max": 8525 },
         "atk": { "min": 18, "max": 225 },
