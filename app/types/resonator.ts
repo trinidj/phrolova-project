@@ -31,6 +31,11 @@ export interface Talent {
   scaling?: TalentScaling[];
 }
 
+export interface SequenceNode {
+  name: string;
+  description?: string;
+}
+
 export interface Resonator {
   id: string;
   name: string;
@@ -53,6 +58,7 @@ export interface Resonator {
     inheritSkill1?: Talent;
     inheritSkill2?: Talent;
   };
+  sequenceNodes?: SequenceNode[];
   ascension?: AscensionPhase[];
 }
 
@@ -107,6 +113,29 @@ export function getResonatorSkillAssets(resonator: Resonator): ResonatorSkillAss
     inheritSkill2: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/inherit_skill_2.png`,
     introSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/intro_skill.png`,
     outroSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/outro_skill.png`
+  }
+}
+
+export interface SequenceNodeAssets {
+  sequenceNode1?: string;
+  sequenceNode2?: string;
+  sequenceNode3?: string;
+  sequenceNode4?: string;
+  sequenceNode5?: string;
+  sequenceNode6?: string;
+}
+
+/**
+ * Get all sequence node asset URLs for a resonator based on naming conventions
+ */
+export function getSequenceNodeAssets(resonator: Resonator): SequenceNodeAssets {
+  return {
+    sequenceNode1: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_1.png`,
+    sequenceNode2: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_2.png`,
+    sequenceNode3: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_3.png`,
+    sequenceNode4: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_4.png`,
+    sequenceNode5: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_5.png`,
+    sequenceNode6: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_6.png`
   }
 }
 

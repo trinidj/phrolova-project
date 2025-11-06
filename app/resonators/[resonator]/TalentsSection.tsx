@@ -19,15 +19,61 @@ import {
   ItemTitle,
 } from "@/components/ui/item"
 
+interface TalentData {
+  name: string
+  type: string
+  description?: string
+}
+
+interface SkillItem {
+  type: string
+  asset: string | undefined
+  talent?: TalentData
+}
+
 interface TalentsSectionProps {
   talents?: Resonator['talents']
   resonatorName: string
+  resonatorRarity: number
 }
 
-export default function TalentsSection({ talents, resonatorName }: TalentsSectionProps) {
+function SkillAccordion({ skill }: { skill: SkillItem }) {
+  if (!skill.talent) return null
+
+  return (
+    <Accordion type="single" collapsible>
+      <AccordionItem value={skill.type.toLowerCase().replace(/ /g, '_')}>
+        <AccordionTrigger>
+          <Item variant="muted" className="w-full">
+            <ItemMedia>
+              <Image
+                alt={`${skill.type} Icon`}
+                src={skill.asset || ''}
+                width={64}
+                height={64}
+                className="size-12 sm:size-16"
+              />
+            </ItemMedia>
+            <ItemContent>
+              <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
+              <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
+            </ItemContent>
+          </Item>
+        </AccordionTrigger>
+        <AccordionContent>
+          <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+            {renderDescription(skill.talent.description)}
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+
+export default function TalentsSection({ talents, resonatorName, resonatorRarity }: TalentsSectionProps) {
   // Create a minimal resonator object to get skill assets
   const resonator = {
-    rarity: 5,
+    rarity: resonatorRarity,
     name: resonatorName,
   } as Resonator
 
@@ -66,117 +112,28 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
 
       {/* Skill Content */}
       <div className="flex flex-col gap-4 sm:gap-6">
-        {/* Skills */}
+        {/* Active Skills */}
         <div className="flex flex-col">
           <h3 className="text-lg sm:text-xl font-bold">Active Skills</h3>
-          {skillItems.map((skill) => {
-            if (!skill.talent) return null
-
-            return (
-              <Accordion key={skill.talent.name} type="single" collapsible >
-                <AccordionItem value={skill.type.toLowerCase().replace(/ /g, '_')}>
-                  <AccordionTrigger>
-                    <Item variant="muted" className="w-full">
-                      <ItemMedia>
-                        <Image
-                          alt={`${skill.type} Icon`}
-                          src={skill.asset || ''}
-                          width={64}
-                          height={64}
-                          className="size-12 sm:size-16"
-                        />
-                      </ItemMedia>
-                      <ItemContent>
-                        <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
-                        <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
-                      </ItemContent>
-                    </Item>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-                      {renderDescription(skill.talent.description)}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            )
-          })}
+          {skillItems.map((skill, index) => (
+            <SkillAccordion key={skill.talent?.name || `skill-${index}`} skill={skill} />
+          ))}
         </div>
 
         {/* Inherit Skills */}
         <div className="flex flex-col">
           <h3 className="text-lg sm:text-xl font-bold">Inherit Skills</h3>
-
-          {inheritSkillItems.map((skill) => {
-            if (!skill.talent) return null
-
-            return (
-              <Accordion key={skill.talent.name} type="single" collapsible >
-                <AccordionItem value={skill.type.toLowerCase().replace(/ /g, '_')}>
-                  <AccordionTrigger>
-                    <Item variant="muted" className="w-full">
-                      <ItemMedia>
-                        <Image
-                          alt={`${skill.type} Icon`}
-                          src={skill.asset || ''}
-                          width={64}
-                          height={64}
-                          className="size-12 sm:size-16"
-                        />
-                      </ItemMedia>
-                      <ItemContent>
-                        <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
-                        <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
-                      </ItemContent>
-                    </Item>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-                      {renderDescription(skill.talent.description)}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            )
-          })}
+          {inheritSkillItems.map((skill, index) => (
+            <SkillAccordion key={skill.talent?.name || `inherit-${index}`} skill={skill} />
+          ))}
         </div>
 
         {/* Concerto Skills */}
         <div className="flex flex-col">
           <h3 className="text-lg sm:text-xl font-bold">Concerto Skills</h3>
-
-          {concertoSkillItems.map((skill) => {
-            if (!skill.talent) return null
-
-            return (
-              <Accordion key={skill.talent.name} type="single" collapsible >
-                <AccordionItem value={skill.type.toLowerCase().replace(/ /g, '_')}>
-                  <AccordionTrigger>
-                    <Item variant="muted" className="w-full">
-                      <ItemMedia>
-                        <Image
-                          alt={`${skill.type} Icon`}
-                          src={skill.asset || ''}
-                          width={64}
-                          height={64}
-                          className="size-12 sm:size-16"
-                        />
-                      </ItemMedia>
-                      <ItemContent>
-                        <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
-                        <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
-                      </ItemContent>
-                    </Item>
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-                      {renderDescription(skill.talent.description)}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            )
-          })}
+          {concertoSkillItems.map((skill, index) => (
+            <SkillAccordion key={skill.talent?.name || `concerto-${index}`} skill={skill} />
+          ))}
         </div>
       </div>
     </section>

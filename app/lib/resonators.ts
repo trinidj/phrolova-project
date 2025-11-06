@@ -25,6 +25,11 @@ interface TalentData {
   description?: string
 }
 
+interface SequenceNodeData {
+  name: string
+  description?: string
+}
+
 /**
  * Get all resonator IDs from the index.json file
  */
@@ -41,6 +46,16 @@ export async function getResonatorStats(id: string): Promise<ResonatorStats | nu
 }
 
 /**
+ * Normalize markdown by handling line endings and removing the main title
+ */
+function normalizeMarkdown(markdown: string): string {
+  // Normalize line endings to \n (handle both Unix \n and Windows \r\n)
+  const normalizedMarkdown = markdown.replace(/\r\n/g, '\n')
+  // Remove the main title (h1) if it exists at the start
+  return normalizedMarkdown.replace(/^#\s+.+?\n\n?/m, '').trim()
+}
+
+/**
  * Get talents markdown content for a resonator
  */
 export async function getResonatorTalents(id: string): Promise<string | null> {
@@ -54,14 +69,27 @@ export async function getResonatorTalents(id: string): Promise<string | null> {
 }
 
 /**
+ * Get sequence nodes (resonance chains) markdown content for a resonator
+ */
+export async function getResonatorSequenceNodes(id: string): Promise<string | null> {
+  try {
+    const sequenceNodesPath = path.join(RESONATORS_DIR, id, 'sequence-nodes.md')
+    return await fs.readFile(sequenceNodesPath, 'utf-8')
+  } catch (error) {
+    // It's okay if sequence-nodes.md doesn't exist
+    return null
+  }
+}
+
+/**
  * Parse talents markdown into structured data
  * This function extracts talent information from the markdown format
  */
 export function parseTalentsMarkdown(markdown: string): Record<string, TalentData> {
   const talents: Record<string, TalentData> = {}
 
-  // Remove the main title (h1) if it exists at the start
-  let content = markdown.replace(/^#\s+.+?\n\n?/m, '').trim()
+  // Normalize markdown content
+  const content = normalizeMarkdown(markdown)
 
   // Split by horizontal rules (---) to get major sections
   const sections = content.split(/\n---\n/).filter(Boolean)
@@ -115,6 +143,31 @@ export function parseTalentsMarkdown(markdown: string): Record<string, TalentDat
   }
 
   return talents
+}
+
+/**
+ * Parse sequence nodes (resonance chain) markdown into structured data
+ * This function extracts sequence node information from the markdown format
+ */
+export function parseSequenceNodesMarkdown(markdown: string): SequenceNodeData[] {
+  const sequenceNodes: SequenceNodeData[] = []
+
+  // Normalize markdown content
+  const content = normalizeMarkdown(markdown)
+
+  // Match all sequence node sections (## Sequence Node N: Name)
+  const nodePattern = /##\s+Sequence Node \d+:\s+(.+?)\n\n([\s\S]*?)(?=##\s+Sequence Node|$)/g
+  const matches = content.matchAll(nodePattern)
+
+  for (const match of matches) {
+    const [, name, description] = match
+    sequenceNodes.push({
+      name: name.trim(),
+      description: description.trim()
+    })
+  }
+
+  return sequenceNodes
 }
 
 /**

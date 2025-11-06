@@ -1,4 +1,5 @@
 // Utility functions for processing and displaying resonator talents
+import React from 'react'
 
 export const ATTRIBUTE_COLORS: Record<string, string> = {
   'Electro': 'text-purple-400',
@@ -10,26 +11,27 @@ export const ATTRIBUTE_COLORS: Record<string, string> = {
 }
 
 /**
- * Colorizes numbers with units (e.g., "5s", "2.5%", "100") in text
+ * Generic utility for applying transformations to pattern matches in text
  * @param text - The text to process
- * @param prefix - Optional prefix for generating unique keys
- * @returns An array of React elements and strings with colorized numbers
+ * @param pattern - The regex pattern to match
+ * @param transformer - Function that receives (match, index) and returns a React element
+ * @returns An array of React elements and strings, or the original text if no matches
  */
-export function colorizeNumbers(text: string, prefix: string = '') {
-  // Match numbers with optional decimals and optional units (%, s)
-  const numberPattern = /\b\d+(?:\.\d+)?(?:%|s)?/g
-
-  const matches = Array.from(text.matchAll(numberPattern))
+function applyTextTransformation(
+  text: string,
+  pattern: RegExp,
+  transformer: (match: RegExpMatchArray, index: number) => React.ReactElement
+): (string | React.ReactElement)[] | string {
+  const matches = Array.from(text.matchAll(pattern))
 
   if (matches.length === 0) {
-    return [text]
+    return text
   }
 
-  const result = []
+  const result: (string | React.ReactElement)[] = []
   let lastIndex = 0
 
   matches.forEach((match, idx) => {
-    const fullMatch = match[0]
     const matchIndex = match.index!
 
     // Add text before this match
@@ -37,14 +39,10 @@ export function colorizeNumbers(text: string, prefix: string = '') {
       result.push(text.substring(lastIndex, matchIndex))
     }
 
-    // Add the colored number
-    result.push(
-      <span key={`${prefix}num-${idx}`} className="text-rarity-5 font-semibold">
-        {fullMatch}
-      </span>
-    )
+    // Add the transformed element
+    result.push(transformer(match, idx))
 
-    lastIndex = matchIndex + fullMatch.length
+    lastIndex = matchIndex + match[0].length
   })
 
   // Add remaining text after last match
@@ -56,50 +54,33 @@ export function colorizeNumbers(text: string, prefix: string = '') {
 }
 
 /**
+ * Colorizes numbers with units (e.g., "5s", "2.5%", "100") in text
+ * @param text - The text to process
+ * @param prefix - Optional prefix for generating unique keys
+ * @returns An array of React elements and strings with colorized numbers
+ */
+export function colorizeNumbers(text: string, prefix: string = '') {
+  const numberPattern = /\b\d+(?:\.\d+)?(?:%|s)?/g
+  const result = applyTextTransformation(text, numberPattern, (match, idx) => (
+    <span key={`${prefix}num-${idx}`} className="text-rarity-5 font-semibold">
+      {match[0]}
+    </span>
+  ))
+  return Array.isArray(result) ? result : [result]
+}
+
+/**
  * Colorizes attribute names (e.g., "Electro", "Fusion DMG") in text
  * @param text - The text to process
  * @returns An array of React elements and strings with colorized attributes
  */
 export function colorizeAttributes(text: string) {
-  // Match attribute names optionally followed by " DMG"
   const attributePattern = new RegExp(`\\b(${Object.keys(ATTRIBUTE_COLORS).join('|')})(\\s+DMG)?\\b`, 'g')
-
-  // Use matchAll to get all matches with their positions
-  const matches = Array.from(text.matchAll(attributePattern))
-
-  if (matches.length === 0) {
-    return text
-  }
-
-  const result = []
-  let lastIndex = 0
-
-  matches.forEach((match, idx) => {
-    const fullMatch = match[0] // e.g., "Electro DMG" or "Electro"
-    const attribute = match[1] // e.g., "Electro"
-    const matchIndex = match.index!
-
-    // Add text before this match
-    if (matchIndex > lastIndex) {
-      result.push(text.substring(lastIndex, matchIndex))
-    }
-
-    // Add the colored attribute
-    result.push(
-      <span key={idx} className={`font-semibold ${ATTRIBUTE_COLORS[attribute]}`}>
-        {fullMatch}
-      </span>
-    )
-
-    lastIndex = matchIndex + fullMatch.length
-  })
-
-  // Add remaining text after last match
-  if (lastIndex < text.length) {
-    result.push(text.substring(lastIndex))
-  }
-
-  return result
+  return applyTextTransformation(text, attributePattern, (match, idx) => (
+    <span key={idx} className={`font-semibold ${ATTRIBUTE_COLORS[match[1]]}`}>
+      {match[0]}
+    </span>
+  ))
 }
 
 /**

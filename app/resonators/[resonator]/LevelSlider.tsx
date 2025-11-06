@@ -10,6 +10,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+interface StatConfig {
+  label: string
+  icon: string
+  getValue: (level: number) => string
+}
+
 export default function LevelSlider({ resonator }: { resonator: Resonator }) {
   const [level, setLevel] = useState([1]);
   const currentLevel = level[0];
@@ -25,6 +31,39 @@ export default function LevelSlider({ resonator }: { resonator: Resonator }) {
   const currentDEF = useMemo(() => {
     return calculateStat(resonator.stats.def, currentLevel);
   }, [currentLevel, resonator.stats.def])
+
+  const stats: StatConfig[] = useMemo(() => [
+    {
+      label: "HP",
+      icon: "hp",
+      getValue: () => currentHP.toLocaleString()
+    },
+    {
+      label: "ATK",
+      icon: "atk",
+      getValue: () => currentATK.toLocaleString()
+    },
+    {
+      label: "DEF",
+      icon: "def",
+      getValue: () => currentDEF.toLocaleString()
+    },
+    {
+      label: "Energy Regen",
+      icon: "energy",
+      getValue: () => "100%"
+    },
+    {
+      label: "Crit. Rate",
+      icon: "cr",
+      getValue: () => "5%"
+    },
+    {
+      label: "Crit. DMG",
+      icon: "cd",
+      getValue: () => "150%"
+    }
+  ], [currentHP, currentATK, currentDEF])
 
   return (
     <div className="flex flex-col gap-6">
@@ -45,82 +84,19 @@ export default function LevelSlider({ resonator }: { resonator: Resonator }) {
 
       <Table>
         <TableBody>
-          {/* HP */}
-          <TableRow className="flex justify-between">
-            <TableCell className="flex items-center gap-2 font-bold">
-              <img
-                src="/assets/stats/stat_hp.png"
-                width={20}
-                alt="HP"
-              />
-              HP
-            </TableCell>
-            <TableCell className="font-medium">{currentHP.toLocaleString()}</TableCell>
-          </TableRow>
-
-          {/* ATK*/}
-          <TableRow className="flex justify-between">
-            <TableCell className="flex items-center gap-2 font-bold">
-              <img
-                src="/assets/stats/stat_atk.png"
-                width={20}
-                alt="ATK"
-              />
-              ATK
-            </TableCell>
-            <TableCell className="font-medium">{currentATK.toLocaleString()}</TableCell>
-          </TableRow>
-
-          {/* DEF */}
-          <TableRow className="flex justify-between">
-            <TableCell className="flex items-center gap-2 font-bold">
-              <img
-                src="/assets/stats/stat_def.png"
-                width={20}
-                alt="DEF"
-              />
-              DEF
-            </TableCell>
-            <TableCell className="font-medium">{currentDEF.toLocaleString()}</TableCell>
-          </TableRow>
-
-          {/* Energy Regen */}
-          <TableRow className="flex justify-between">
-            <TableCell className="flex items-center gap-2 font-bold">
-              <img
-                src="/assets/stats/stat_energy.png"
-                width={20}
-                alt="Energy Regen"
-              />
-              Energy Regen
-            </TableCell>
-            <TableCell className="font-medium">100%</TableCell>
-          </TableRow>
-
-          {/* Crit. Rate */}
-          <TableRow className="flex justify-between">
-            <TableCell className="flex items-center gap-2 font-bold">
-              <img
-                src="/assets/stats/stat_cr.png"
-                width={20}
-                alt="Crit. Rate"
-              />
-              Crit. Rate
-            </TableCell>
-            <TableCell className="font-medium">5%</TableCell>
-          </TableRow>
-
-          <TableRow className="flex justify-between">
-            <TableCell className="flex items-center gap-2 font-bold">
-              <img
-                src="/assets/stats/stat_cd.png"
-                width={20}
-                alt="Crit. DMG"
-              />
-              Crit. DMG
-            </TableCell>
-            <TableCell className="font-medium">150%</TableCell>
-          </TableRow>
+          {stats.map((stat) => (
+            <TableRow key={stat.label} className="flex justify-between">
+              <TableCell className="flex items-center gap-2 font-bold">
+                <img
+                  src={`/assets/stats/stat_${stat.icon}.png`}
+                  width={20}
+                  alt={stat.label}
+                />
+                {stat.label}
+              </TableCell>
+              <TableCell className="font-medium">{stat.getValue(currentLevel)}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>

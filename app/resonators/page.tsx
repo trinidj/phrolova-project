@@ -44,6 +44,27 @@ import { Resonator, getResonatorAssets } from "@/app/types/resonator"
 import Image from "next/image"
 import Link from "next/link"
 
+const ATTRIBUTES = [
+  { value: "aero", label: "Aero", icon: "/assets/attributes/Aero.png" },
+  { value: "electro", label: "Electro", icon: "/assets/attributes/Electro.png" },
+  { value: "fusion", label: "Fusion", icon: "/assets/attributes/Fusion.png" },
+  { value: "glacio", label: "Glacio", icon: "/assets/attributes/Glacio.png" },
+  { value: "havoc", label: "Havoc", icon: "/assets/attributes/Havoc.png" },
+  { value: "spectro", label: "Spectro", icon: "/assets/attributes/Spectro.png" }
+]
+
+const WEAPON_TYPES = [
+  { value: "broadblade", label: "Broadblade", icon: "/assets/weapons/Broadblade_icon.png" },
+  { value: "pistol", label: "Pistol", icon: "/assets/weapons/Pistols_Icon.png" },
+  { value: "rectifier", label: "Rectifier", icon: "/assets/weapons/Rectifier_Icon.png" },
+  { value: "gauntlet", label: "Gauntlet", icon: "/assets/weapons/Gauntlets_Icon.png" }
+]
+
+const RARITIES = [
+  { value: "5", label: "5★" },
+  { value: "4", label: "4★" }
+]
+
 export default function ResonatorsPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedAttributes, setSelectedAttributes] = useState<string[]>([])
@@ -148,12 +169,11 @@ export default function ResonatorsPage() {
                         value={tempRarities}
                         onValueChange={setTempRarities}
                       >
-                        <ToggleGroupItem value="5">
-                          5★
-                        </ToggleGroupItem>
-                        <ToggleGroupItem value="4">
-                          4★
-                        </ToggleGroupItem>
+                        {RARITIES.map((rarity) => (
+                          <ToggleGroupItem key={rarity.value} value={rarity.value}>
+                            {rarity.label}
+                          </ToggleGroupItem>
+                        ))}
                       </ToggleGroup>
                     </Field>
 
@@ -166,60 +186,15 @@ export default function ResonatorsPage() {
                         value={tempAttributes}
                         onValueChange={setTempAttributes}
                       >
-                        <ToggleGroupItem
-                          value="aero"
-                        >
-                          <img 
-                            alt="Aero"
-                            src="/assets/attributes/Aero.png" 
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="electro"
-                        >
-                          <img 
-                            alt="Electro"
-                            src="/assets/attributes/Electro.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="fusion"
-                        >
-                          <img 
-                            alt="Fusion"
-                            src="/assets/attributes/Fusion.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="glacio"
-                        >
-                          <img 
-                            alt="Glacio"
-                            src="/assets/attributes/Glacio.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="havoc"
-                        >
-                          <img 
-                            alt="Havoc"
-                            src="/assets/attributes/Havoc.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="spectro"
-                        >
-                          <img 
-                            alt="Spectro"
-                            src="/assets/attributes/Spectro.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
+                        {ATTRIBUTES.map((attribute) => (
+                          <ToggleGroupItem key={attribute.value} value={attribute.value}>
+                            <img
+                              alt={attribute.label}
+                              src={attribute.icon}
+                              width={32}
+                            />
+                          </ToggleGroupItem>
+                        ))}
                       </ToggleGroup>
                     </Field>
 
@@ -231,42 +206,15 @@ export default function ResonatorsPage() {
                         value={tempWeaponTypes}
                         onValueChange={setTempWeaponTypes}
                       >
-                        <ToggleGroupItem
-                          value="broadblade"
-                        >
-                          <img
-                            alt="Broadblade"
-                            src="/assets/weapons/Broadblade_icon.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="pistol"
-                        >
-                          <img
-                            alt="Pistol"
-                            src="/assets/weapons/Pistols_Icon.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="rectifier"
-                        >
-                          <img
-                            alt="Rectifier"
-                            src="/assets/weapons/Rectifier_Icon.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
-                        <ToggleGroupItem
-                          value="gauntlet"
-                        >
-                          <img
-                            alt="Gauntlet"
-                            src="/assets/weapons/Gauntlets_Icon.png"
-                            width={32}
-                          />
-                        </ToggleGroupItem>
+                        {WEAPON_TYPES.map((weaponType) => (
+                          <ToggleGroupItem key={weaponType.value} value={weaponType.value}>
+                            <img
+                              alt={weaponType.label}
+                              src={weaponType.icon}
+                              width={32}
+                            />
+                          </ToggleGroupItem>
+                        ))}
                       </ToggleGroup>
                     </Field>
                   </FieldGroup> 
