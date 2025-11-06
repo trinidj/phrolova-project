@@ -38,7 +38,7 @@ import {
 } from "@/components/ui/hover-card"
 
 import { FieldGroup, FieldSet, Field, FieldLabel } from "@/components/ui/field"
-import resonatorsData from "@/app/data/resonators.json"
+import resonatorsData from "@/app/data/resonators/index.json"
 import { Resonator, getResonatorAssets } from "@/app/types/resonator"
 
 import Image from "next/image"

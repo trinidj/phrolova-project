@@ -1,6 +1,7 @@
 'use client'
 
 import { Resonator, getResonatorSkillAssets } from "@/app/types/resonator"
+import { renderDescription } from "@/app/lib/talents"
 import Image from "next/image"
 
 import {
@@ -93,13 +94,7 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      {renderDescription(skill.talent.description)}
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -137,13 +132,7 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      {renderDescription(skill.talent.description)}
                     </div>
                   </AccordionContent>
                 </AccordionItem>
@@ -181,13 +170,7 @@ export default function TalentsSection({ talents, resonatorName }: TalentsSectio
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
-
-                      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium, ut! Maxime, esse distinctio sunt ea sapiente obcaecati nulla impedit alias quasi cumque, ipsa corporis reiciendis doloribus. Voluptatem quia ad id!</p>
+                      {renderDescription(skill.talent.description)}
                     </div>
                   </AccordionContent>
                 </AccordionItem>

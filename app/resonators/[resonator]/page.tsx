@@ -1,5 +1,4 @@
-import resonatorsData from "@/app/data/resonators.json"
-import { Resonator } from "@/app/types/resonator"
+import { getResonatorByName, getResonatorTalents, parseTalentsMarkdown } from "@/app/lib/resonators"
 import { Separator } from "@/components/ui/separator"
 import ProfileSection from "./ProfileSection"
 import AscensionSection from "./AscensionSection"
@@ -18,19 +17,21 @@ export default async function ResonatorDetails({
   params: Promise<{ resonator: string }>
 }) {
   const resonatorName = (await params).resonator
-  const resonator = resonatorsData.resonators.find(
-    (r) => r.name === resonatorName
-  ) as Resonator | undefined
+  const resonator = await getResonatorByName(resonatorName)
 
   if (!resonator) {
     return <div>Resonator not found</div>
   }
 
+  // Load and parse talents markdown content if available
+  const talentsMarkdown = await getResonatorTalents(resonator.id)
+  const parsedTalents = talentsMarkdown ? parseTalentsMarkdown(talentsMarkdown) : resonator.talents
+
   return (
     <div className="flex flex-col gap-20">
       <ProfileSection resonator={resonator} />
       <Separator />
-      <TalentsSection talents={resonator.talents} resonatorName={resonator.name} />
+      <TalentsSection talents={parsedTalents} resonatorName={resonator.name} />
       <Separator />
       <AscensionSection ascension={resonator.ascension} resonatorName={resonator.name} />
 

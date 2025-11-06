@@ -11,40 +11,6 @@
         "hp": { "min": 824, "max": 10300 },
         "atk": { "min": 37, "max": 463 },
         "def": { "min": 91, "max": 1112 }
-      },
-      "talents": {
-        "normalAttack": {
-          "name": "Hunter's Path",
-          "type":"Normal Attack"
-        },
-        "resonanceSkill": {
-          "name": "Warrior's Blade",
-          "type":"Resonance Skill"
-        },
-        "resonanceLiberation": {
-          "name": "Sunward Conquest",
-          "type": "Resonance Liberation"
-        },
-        "forteCircuit": {
-          "name": "Call Me By the Sun",
-          "type": "Forte Circuit"
-        },
-        "inheritSkill1": {
-          "name": "Glory's Favor",
-          "type": "Inherit Skill"
-        },
-        "inheritSkill2": {
-          "name": "Blazing Valor",
-          "type": "Inherit Skill"
-        },
-        "introSkill": {
-          "name": "Stride of Goldenflare",
-          "type": "Intro Skill"
-        },
-        "outroSkill": {
-          "name": "Battlesong of the Unyielding",
-          "type": "Outro Skill"
-        }
       }
     },
     {
@@ -112,7 +78,6 @@
         "def": { "min": 98, "max": 1198 }
       }
     },
-    
     {
       "id": "chixia",
       "name": "Chixia",
@@ -145,7 +110,7 @@
       "rarity": 4,
       "attribute": "Glacio",
       "weaponType": "Rectifier",
-      "description": "Healing You’tan",
+      "description": "Healing You'tan",
       "stats": {
         "hp": { "min": 1025, "max": 12813 },
         "atk": { "min": 17, "max": 213 },
@@ -184,7 +149,7 @@
       "rarity": 4,
       "attribute": "Fusion",
       "weaponType": "Pistol",
-      "description": "Dragon’s Breath",
+      "description": "Dragon's Breath",
       "stats": {
         "hp": { "min": 802, "max": 10025 },
         "atk": { "min": 20, "max": 250 },
@@ -235,7 +200,7 @@
       "name": "Youhu",
       "rarity": 4,
       "attribute": "Glacio",
-      "weaponType": "Gaunlet",
+      "weaponType": "Gauntlet",
       "description": "Cryogenic Wonders ",
       "stats": {
         "hp": { "min": 798, "max": 9975 },
