@@ -44,7 +44,7 @@ export default function ResonanceChainSection({ sequenceNodes, resonator }: Reso
       <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Resonance Chain</h2>
 
       {/* Sequence Nodes Content */}
-      <div className="flex flex-col gap-2 sm:gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4">
         {sequenceNodes.map((node, index) => {
           const nodeKey = `sequenceNode${index + 1}` as keyof typeof assets
           const nodeImage = assets[nodeKey]
@@ -58,21 +58,21 @@ export default function ResonanceChainSection({ sequenceNodes, resonator }: Reso
                       <img
                         src={nodeImage}
                         alt={`${node.name} icon`}
-                        className="size-12 sm:size-16 rounded-full object-cover shrink-0"
+                        className="size-14 sm:size-16 md:size-14 rounded-full object-cover shrink-0"
                       />
                     ) : (
-                      <div className="flex items-center justify-center size-12 sm:size-16 rounded-full bg-primary/10 text-primary font-bold text-lg sm:text-xl shrink-0">
+                      <div className="flex items-center justify-center size-14 sm:size-16 md:size-14 rounded-full bg-primary/10 text-primary font-bold text-lg sm:text-xl shrink-0">
                         S{index + 1}
                       </div>
                     )}
-                    <ItemContent>
-                      <ItemTitle className="text-base sm:text-lg">{node.name}</ItemTitle>
+                    <ItemContent className="min-w-0">
+                      <ItemTitle className="text-sm sm:text-base md:text-lg truncate">{node.name}</ItemTitle>
                       <ItemDescription className="text-xs sm:text-sm">Sequence Node {index + 1}</ItemDescription>
                     </ItemContent>
                   </Item>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
+                  <div className="space-y-2 sm:space-y-3 text-sm sm:text-base px-2 sm:px-3">
                     {renderDescription(node.description)}
                   </div>
                 </AccordionContent>
