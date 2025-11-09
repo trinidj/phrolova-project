@@ -275,7 +275,7 @@ export default function ResonatorsPage() {
                       style={{ backfaceVisibility: 'hidden' }}
                     />
                     <div
-                      className="text-center w-3/4 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2 backdrop-blur-2xl"
+                      className="text-center w-3/4 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2 bg-accent/75"
                     >
                       <CardTitle className="text-sm">{resonator.name}</CardTitle>
                     </div>
