@@ -1,7 +1,7 @@
 'use client'
 
 import { renderDescription } from "@/app/lib/talents"
-import { Resonator, getSequenceNodeAssets } from "@/app/types/resonator"
+import { Resonator, getSequenceNodeAssets, SequenceNode } from "@/app/types/resonator"
 
 import {
   Accordion,
@@ -16,11 +16,6 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/components/ui/item"
-
-interface SequenceNode {
-  name: string
-  description?: string
-}
 
 interface ResonanceChainSectionProps {
   sequenceNodes?: SequenceNode[]

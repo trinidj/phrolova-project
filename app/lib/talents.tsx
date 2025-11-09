@@ -1,14 +1,7 @@
 // Utility functions for processing and displaying resonator talents
 import React from 'react'
-
-export const ATTRIBUTE_COLORS: Record<string, string> = {
-  'Electro': 'text-purple-400',
-  'Fusion': 'text-orange-400',
-  'Glacio': 'text-cyan-400',
-  'Aero': 'text-emerald-400',
-  'Havoc': 'text-fuchsia-400',
-  'Spectro': 'text-yellow-400',
-}
+import { getAttributeColor } from '@/lib/utils'
+import { ATTRIBUTES } from './constants'
 
 /**
  * Generic utility for applying transformations to pattern matches in text
@@ -75,9 +68,14 @@ export function colorizeNumbers(text: string, prefix: string = '') {
  * @returns An array of React elements and strings with colorized attributes
  */
 export function colorizeAttributes(text: string) {
-  const attributePattern = new RegExp(`\\b(${Object.keys(ATTRIBUTE_COLORS).join('|')})(\\s+DMG)?\\b`, 'g')
+  const attributeNames = ATTRIBUTES.map(attr => attr.label)
+  const attributePattern = new RegExp(`\\b(${attributeNames.join('|')})(\\s+DMG)?\\b`, 'g')
   return applyTextTransformation(text, attributePattern, (match, idx) => (
-    <span key={idx} className={`font-semibold ${ATTRIBUTE_COLORS[match[1]]}`}>
+    <span
+      key={idx}
+      className="font-semibold"
+      style={{ color: getAttributeColor(match[1]) }}
+    >
       {match[0]}
     </span>
   ))
@@ -109,7 +107,7 @@ export function colorizeText(text: string, prefix: string = '') {
 
 /**
  * Renders talent descriptions with proper formatting and attribute colorization
- * @param description - The talent description text (supports markdown-style **bold** and multiple paragraphs)
+ * @param description - The talent description text (supports markdown-style **bold**, lists, and multiple paragraphs)
  * @returns JSX element with formatted description
  */
 export function renderDescription(description?: string) {
@@ -119,9 +117,53 @@ export function renderDescription(description?: string) {
 
   const paragraphs = description.split('\n\n')
 
+  // Merge consecutive list items (paragraphs starting with -, *, or •)
+  const mergedParagraphs: string[] = []
+  let currentList: string[] = []
+
+  paragraphs.forEach((paragraph) => {
+    const isListItem = paragraph.match(/^[•\-*]\s+/)
+
+    if (isListItem) {
+      currentList.push(paragraph)
+    } else {
+      // If we had accumulated list items, merge them
+      if (currentList.length > 0) {
+        mergedParagraphs.push(currentList.join('\n'))
+        currentList = []
+      }
+      mergedParagraphs.push(paragraph)
+    }
+  })
+
+  // Don't forget any remaining list items
+  if (currentList.length > 0) {
+    mergedParagraphs.push(currentList.join('\n'))
+  }
+
   return (
     <>
-      {paragraphs.map((paragraph, index) => {
+      {mergedParagraphs.map((paragraph, index) => {
+        // Check if this is a list (lines starting with - or * or numbers)
+        const listMatch = paragraph.match(/^[•\-*]\s+/m)
+        if (listMatch) {
+          // Split into individual list items, filtering out empty lines
+          const items = paragraph.split('\n').filter(line => line.trim())
+          return (
+            <ul key={index} className="list-disc list-inside space-y-1 ml-2">
+              {items.map((item, itemIndex) => {
+                // Remove the list marker (-, *, or •)
+                const cleanItem = item.replace(/^[•\-*]\s+/, '')
+                return (
+                  <li key={`${index}-${itemIndex}`} className="text-sm sm:text-base">
+                    {colorizeText(cleanItem, `p${index}-li${itemIndex}-`)}
+                  </li>
+                )
+              })}
+            </ul>
+          )
+        }
+
         const isBold = paragraph.startsWith('**') && paragraph.includes('**', 2)
 
         if (isBold) {

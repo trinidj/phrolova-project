@@ -1,4 +1,4 @@
-import { Resonator } from '@/app/types/resonator'
+import { Resonator, AscensionPhase, TalentData, SequenceNode } from '@/app/types/resonator'
 import { promises as fs } from 'fs'
 import path from 'path'
 import resonatorsData from '@/app/data/resonators/index.json'
@@ -17,17 +17,6 @@ interface ResonatorStats {
     atk: { min: number; max: number }
     def: { min: number; max: number }
   }
-}
-
-interface TalentData {
-  name: string
-  type: string
-  description?: string
-}
-
-interface SequenceNodeData {
-  name: string
-  description?: string
 }
 
 /**
@@ -77,6 +66,20 @@ export async function getResonatorSequenceNodes(id: string): Promise<string | nu
     return await fs.readFile(sequenceNodesPath, 'utf-8')
   } catch (error) {
     // It's okay if sequence-nodes.md doesn't exist
+    return null
+  }
+}
+
+/**
+ * Get ascension data for a resonator
+ */
+export async function getResonatorAscension(id: string): Promise<AscensionPhase[] | null> {
+  try {
+    const ascensionPath = path.join(RESONATORS_DIR, id, 'ascension.json')
+    const content = await fs.readFile(ascensionPath, 'utf-8')
+    return JSON.parse(content)
+  } catch (error) {
+    // It's okay if ascension.json doesn't exist
     return null
   }
 }
@@ -149,8 +152,8 @@ export function parseTalentsMarkdown(markdown: string): Record<string, TalentDat
  * Parse sequence nodes (resonance chain) markdown into structured data
  * This function extracts sequence node information from the markdown format
  */
-export function parseSequenceNodesMarkdown(markdown: string): SequenceNodeData[] {
-  const sequenceNodes: SequenceNodeData[] = []
+export function parseSequenceNodesMarkdown(markdown: string): SequenceNode[] {
+  const sequenceNodes: SequenceNode[] = []
 
   // Normalize markdown content
   const content = normalizeMarkdown(markdown)

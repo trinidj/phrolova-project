@@ -40,30 +40,11 @@ import {
 import { FieldGroup, FieldSet, Field, FieldLabel } from "@/components/ui/field"
 import resonatorsData from "@/app/data/resonators/index.json"
 import { Resonator, getResonatorAssets } from "@/app/types/resonator"
+import { getAttributeColor, getAttributeBackgroundStyle } from "@/lib/utils"
+import { ATTRIBUTES, WEAPON_TYPES, RARITIES } from "@/app/lib/constants"
 
 import Image from "next/image"
 import Link from "next/link"
-
-const ATTRIBUTES = [
-  { value: "aero", label: "Aero", icon: "/assets/attributes/Aero.png" },
-  { value: "electro", label: "Electro", icon: "/assets/attributes/Electro.png" },
-  { value: "fusion", label: "Fusion", icon: "/assets/attributes/Fusion.png" },
-  { value: "glacio", label: "Glacio", icon: "/assets/attributes/Glacio.png" },
-  { value: "havoc", label: "Havoc", icon: "/assets/attributes/Havoc.png" },
-  { value: "spectro", label: "Spectro", icon: "/assets/attributes/Spectro.png" }
-]
-
-const WEAPON_TYPES = [
-  { value: "broadblade", label: "Broadblade", icon: "/assets/weapons/Broadblade_icon.png" },
-  { value: "pistol", label: "Pistol", icon: "/assets/weapons/Pistols_Icon.png" },
-  { value: "rectifier", label: "Rectifier", icon: "/assets/weapons/Rectifier_Icon.png" },
-  { value: "gauntlet", label: "Gauntlet", icon: "/assets/weapons/Gauntlets_Icon.png" }
-]
-
-const RARITIES = [
-  { value: "5", label: "5★" },
-  { value: "4", label: "4★" }
-]
 
 export default function ResonatorsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -186,15 +167,29 @@ export default function ResonatorsPage() {
                         value={tempAttributes}
                         onValueChange={setTempAttributes}
                       >
-                        {ATTRIBUTES.map((attribute) => (
-                          <ToggleGroupItem key={attribute.value} value={attribute.value}>
-                            <img
-                              alt={attribute.label}
-                              src={attribute.icon}
-                              width={32}
-                            />
-                          </ToggleGroupItem>
-                        ))}
+                        {ATTRIBUTES.map((attribute) => {
+                          const isSelected = tempAttributes.includes(attribute.value)
+                          return (
+                            <ToggleGroupItem
+                              key={attribute.value}
+                              value={attribute.value}
+                              style={
+                                isSelected
+                                  ? {
+                                      borderColor: getAttributeColor(attribute.label),
+                                      ...getAttributeBackgroundStyle(attribute.label, 0.2)
+                                    }
+                                  : {}
+                              }
+                            >
+                              <img
+                                alt={attribute.label}
+                                src={attribute.icon}
+                                width={32}
+                              />
+                            </ToggleGroupItem>
+                          )
+                        })}
                       </ToggleGroup>
                     </Field>
 
@@ -252,7 +247,7 @@ export default function ResonatorsPage() {
                 <Link href={`/resonators/${resonator.name}`}>
                   <Card
                     className={
-                      `transition-transform rounded-lg duration-200 hover:scale-105 will-change-transform p-0 gap-0 border-0 overflow-hidden ${getRarityGradient(resonator.rarity)}`
+                      `transition-transform rounded-lg duration-200 border-none hover:scale-105 will-change-transform p-0 gap-0 overflow-hidden ${getRarityGradient(resonator.rarity)}`
                     }
                   >
                     <div className="absolute left-1 top-1 z-10">
@@ -270,7 +265,9 @@ export default function ResonatorsPage() {
                       height={200}
                       className="object-contain w-full h-full transition-transform duration-200 hover:scale-110"
                     />
-                    <div className="bg-sidebar/73 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2">
+                    <div
+                      className="text-center w-3/4 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2 backdrop-blur-2xl"
+                    >
                       <CardTitle className="text-sm">{resonator.name}</CardTitle>
                     </div>
                   </Card>
@@ -290,14 +287,23 @@ export default function ResonatorsPage() {
                     <h2 className="text-2xl font-medium">{resonator.name}</h2>
 
                     <div className="flex gap-2">
-                      <Badge variant="outline" className="flex gap-2 text-sm">
+                      <Badge
+                        variant="outline"
+                        className="flex gap-2 text-sm font-medium"
+                        style={{
+                          borderColor: getAttributeColor(resonator.attribute),
+                          ...getAttributeBackgroundStyle(resonator.attribute, 0.15)
+                        }}
+                      >
                         <Image
                           src={assets.attribute}
                           alt={resonator.attribute}
                           width={20}
                           height={20}
                         />
-                        {resonator.attribute}
+                        <span style={{ color: getAttributeColor(resonator.attribute) }}>
+                          {resonator.attribute}
+                        </span>
                       </Badge>
                       <Badge variant="outline" className="flex gap-2 text-sm">
                         <Image

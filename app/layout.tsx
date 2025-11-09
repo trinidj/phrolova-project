@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Search } from "lucide-react";
 import "./globals.css";
 
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
@@ -10,6 +11,17 @@ import { cookies } from "next/headers";
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb"
+import { SearchDialogContent } from "@/components/search-dialog-content"
+import resonatorsData from "@/app/data/resonators/index.json"
+
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +63,19 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                 </div>
 
                 <div className="flex items-center gap-2 px-4">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="ghost" size="icon">
+                        <Search />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Search Resonators</DialogTitle>
+                      </DialogHeader>
+                      <SearchDialogContent resonators={resonatorsData.resonators} />
+                    </DialogContent>
+                  </Dialog>
                   <ModeToggle />
                 </div>
               </header>

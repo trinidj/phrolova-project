@@ -79,6 +79,280 @@
       }
     },
     {
+      "id": "cartethyia",
+      "name": "Cartethyia",
+      "rarity": 5,
+      "attribute": "Aero",
+      "weaponType": "Sword",
+      "description": "Feathered Tempest",
+      "stats": {
+        "hp": { "min": 1184, "max": 14800 },
+        "atk": { "min": 25, "max": 313 },
+        "def": { "min": 50, "max": 611 }
+      }
+    },
+    {
+      "id": "changli",
+      "name": "Changli",
+      "rarity": 5,
+      "attribute": "Fusion",
+      "weaponType": "Sword",
+      "description": "Eternal Blaze",
+      "stats": {
+        "hp": { "min": 831, "max": 10388 },
+        "atk": { "min": 37, "max": 463 },
+        "def": { "min": 90, "max": 1100 }
+      }
+    },
+    {
+      "id": "ciaccona",
+      "name": "Ciaccona",
+      "rarity": 5,
+      "attribute": "Aero",
+      "weaponType": "Pistol",
+      "description": "Woven Melodies",
+      "stats": {
+        "hp": { "min": 979, "max": 12238 },
+        "atk": { "min": 30, "max": 375 },
+        "def": { "min": 98, "max": 1198 }
+      }
+    },
+    {
+      "id": "encore",
+      "name": "Encore",
+      "rarity": 5,
+      "attribute": "Fusion",
+      "weaponType": "Rectifier",
+      "description": "Consultant from the Black Shores",
+      "stats": {
+        "hp": { "min": 841, "max": 10513 },
+        "atk": { "min": 34, "max": 425 },
+        "def": { "min": 102, "max": 1247 }
+      }
+    },
+    {
+      "id": "galbrena",
+      "name": "Galbrena",
+      "rarity": 5,
+      "attribute": "Fusion",
+      "weaponType": "Pistol",
+      "description": "Infernal Descent",
+      "stats": {
+        "hp": { "min": 824, "max": 10300 },
+        "atk": { "min": 37, "max": 463 },
+        "def": { "min": 91, "max": 1112 }
+      }
+    },
+    {
+      "id": "iuno",
+      "name": "Iuno",
+      "rarity": 5,
+      "attribute": "Aero",
+      "weaponType": "Gauntlet",
+      "description": "Stasis, Cycle, Renewal",
+      "stats": {
+        "hp": { "min": 842, "max": 10525 },
+        "atk": { "min": 36, "max": 450 },
+        "def": { "min": 92, "max": 1124 }
+      }
+    },
+    {
+      "id": "jianxin",
+      "name": "Jianxin",
+      "rarity": 5,
+      "attribute": "Aero",
+      "weaponType": "Gauntlet",
+      "description": "Cleansing Reflections",
+      "stats": {
+        "hp": { "min": 1129, "max": 14113 },
+        "atk": { "min": 27, "max": 338 },
+        "def": { "min": 92, "max": 1124 }
+      }
+    },
+    {
+      "id": "jinhsi",
+      "name": "Jinhsi",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Broadblade",
+      "description": "Thawborn Renewal",
+      "stats": {
+        "hp": { "min": 866, "max": 10825 },
+        "atk": { "min": 33, "max": 413 },
+        "def": { "min": 103, "max": 1259 }
+      }
+    },
+    {
+      "id": "jiyan",
+      "name": "Jiyan",
+      "rarity": 5,
+      "attribute": "Aero",
+      "weaponType": "Broadblade",
+      "description": "General of the Midnight Rangers",
+      "stats": {
+        "hp": { "min": 839, "max": 10488 },
+        "atk": { "min": 35, "max": 438 },
+        "def": { "min": 97, "max": 1186 }
+      }
+    },
+    {
+      "id": "lingyang",
+      "name": "Lingyang",
+      "rarity": 5,
+      "attribute": "Glacio",
+      "weaponType": "Gauntlet",
+      "description": "Frosty Gusto",
+      "stats": {
+        "hp": { "min": 831, "max": 10388 },
+        "atk": { "min": 35, "max": 438 },
+        "def": { "min": 99, "max": 1210 }
+      }
+    },
+    {
+      "id": "lupa",
+      "name": "Lupa",
+      "rarity": 5,
+      "attribute": "Fusion",
+      "weaponType": "Broadblade",
+      "description": "Howling Flame",
+      "stats": {
+        "hp": { "min": 953, "max": 11913 },
+        "atk": { "min": 31, "max": 388 },
+        "def": { "min": 97, "max": 1186 }
+      }
+    },
+    {
+      "id": "phoebe",
+      "name": "Phoebe",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Rectifier",
+      "description": "Graceful Luminescence",
+      "stats": {
+        "hp": { "min": 866, "max": 10825 },
+        "atk": { "min": 33, "max": 413 },
+        "def": { "min": 103, "max": 1259 }
+      }
+    },
+    {
+      "id": "phrolova",
+      "name": "Phrolova",
+      "rarity": 5,
+      "attribute": "Havoc",
+      "weaponType": "Rectifier",
+      "description": "Symphony of Beyond",
+      "stats": {
+        "hp": { "min": 862, "max": 10775 },
+        "atk": { "min": 35, "max": 438 },
+        "def": { "min": 93, "max": 1137 }
+      }
+    },
+    {
+      "id": "qiuyuan",
+      "name": "Qiuyuan",
+      "rarity": 5,
+      "attribute": "Aero",
+      "weaponType": "Sword",
+      "description": "Bambooscape",
+      "stats": {
+        "hp": { "min": 979, "max": 12238 },
+        "atk": { "min": 30, "max": 375 },
+        "def": { "min": 98, "max": 1198 }
+      }
+    },
+    {
+      "id": "roccia",
+      "name": "Roccia",
+      "rarity": 5,
+      "attribute": "Havoc",
+      "weaponType": "Gauntlet",
+      "description": "Stage in the Box",
+      "stats": {
+        "hp": { "min": 980, "max": 12250 },
+        "atk": { "min": 30, "max": 375 },
+        "def": { "min": 98, "max": 1198 }
+      }
+    },
+    {
+      "id": "shorekeeper",
+      "name": "Shorekeeper",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Rectifier",
+      "description": "Euphonic Chrysalis",
+      "stats": {
+        "hp": { "min": 1337, "max": 16713 },
+        "atk": { "min": 23, "max": 288 },
+        "def": { "min": 90, "max": 1100 }
+      }
+    },
+    {
+      "id": "verina",
+      "name": "Verina",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Rectifier",
+      "description": "Nature Calling",
+      "stats": {
+        "hp": { "min": 1139, "max": 14238 },
+        "atk": { "min": 27, "max": 338 },
+        "def": { "min": 90, "max": 1100 }
+      }
+    },
+    {
+      "id": "xiangli yao",
+      "name": "Xiangli Yao",
+      "rarity": 5,
+      "attribute": "Electro",
+      "weaponType": "Gauntlet",
+      "description": "Matter Weaver",
+      "stats": {
+        "hp": { "min": 850, "max": 10625 },
+        "atk": { "min": 34, "max": 425 },
+        "def": { "min": 100, "max": 1222 }
+      }
+    },
+    {
+      "id": "yinlin",
+      "name": "Yinlin",
+      "rarity": 5,
+      "attribute": "Electro",
+      "weaponType": "Rectifier",
+      "description": "Evil-conquering Puppet",
+      "stats": {
+        "hp": { "min": 880, "max": 11000 },
+        "atk": { "min": 32, "max": 400 },
+        "def": { "min": 105, "max": 1283 }
+      }
+    },
+    {
+      "id": "zani",
+      "name": "Zani",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Gauntlet",
+      "description": "Scorched Radiance",
+      "stats": {
+        "hp": { "min": 862, "max": 10775 },
+        "atk": { "min": 35, "max": 438 },
+        "def": { "min": 93, "max": 1137 }
+      }
+    },
+    {
+      "id": "zhezhi",
+      "name": "Zhezhi",
+      "rarity": 5,
+      "attribute": "Glacio",
+      "weaponType": "Rectifier",
+      "description": "Enchancted Brush",
+      "stats": {
+        "hp": { "min": 980, "max": 12250 },
+        "atk": { "min": 30, "max": 375 },
+        "def": { "min": 98, "max": 1198 }
+      }
+    },
+
+    {
       "id": "chixia",
       "name": "Chixia",
       "rarity": 4,

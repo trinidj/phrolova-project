@@ -84,6 +84,11 @@
 
   /* Attribute Colours */
   --electro: rgba(180, 107, 255);
+  --aero: rgba(86, 255, 179);
+  --fusion: rgba(240, 114, 76);
+  --glacio: rgba(65, 172, 252);
+  --havoc: rgba(231, 70, 167);
+  --spectro: rgba(247, 231, 106);
 }
 
 .dark {
@@ -122,7 +127,12 @@
   --rarity-5: oklch(0.886 0.147 91.0);
 
   /* Attribute Colours */
-  --electro: rgba(180, 107, 255);
+  --electro: rgba(181, 104, 255);
+  --aero: rgba(86, 255, 179);
+  --fusion: rgba(240, 114, 76);
+  --glacio: rgba(65, 172, 252);
+  --havoc: rgba(231, 70, 167);
+  --spectro: rgba(247, 231, 106);
 }
 
 @layer base {
@@ -132,26 +142,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
 
-  :root {
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
   }
-
-  .dark {
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.439 0 0);
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
   }
 }

@@ -1,4 +1,4 @@
-import { getResonatorByName, getResonatorTalents, parseTalentsMarkdown, getResonatorSequenceNodes, parseSequenceNodesMarkdown } from "@/app/lib/resonators"
+import { getResonatorByName, getResonatorTalents, parseTalentsMarkdown, getResonatorSequenceNodes, parseSequenceNodesMarkdown, getResonatorAscension } from "@/app/lib/resonators"
 import { Separator } from "@/components/ui/separator"
 import ProfileSection from "./ProfileSection"
 import AscensionSection from "./AscensionSection"
@@ -32,13 +32,16 @@ export default async function ResonatorDetails({
   const sequenceNodesMarkdown = await getResonatorSequenceNodes(resonator.id)
   const parsedSequenceNodes = sequenceNodesMarkdown ? parseSequenceNodesMarkdown(sequenceNodesMarkdown) : undefined
 
+  // Load ascension data if available
+  const ascensionData = await getResonatorAscension(resonator.id)
+
   return (
     <div className="flex flex-col gap-20">
       <ProfileSection resonator={resonator} />
       <Separator />
       <TalentsSection talents={parsedTalents} resonatorName={resonator.name} resonatorRarity={resonator.rarity} />
       <Separator />
-      <AscensionSection />
+      <AscensionSection ascensionData={ascensionData} />
       <Separator />
       <ResonanceChainSection sequenceNodes={parsedSequenceNodes} resonator={resonator} />
 

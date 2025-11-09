@@ -2,6 +2,7 @@ import { Resonator, getResonatorAssets } from "@/app/types/resonator"
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 import { Card, CardContent } from "@/components/ui/card"
+import { getAttributeColor, getAttributeBackgroundStyle } from "@/lib/utils"
 
 import LevelSlider from "./LevelSlider"
 
@@ -13,20 +14,32 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
   const assets = getResonatorAssets(resonator)
 
   return (
-    <section id="profile" className="relative flex flex-col lg:flex-row gap-8 lg:gap-12">
+    <section id="profile" className="relative flex flex-col justify-between lg:flex-row gap-8 lg:gap-12">
       {/* Left Side: Profile Info */}
       <div className="flex flex-col gap-4 sm:gap-6 shrink-0">
         <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
           <div className="flex items-center gap-3 sm:gap-4">
-            <Image
-              alt={resonator.attribute}
-              src={assets.attribute}
-              width={500}
-              height={500}
-              className="size-12 sm:size-16"
-            />
+            <div
+              className="rounded-lg p-1 border-2"
+              style={{
+                borderColor: getAttributeColor(resonator.attribute),
+                ...getAttributeBackgroundStyle(resonator.attribute, 0.05)
+              }}
+            >
+              <Image
+                alt={resonator.attribute}
+                src={assets.attribute}
+                width={500}
+                height={500}
+                className="size-12 sm:size-16"
+              />
+            </div>
 
-            <Separator orientation="vertical" className="hidden sm:block" />
+            <Separator
+              orientation="vertical"
+              className="hidden sm:block"
+              style={{ backgroundColor: getAttributeColor(resonator.attribute) }}
+            />
 
             <div className="flex flex-col gap-1">
               <h1 className="font-bold text-2xl sm:text-4xl">{resonator.name}</h1>
@@ -50,21 +63,17 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
         <Card className="w-full lg:w-lg h-fit">
           <CardContent className="flex flex-col gap-1">
             <LevelSlider resonator={resonator} />
-
-
           </CardContent>
         </Card>
       </div>
 
       {/* Right Side: Character Sprite */}
-      <div className="flex-1 flex justify-center lg:justify-end">
-        <Image
-          alt={`${resonator.name} sprite`}
-          src={assets.sprite}
-          width={400}
-          height={800}
-        />
-      </div>
+      <Image
+        alt={`${resonator.name} sprite`}
+        src={assets.sprite}
+        width={500}
+        height={800}
+      />
     </section>
   )
 }

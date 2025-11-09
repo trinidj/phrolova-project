@@ -1,6 +1,6 @@
 'use client'
 
-import { Resonator, getResonatorSkillAssets } from "@/app/types/resonator"
+import { Resonator, getResonatorSkillAssets, TalentData } from "@/app/types/resonator"
 import { renderDescription } from "@/app/lib/talents"
 import Image from "next/image"
 
@@ -18,12 +18,6 @@ import {
   ItemMedia,
   ItemTitle,
 } from "@/components/ui/item"
-
-interface TalentData {
-  name: string
-  type: string
-  description?: string
-}
 
 interface SkillItem {
   type: string
@@ -79,12 +73,11 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
 
   const assets = getResonatorSkillAssets(resonator)
 
-  const skillItems = [  
+  const skillItems = [
     { type: "Normal Attack", asset: assets.normalAttack, talent: talents?.normalAttack },
     { type: "Resonance Skill", asset: assets.resonanceSkill, talent: talents?.resonanceSkill },
     { type: "Resonance Liberation", asset: assets.resonanceLiberation, talent: talents?.resonanceLiberation },
     { type: "Forte Circuit", asset: assets.forteCircuit, talent: talents?.forteCircuit },
-    { type: "Intro Skill", asset: assets.introSkill, talent: talents?.introSkill },
   ]
 
   const inheritSkillItems = [

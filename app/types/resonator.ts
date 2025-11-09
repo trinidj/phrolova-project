@@ -31,6 +31,12 @@ export interface Talent {
   scaling?: TalentScaling[];
 }
 
+export interface TalentData {
+  name: string;
+  type: string;
+  description?: string;
+}
+
 export interface SequenceNode {
   name: string;
   description?: string;

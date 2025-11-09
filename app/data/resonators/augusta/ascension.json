@@ -1,0 +1,127 @@
+[
+  {
+    "level": "40",
+    "materials": [
+      {
+        "name": "Blighted Crown of Puppet King",
+        "amount": 3,
+        "type": "boss"
+      },
+      {
+        "name": "Luminous Calendula",
+        "amount": 4,
+        "type": "local"
+      },
+      {
+        "name": "LF Tidal Residuum",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credit",
+        "amount": 10000,
+        "type": "currency"
+      }
+    ]
+  },
+  {
+    "level": "50",
+    "materials": [
+      {
+        "name": "Blighted Crown of Puppet King",
+        "amount": 6,
+        "type": "boss"
+      },
+      {
+        "name": "Luminous Calendula",
+        "amount": 8,
+        "type": "local"
+      },
+      {
+        "name": "MF Tidal Residuum",
+        "amount": 8,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credit",
+        "amount": 15000,
+        "type": "currency"
+      }
+    ]
+  },
+  {
+    "level": "60",
+    "materials": [
+      {
+        "name": "Blighted Crown of Puppet King",
+        "amount": 9,
+        "type": "boss"
+      },
+      {
+        "name": "Luminous Calendula",
+        "amount": 12,
+        "type": "local"
+      },
+      {
+        "name": "MF Tidal Residuum",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credit",
+        "amount": 20000,
+        "type": "currency"
+      }
+    ]
+  },
+  {
+    "level": "70",
+    "materials": [
+      {
+        "name": "Blighted Crown of Puppet King",
+        "amount": 12,
+        "type": "boss"
+      },
+      {
+        "name": "Luminous Calendula",
+        "amount": 16,
+        "type": "local"
+      },
+      {
+        "name": "HF Tidal Residuum",
+        "amount": 8,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credit",
+        "amount": 40000,
+        "type": "currency"
+      }
+    ]
+  },
+  {
+    "level": "80",
+    "materials": [
+      {
+        "name": "Blighted Crown of Puppet King",
+        "amount": 16,
+        "type": "boss"
+      },
+      {
+        "name": "Luminous Calendula",
+        "amount": 20,
+        "type": "local"
+      },
+      {
+        "name": "FF Tidal Residuum",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credit",
+        "amount": 80000,
+        "type": "currency"
+      }
+    ]
+  }
+]
