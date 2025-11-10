@@ -14,15 +14,7 @@ import {
 import { Button } from "./ui/button"
 import Image from "next/image"
 import { getAttributeColor } from "@/lib/utils"
-
-interface Resonator {
-  id: string
-  name: string
-  rarity: number
-  attribute: string
-  weaponType: string
-  description: string
-}
+import { Resonator } from "@/app/types/resonator"
 
 interface SearchDialogContentProps {
   resonators: Resonator[]

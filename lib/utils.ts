@@ -7,27 +7,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Check if a material is a boss material based on naming patterns
- * Boss materials typically have longer, unique names
+ * Get the asset path for a material based on its name and type
  */
-function isBossMaterial(materialName: string): boolean {
-  // Boss materials are typically longer names with specific patterns
-  // You can expand this list as needed
-  const bossMaterialKeywords = [
-    'Crown', 'Bone', 'Core', 'Shard', 'Fragment',
-    'Heart', 'Scale', 'Fang', 'Claw', 'Eye', 'Puppet King'
-  ];
-
-  return bossMaterialKeywords.some(keyword =>
-    materialName.includes(keyword)
-  );
-}
-
-/**
- * Get the asset path for a material based on its name
- */
-export function getMaterialAssetPath(materialName: string): string {
-  if (isBossMaterial(materialName)) {
+export function getMaterialAssetPath(materialName: string, materialType?: string): string {
+  if (materialType === 'boss') {
     // Boss materials are in a subdirectory
     return `/assets/materials/boss/${materialName.replace(/\s+/g, '_')}.png`;
   }

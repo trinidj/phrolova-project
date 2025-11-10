@@ -10,11 +10,17 @@ export interface StatRange {
 export interface AscensionMaterial {
   name: string;
   amount: number;
+  type?: string;
   icon?: string;
 }
 
 export interface AscensionPhase {
   level: string;
+  materials: AscensionMaterial[];
+}
+
+export interface SkillAscensionPhase {
+  level: number;
   materials: AscensionMaterial[];
 }
 

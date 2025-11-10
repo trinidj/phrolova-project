@@ -1,4 +1,4 @@
-import { Resonator, AscensionPhase, TalentData, SequenceNode } from '@/app/types/resonator'
+import { Resonator, AscensionPhase, SkillAscensionPhase, TalentData, SequenceNode } from '@/app/types/resonator'
 import { promises as fs } from 'fs'
 import path from 'path'
 import resonatorsData from '@/app/data/resonators/index.json'
@@ -80,6 +80,20 @@ export async function getResonatorAscension(id: string): Promise<AscensionPhase[
     return JSON.parse(content)
   } catch (error) {
     // It's okay if ascension.json doesn't exist
+    return null
+  }
+}
+
+/**
+ * Get skill ascension data for a resonator
+ */
+export async function getResonatorSkillAscension(id: string): Promise<SkillAscensionPhase[] | null> {
+  try {
+    const skillAscensionPath = path.join(RESONATORS_DIR, id, 'skill-ascension.json')
+    const content = await fs.readFile(skillAscensionPath, 'utf-8')
+    return JSON.parse(content)
+  } catch (error) {
+    // It's okay if skill-ascension.json doesn't exist
     return null
   }
 }
