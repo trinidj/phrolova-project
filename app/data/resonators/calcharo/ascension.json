@@ -1,0 +1,42 @@
+[
+  {
+    "level": "90",
+    "materials": [
+      {
+        "name": "Thundering Tacet Core",
+        "amount": 46,
+        "type": "boss"
+      },
+      {
+        "name": "Iris",
+        "amount": 60,
+        "type": "local"
+      },
+      {
+        "name": "Crude Ring",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Basic Ring",
+        "amount": 12,
+        "type": "common"
+      },
+      {
+        "name": "Improved Ring",
+        "amount": 8,
+        "type": "common"
+      },
+      {
+        "name": "Tailored Ring",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 170000,
+        "type": "currency"
+      }
+    ]
+  }
+]
