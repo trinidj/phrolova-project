@@ -1,0 +1,57 @@
+[
+  {
+    "level": 10,
+    "materials": [
+      {
+        "name": "LF Polygon Core",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "MF Polygon Core",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "HF Polygon Core",
+        "amount": 40,
+        "type": "common"
+      },
+      {
+        "name": "FF Polygon Core",
+        "amount": 57,
+        "type": "common"
+      },
+      {
+        "name": "Impure Phlogiston",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "Extracted Phlogiston",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "Refined Phlogiston",
+        "amount": 55,
+        "type": "common"
+      },
+      {
+        "name": "Flawless Phlogiston",
+        "amount": 67,
+        "type": "common"
+      },
+      {
+        "name": "The Netherworld's Stare",
+        "amount": 26,
+        "type": "boss"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 2030000,
+        "type": "currency"
+      }
+    ]
+  }
+]
