@@ -103,7 +103,7 @@ export default function AscensionSection({ ascensionData, skillAscensionData }: 
 
                   <div className="flex items-center gap-2">
                     <Label className="text-sm md:text-base">Include Minor Fortes</Label>
-                    <Switch />
+                    <Switch disabled />
                   </div>
                 </div>
 
