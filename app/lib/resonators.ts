@@ -1,5 +1,6 @@
 import { Resonator, AscensionPhase, SkillAscensionPhase, TalentData, SequenceNode } from '@/app/types/resonator'
 import { promises as fs } from 'fs'
+import { cache } from 'react'
 import path from 'path'
 import resonatorsData from '@/app/data/resonators/index.json'
 
@@ -47,7 +48,7 @@ function normalizeMarkdown(markdown: string): string {
 /**
  * Get talents markdown content for a resonator
  */
-export async function getResonatorTalents(id: string): Promise<string | null> {
+export const getResonatorTalents = cache(async (id: string): Promise<string | null> => {
   try {
     const talentsPath = path.join(RESONATORS_DIR, id, 'talents.md')
     return await fs.readFile(talentsPath, 'utf-8')
@@ -55,12 +56,12 @@ export async function getResonatorTalents(id: string): Promise<string | null> {
     // It's okay if talents.md doesn't exist
     return null
   }
-}
+})
 
 /**
  * Get sequence nodes (resonance chains) markdown content for a resonator
  */
-export async function getResonatorSequenceNodes(id: string): Promise<string | null> {
+export const getResonatorSequenceNodes = cache(async (id: string): Promise<string | null> => {
   try {
     const sequenceNodesPath = path.join(RESONATORS_DIR, id, 'sequence-nodes.md')
     return await fs.readFile(sequenceNodesPath, 'utf-8')
@@ -68,12 +69,12 @@ export async function getResonatorSequenceNodes(id: string): Promise<string | nu
     // It's okay if sequence-nodes.md doesn't exist
     return null
   }
-}
+})
 
 /**
  * Get ascension data for a resonator
  */
-export async function getResonatorAscension(id: string): Promise<AscensionPhase[] | null> {
+export const getResonatorAscension = cache(async (id: string): Promise<AscensionPhase[] | null> => {
   try {
     const ascensionPath = path.join(RESONATORS_DIR, id, 'ascension.json')
     const content = await fs.readFile(ascensionPath, 'utf-8')
@@ -82,12 +83,12 @@ export async function getResonatorAscension(id: string): Promise<AscensionPhase[
     // It's okay if ascension.json doesn't exist
     return null
   }
-}
+})
 
 /**
  * Get skill ascension data for a resonator
  */
-export async function getResonatorSkillAscension(id: string): Promise<SkillAscensionPhase[] | null> {
+export const getResonatorSkillAscension = cache(async (id: string): Promise<SkillAscensionPhase[] | null> => {
   try {
     const skillAscensionPath = path.join(RESONATORS_DIR, id, 'skill-ascension.json')
     const content = await fs.readFile(skillAscensionPath, 'utf-8')
@@ -96,7 +97,7 @@ export async function getResonatorSkillAscension(id: string): Promise<SkillAscen
     // It's okay if skill-ascension.json doesn't exist
     return null
   }
-}
+})
 
 /**
  * Parse talents markdown into structured data
@@ -218,8 +219,13 @@ export async function getAllResonators(): Promise<Resonator[]> {
  * Get a resonator by name (case-insensitive)
  */
 export async function getResonatorByName(name: string): Promise<Resonator | null> {
-  const resonators = await getAllResonators()
-  return resonators.find(
-    r => r.name.toLowerCase() === name.toLowerCase()
-  ) || null
+  // Fast path: get base data directly from index.json without loading all resonators
+  const base = resonatorsData.resonators.find(r => r.name.toLowerCase() === name.toLowerCase())
+  if (!base) return null
+
+  // Load talents lazily for this single resonator
+  const talentsMarkdown = await getResonatorTalents(base.id)
+  const talents = talentsMarkdown ? parseTalentsMarkdown(talentsMarkdown) : undefined
+
+  return { ...(base as unknown as Resonator), talents }
 }

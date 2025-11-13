@@ -41,13 +41,6 @@ export function getAttributeColor(attribute: Attribute | string): string {
 }
 
 /**
- * Get inline style object for attribute color
- */
-export function getAttributeColorStyle(attribute: Attribute | string): React.CSSProperties {
-  return { color: getAttributeColor(attribute) }
-}
-
-/**
  * Get inline style object for attribute background with opacity
  */
 export function getAttributeBackgroundStyle(
