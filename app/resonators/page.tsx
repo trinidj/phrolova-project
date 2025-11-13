@@ -261,7 +261,7 @@ export default function ResonatorsPage() {
                     </div>
                     {resonator.isNew && (
                       <div className="absolute right-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
-                        <Badge variant="destructive" className="text-white text-xs">
+                        <Badge className="text-white text-xs bg-red-600/80 ">
                           New
                         </Badge>
                       </div>
