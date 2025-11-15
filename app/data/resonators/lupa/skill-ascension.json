@@ -1,0 +1,57 @@
+[
+  {
+    "level": 10,
+    "materials": [
+      {
+        "name": "LF Howler Core",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "MF Howler Core",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "HF Howler Core",
+        "amount": 40,
+        "type": "common"
+      },
+      {
+        "name": "FF Howler Core",
+        "amount": 57,
+        "type": "common"
+      },
+      {
+        "name": "Waveworn Residue 210",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "Waveworn Residue 226",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "Waveworn Residue 235",
+        "amount": 55,
+        "type": "common"
+      },
+      {
+        "name": "Waveworn Residue 239",
+        "amount": 67,
+        "type": "common"
+      },
+      {
+        "name": "The Netherworld's Stare",
+        "amount": 26,
+        "type": "boss"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 2030000,
+        "type": "currency"
+      }
+    ]
+  }
+]
