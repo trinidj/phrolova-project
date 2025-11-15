@@ -34,7 +34,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Phrolo",
+  title: "Tethys Hub",
   description: "Wuwa Database",
 };
 
