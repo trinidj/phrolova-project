@@ -1,0 +1,42 @@
+[
+  {
+    "level": "90",
+    "materials": [
+      {
+        "name": "Cleansing Conch",
+        "amount": 46,
+        "type": "boss"
+      },
+      {
+        "name": "Firecracker Jewelweed",
+        "amount": 60,
+        "type": "local"
+      },
+      {
+        "name": "LF Tidal Residuum",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "MF Tidal Residuum",
+        "amount": 12,
+        "type": "common"
+      },
+      {
+        "name": "HF Tidal Residuum",
+        "amount": 8,
+        "type": "common"
+      },
+      {
+        "name": "FF Tidal Residuum",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 170000,
+        "type": "currency"
+      }
+    ]
+  }
+]
