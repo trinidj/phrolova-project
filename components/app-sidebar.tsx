@@ -64,7 +64,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarMenu className="gap-4">
+          <SidebarMenu className="gap-2">
             {navMain.map((item) => (
               <Tooltip key={item.title}>
                 <TooltipTrigger>

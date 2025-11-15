@@ -1,0 +1,42 @@
+[
+  {
+    "level": "90",
+    "materials": [
+      {
+        "name": "Elegy Tacet Core",
+        "amount": 46,
+        "type": "boss"
+      },
+      {
+        "name": "Loong's Pearl",
+        "amount": 60,
+        "type": "local"
+      },
+      {
+        "name": "LF Howler Core",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "MF Howler Core",
+        "amount": 12,
+        "type": "common"
+      },
+      {
+        "name": "HF Howler Core",
+        "amount": 8,
+        "type": "common"
+      },
+      {
+        "name": "FF Howler Core",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 170000,
+        "type": "currency"
+      }
+    ]
+  }
+]
