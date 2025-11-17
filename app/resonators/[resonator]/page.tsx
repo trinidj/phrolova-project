@@ -18,7 +18,8 @@ export default async function ResonatorDetails({
 }: {
   params: Promise<{ resonator: string }>
 }) {
-  const resonatorName = (await params).resonator
+  const resonatorSlug = (await params).resonator
+  const resonatorName = decodeURIComponent(resonatorSlug)
   const resonator = await getResonatorByName(resonatorName)
 
   if (!resonator) {
