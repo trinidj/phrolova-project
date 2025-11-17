@@ -1,0 +1,57 @@
+[
+  {
+    "level": 10,
+    "materials": [
+      {
+        "name": "LF Whisperin Core",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "MF Whisperin Core",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "HF Whisperin Core",
+        "amount": 40,
+        "type": "common"
+      },
+      {
+        "name": "FF Whisperin Core",
+        "amount": 57,
+        "type": "common"
+      },
+      {
+        "name": "Lento Helix",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "Adagio Helix",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "Andante Helix",
+        "amount": 55,
+        "type": "common"
+      },
+      {
+        "name": "Presto Helix",
+        "amount": 67,
+        "type": "common"
+      },
+      {
+        "name": "Sentinel's Dagger",
+        "amount": 26,
+        "type": "boss"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 2030000,
+        "type": "currency"
+      }
+    ]
+  }
+]

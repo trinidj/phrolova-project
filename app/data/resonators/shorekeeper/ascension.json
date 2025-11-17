@@ -1,0 +1,42 @@
+[
+  {
+    "level": "90",
+    "materials": [
+      {
+        "name": "Topological Confinement",
+        "amount": 46,
+        "type": "boss"
+      },
+      {
+        "name": "Nova",
+        "amount": 60,
+        "type": "local"
+      },
+      {
+        "name": "LF Whisperin Core",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "MF Whisperin Core",
+        "amount": 12,
+        "type": "common"
+      },
+      {
+        "name": "HF Whisperin Core",
+        "amount": 8,
+        "type": "common"
+      },
+      {
+        "name": "FF Whisperin Core",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 170000,
+        "type": "currency"
+      }
+    ]
+  }
+]
