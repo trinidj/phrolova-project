@@ -1,0 +1,42 @@
+[
+  {
+    "level": "90",
+    "materials": [
+      {
+        "name": "Platinum Core",
+        "amount": 46,
+        "type": "boss"
+      },
+      {
+        "name": "Sword Acorus",
+        "amount": 60,
+        "type": "local"
+      },
+      {
+        "name": "LF Polygon Core",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "MF Polygon Core",
+        "amount": 12,
+        "type": "common"
+      },
+      {
+        "name": "HF Polygon Core",
+        "amount": 8,
+        "type": "common"
+      },
+      {
+        "name": "FF Polygon Core",
+        "amount": 4,
+        "type": "common"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 170000,
+        "type": "currency"
+      }
+    ]
+  }
+]
