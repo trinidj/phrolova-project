@@ -109,7 +109,10 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
         <div className="flex flex-col">
           <h3 className="text-lg sm:text-xl font-bold">Active Skills</h3>
           {skillItems.map((skill, index) => (
-            <SkillAccordion key={skill.talent?.name || `skill-${index}`} skill={skill} />
+            <SkillAccordion
+              key={`${skill.type}-${skill.talent?.name ?? index}`}
+              skill={skill}
+            />
           ))}
         </div>
 
@@ -117,7 +120,10 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
         <div className="flex flex-col">
           <h3 className="text-lg sm:text-xl font-bold">Inherit Skills</h3>
           {inheritSkillItems.map((skill, index) => (
-            <SkillAccordion key={skill.talent?.name || `inherit-${index}`} skill={skill} />
+            <SkillAccordion
+              key={`${skill.type}-${skill.talent?.name ?? index}`}
+              skill={skill}
+            />
           ))}
         </div>
 
@@ -125,7 +131,10 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
         <div className="flex flex-col">
           <h3 className="text-lg sm:text-xl font-bold">Concerto Skills</h3>
           {concertoSkillItems.map((skill, index) => (
-            <SkillAccordion key={skill.talent?.name || `concerto-${index}`} skill={skill} />
+            <SkillAccordion
+              key={`${skill.type}-${skill.talent?.name ?? index}`}
+              skill={skill}
+            />
           ))}
         </div>
       </div>

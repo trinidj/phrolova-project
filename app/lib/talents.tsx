@@ -68,7 +68,7 @@ export function colorizeNumbers(text: string, prefix: string = '') {
  * @param text - The text to process
  * @returns An array of React elements and strings with colorized attributes
  */
-export function colorizeAttributes(text: string) {
+export function colorizeAttributes(text: string, prefix: string = '') {
   const attributeNames = ATTRIBUTES.map(attr => attr.label)
   
   // Map status effects to their attribute names (capitalized)
@@ -88,11 +88,11 @@ export function colorizeAttributes(text: string) {
     const statusPattern = new RegExp(`\\b${statusEffect}(?:\\s+DMG)?\\b`, 'g')
     
     if (Array.isArray(result)) {
-      result = result.flatMap(part => {
+      result = result.flatMap((part, partIndex) => {
         if (typeof part === 'string') {
           return applyTextTransformation(part, statusPattern, (match, idx) => (
             <span
-              key={`status-${attributeName}-${idx}`}
+              key={`${prefix}status-${attributeName}-${partIndex}-${idx}`}
               className="font-semibold"
               style={{ color: getAttributeColor(attributeName) }}
             >
@@ -105,7 +105,7 @@ export function colorizeAttributes(text: string) {
     } else if (typeof result === 'string') {
       result = applyTextTransformation(result, statusPattern, (match, idx) => (
         <span
-          key={`status-${attributeName}-${idx}`}
+          key={`${prefix}status-${attributeName}-${idx}`}
           className="font-semibold"
           style={{ color: getAttributeColor(attributeName) }}
         >
@@ -119,11 +119,11 @@ export function colorizeAttributes(text: string) {
   const attributePattern = new RegExp(`\\b(${attributeNames.join('|')})(?:\\s+DMG)?\\b`, 'g')
   
   if (Array.isArray(result)) {
-    result = result.flatMap(part => {
+    result = result.flatMap((part, partIndex) => {
       if (typeof part === 'string') {
         return applyTextTransformation(part, attributePattern, (match, idx) => (
           <span
-            key={`attr-${idx}`}
+            key={`${prefix}attr-${partIndex}-${idx}`}
             className="font-semibold"
             style={{ color: getAttributeColor(match[1]) }}
           >
@@ -136,7 +136,7 @@ export function colorizeAttributes(text: string) {
   } else if (typeof result === 'string') {
     result = applyTextTransformation(result, attributePattern, (match, idx) => (
       <span
-        key={`attr-${idx}`}
+        key={`${prefix}attr-${idx}`}
         className="font-semibold"
         style={{ color: getAttributeColor(match[1]) }}
       >
@@ -156,7 +156,7 @@ export function colorizeAttributes(text: string) {
  */
 export function colorizeText(text: string, prefix: string = '') {
   // First apply attribute colorization
-  const withAttributes = colorizeAttributes(text)
+  const withAttributes = colorizeAttributes(text, prefix)
 
   // If it's still just text, apply number colorization
   if (typeof withAttributes === 'string') {
