@@ -1,5 +1,3 @@
-# Augusta Resonance Chain
-
 ## Sequence Node 1: Stained in Scorched Earth
 
 Each stack of Crown of Wills additionally increases Augusta's Crit. DMG by 15%.

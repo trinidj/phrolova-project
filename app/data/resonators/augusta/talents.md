@@ -1,5 +1,3 @@
-# Augusta - Talents
-
 ## Normal Attack: Hunter's Path
 
 **Basic Attack**

@@ -122,8 +122,8 @@ export function getResonatorSkillAssets(resonator: Resonator): ResonatorSkillAss
     resonanceSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/resonance_skill.png`,
     resonanceLiberation: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/resonance_liberation.png`,
     forteCircuit: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/forte_circuit.png`,
-    inheritSkill1: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/inherit_skill_1.png`,
-    inheritSkill2: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/inherit_skill_2.png`,
+    inheritSkill1: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/inherent_skill_1.png`,
+    inheritSkill2: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/inherent_skill_2.png`,
     introSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/intro_skill.png`,
     outroSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/outro_skill.png`
   }
