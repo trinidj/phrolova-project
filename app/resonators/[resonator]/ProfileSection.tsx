@@ -18,11 +18,14 @@ interface ProfileSectionProps {
 
 export default function ProfileSection({ resonator }: ProfileSectionProps) {
   const assets = getResonatorAssets(resonator)
-  const combatRoleIcons: Record<string, string> = {
-    "main damage dealer": "/assets/combat_roles/main_damage_dealer.png",
-    "heavy attack damage": "/assets/combat_roles/heavy_attack_damage.png",
-    "dmg amplification": "/assets/combat_roles/dmg_amplification.png",
-    "shielding & dmg amplification support": "/assets/combat_roles/dmg_amplification.png"
+  const getCombatRoleIcon = (role: string) => {
+    const slug = role
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/_+/g, "_")
+      .replace(/^_|_$/g, "")
+
+    return `/assets/combat_roles/${slug}.png`
   }
 
   return (
@@ -86,24 +89,26 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
             <CardContent>
               <ul className="flex flex-wrap items-center gap-3 sm:gap-2">
                 {resonator.combatRoles.map((role) => {
-                  const icon = combatRoleIcons[role.toLowerCase()]
+                  const icon = getCombatRoleIcon(role)
                   return (
                     <li key={role} className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
-                      {icon ? (
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Image
-                              alt={`${role} icon`}
-                              src={icon}
-                              width={40}
-                              height={40}
-                            />
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="text-center font-semibold">{role}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      ) : null}
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <div className="flex items-center gap-2">
+                            {icon ? (
+                              <Image
+                                alt={`${role} icon`}
+                                src={icon}
+                                width={40}
+                                height={40}
+                              />
+                            ) : null}
+                          </div>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p className="text-center font-semibold">{role}</p>
+                        </TooltipContent>
+                      </Tooltip>
                     </li>
                   )
                 })}

@@ -23,6 +23,7 @@
       "weaponType": "Sword",
       "isNew": false,
       "description": "Flamebound Compass",
+      "combatRoles": ["Support and Healer", "Basic Attack Damage", "Fusion DMG Amplification", "Resonance Skill DMG Amplification"],
       "stats": {
         "hp": { "min": 934, "max": 11675 },
         "atk": { "min": 30, "max": 375 },
