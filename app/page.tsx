@@ -2,25 +2,32 @@ import Image from "next/image"
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-8">
-      <header className="flex flex-col items-center gap-6">
-        <div className="rounded-full bg-muted p-2">
-          <Image 
-            src="/assets/site_icon.png"
-            alt="Phrolova Project"
-            width={128}
-            height={128}
-            className="object-contain"
-          />
-        </div>
+    <div className="min-h-screen bg-background">
+      <div className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center gap-10 px-4 py-12 text-center sm:px-6 lg:px-8">
+        <header className="flex flex-col items-center gap-6">
+          <div className="rounded-full bg-muted/60 p-3 shadow-sm">
+            <Image
+              src="/assets/site_icon.png"
+              alt="Phrolova Project"
+              width={128}
+              height={128}
+              sizes="(max-width: 640px) 96px, (max-width: 768px) 112px, 128px"
+              className="h-24 w-24 object-contain sm:h-28 sm:w-28 md:h-32 md:w-32"
+            />
+          </div>
 
-        <div className="flex flex-col items-center gap-4">
-          <h1 className="text-4xl font-bold">Phrolova Project</h1>
-          <p className="text-xl text-muted-foreground text-center w-3xl">
-            Phrolova is an unofficial Wuthering Waves database and tools site, offering clear stats, builds, and resources to help you optimize your resonators and teams.
-          </p>
-        </div>
-      </header>
+          <div className="flex flex-col items-center gap-4">
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Phrolova Project
+            </h1>
+            <p className="max-w-3xl text-base text-muted-foreground sm:text-lg md:text-xl">
+              Phrolova is an unofficial Wuthering Waves database and tools site,
+              offering clear stats, builds, and resources to help you optimize
+              your resonators and teams.
+            </p>
+          </div>
+        </header>
+      </div>
     </div>
   )
 }
