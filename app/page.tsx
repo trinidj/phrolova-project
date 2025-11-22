@@ -20,7 +20,7 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-4xl font-bold">Phrolova Project</h1>
-          <p className="text-xl text-muted-foreground text-center">
+          <p className="text-xl text-muted-foreground text-center w-3xl">
             Phrolova is an unofficial Wuthering Waves database and tools site, offering clear stats, builds, and resources to help you optimize your resonators and teams.
           </p>
         </div>
