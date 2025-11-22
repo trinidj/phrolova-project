@@ -11,12 +11,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-
 const data = {
   navMain: [
     {
@@ -46,27 +40,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarGroup>
           <SidebarMenu className="gap-2">
             {navMain.map((item) => (
-              <Tooltip key={item.title}>
-                <TooltipTrigger>
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild size="lg">
-                      <Link href={item.url}>
-                        <Image 
-                          src={item.icon}
-                          alt="Resonator Icon"
-                          width={30}
-                          height={30}
-                          className="object-contain"
-                        />
-                        <span className="font-semibold">{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                </TooltipTrigger>
-                <TooltipContent side="right">
-                  <span className="font-semibold">{item.title}</span>
-                </TooltipContent>
-              </Tooltip>
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton asChild size="lg" tooltip={item.title}>
+                  <Link href={item.url}>
+                    <Image 
+                      src={item.icon}
+                      alt="Resonator Icon"
+                      width={30}
+                      height={30}
+                      className="object-contain"
+                    />
+                    <span className="font-semibold">{item.title}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             ))}
           </SidebarMenu>
         </SidebarGroup>
