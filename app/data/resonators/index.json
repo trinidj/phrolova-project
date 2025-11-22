@@ -128,7 +128,7 @@
       "weaponType": "Broadblade",
       "isNew": true,
       "description": "Eye of Unraveling",
-      "combatRoles": ["Support and Healer", "Resonance Liberation Damage", "Havoc Bane"],
+      "combatRoles": ["Main Damage Dealer", "Resonance Liberation Damage"],
       "stats": {
         "hp": { "min": 862, "max": 10775 },
         "atk": { "min": 37, "max": 438 },
