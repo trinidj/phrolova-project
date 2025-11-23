@@ -1,32 +1,418 @@
 {
-  "echoes": [
-    {
-      "id": "vanguard_junrock",
-      "name": "Vanguard Junrock",
-      "sonataIds": ["rejuvenating_glow", "void_thunder", "lingering_tunes"],
-      "rarity": "cost_1",
-      "icon": "/assets/echoes/vanguard_junrock.png"
-    },
-    {
-      "id": "fission_junrock",
-      "name": "Fission Junrock",
-      "sonataIds": ["moonlit_clouds", "void_thunder", "rejuvenating_glow"],
-      "rarity": "cost_1",
-      "icon": "/assets/echoes/fission_junrock.png"
-    },
-    {
-      "id": "electro_predator",
-      "name": "Electro Predator",
-      "sonataIds": ["molten_rift", "void_thunder"],
-      "rarity": "cost_1",
-      "icon": "/assets/echoes/electro_predator.png"
-    },
-    {
-      "id": "fusion_warrior",
-      "name": "Fusion Warrior",
-      "sonataIds": ["sierra_gale", "void_thunder", "molten_rift"],
-      "rarity": "cost_1",
-      "icon": "/assets/echoes/fusion_warrior.png"
-    }
-  ]
+  "echoes": {
+    "cost_1": [
+      {
+        "id": "vanguard_junrock",
+        "name": "Vanguard Junrock",
+        "sonataIds": ["rejuvenating_glow", "void_thunder", "lingering_tunes"],
+        "icon": "/assets/echoes/vanguard_junrock.png"
+      },
+      {
+        "id": "fission_junrock",
+        "name": "Fission Junrock",
+        "sonataIds": ["moonlit_clouds", "void_thunder", "rejuvenating_glow"],
+        "icon": "/assets/echoes/fission_junrock.png"
+      },
+      {
+        "id": "electro_predator",
+        "name": "Electro Predator",
+        "sonataIds": ["molten_rift", "void_thunder"],
+        "icon": "/assets/echoes/electro_predator.png"
+      },
+      {
+        "id": "fusion_warrior",
+        "name": "Fusion Warrior",
+        "sonataIds": ["sierra_gale", "void_thunder", "molten_rift"],
+        "icon": "/assets/echoes/fusion_warrior.png"
+      },
+      {
+        "id": "havoc_warrior",
+        "name": "Havoc Warrior",
+        "sonataIds": ["celestial_light", "havoc_eclipse"],
+        "icon": "/assets/echoes/havoc_warrior.png"
+      },
+      {
+        "id": "snip_snap",
+        "name": "Snip Snap",
+        "sonataIds": ["lingering_tunes", "rejuvenating_glow", "molten_rift"],
+        "icon": "/assets/echoes/snip_snap.png"
+      },
+      {
+        "id": "zig_zag",
+        "name": "Zig Zag",
+        "sonataIds": ["moonlit_clouds", "lingering_tunes", "celestial_light"],
+        "icon": "/assets/echoes/zig_zag.png"
+      },
+      {
+        "id": "whiff_whaff",
+        "name": "Whiff Whaff",
+        "sonataIds": ["rejuvenating_glow", "moonlit_clouds", "sierra_gale"],
+        "icon": "/assets/echoes/whiff_whaff.png"
+      },
+      {
+        "id": "tick_tack",
+        "name": "Tick Tack",
+        "sonataIds": ["lingering_tunes", "rejuvenating_glow", "havoc_eclipse"],
+        "icon": "/assets/echoes/tick_tack.png"
+      },
+      {
+        "id": "glacio_predator",
+        "name": "Glacio Predator",
+        "sonataIds": ["celestial_light", "freezing_frost"],
+        "icon": "/assets/echoes/glacio_predator.png"
+      },
+      {
+        "id": "gulpuff",
+        "name": "Gulpuff",
+        "sonataIds": ["celestial_light", "freezing_frost"],
+        "icon": "/assets/echoes/gulpuff.png"
+      },
+      {
+        "id": "glacio_prism",
+        "name": "Glacio Prism",
+        "sonataIds": ["havoc_eclipse", "moonlit_clouds", "freezing_frost"],
+        "icon": "/assets/echoes/glacio_prism.png"
+      },
+      {
+        "id": "fusion_prism",
+        "name": "Fusion Prism",
+        "sonataIds": ["freezing_frost", "lingering_tunes", "molten_rift"],
+        "icon": "/assets/echoes/fusion_prism.png"
+      },
+      {
+        "id": "spectro_prism",
+        "name": "Spectro Prism",
+        "sonataIds": ["molten_rift", "void_thunder", "celestial_light"],
+        "icon": "/assets/echoes/spectro_prism.png"
+      },
+      {
+        "id": "havoc_prism",
+        "name": "Havoc Prism",
+        "sonataIds": ["void_thunder", "celestial_light", "havoc_eclipse"],
+        "icon": "/assets/echoes/havoc_prism.png"
+      },
+      {
+        "id": "aero_predator",
+        "name": "Aero Predator",
+        "sonataIds": ["void_thunder", "sierra_gale"],
+        "icon": "/assets/echoes/aero_predator.png"
+      },
+      {
+        "id": "cruisewing",
+        "name": "Cruisewing",
+        "sonataIds": ["rejuvenating_glow", "moonlit_clouds", "celestial_light"],
+        "icon": "/assets/echoes/cruisewing.png"
+      },
+      {
+        "id": "sabyr_boar",
+        "name": "Sabyr Boar",
+        "sonataIds": ["moonlit_clouds", "sierra_gale", "freezing_frost"],
+        "icon": "/assets/echoes/sabyr_boar.png"
+      },
+      {
+        "id": "excarat",
+        "name": "Excarat",
+        "sonataIds": ["freezing_frost", "havoc_eclipse"],
+        "icon": "/assets/echoes/excarat.png"
+      },
+      {
+        "id": "baby_viridblaze_saurian",
+        "name": "Baby Viridblaze Saurian",
+        "sonataIds": ["lingering_tunes", "void_thunder", "molten_rift"],
+        "icon": "/assets/echoes/baby_viridblaze_saurian.png"
+      },
+      {
+        "id": "baby_roseshroom",
+        "name": "Baby Roseshroom",
+        "sonataIds": ["sierra_gale", "havoc_eclipse"],
+        "icon": "/assets/echoes/baby_roseshroom.png"
+      },
+      {
+        "id": "hoartoise",
+        "name": "Hoartoise",
+        "sonataIds": ["celestial_light", "freezing_frost"],
+        "icon": "/assets/echoes/hoartoise.png"
+      },
+      {
+        "id": "fusion_dreadmane",
+        "name": "Fusion Dreadmane",
+        "sonataIds": ["rejuvenating_glow", "molten_rift"],
+        "icon": "/assets/echoes/fusion_dreadmane.png"
+      },
+      {
+        "id": "hooscamp",
+        "name": "Hooscamp",
+        "sonataIds": ["lingering_tunes", "sierra_gale"],
+        "icon": "/assets/echoes/hooscamp.png"
+      },
+      {
+        "id": "diamondclaw",
+        "name": "Diamondclaw",
+        "sonataIds": ["moonlit_clouds", "lingering_tunes"],
+        "icon": "/assets/echoes/diamondclaw.png"
+      },
+      {
+        "id": "chirpuff",
+        "name": "Chirpuff",
+        "sonataIds": ["havoc_eclipse", "sierra_gale"],
+        "icon": "/assets/echoes/chirpuff.png"
+      },
+      {
+        "id": "traffic_illuminator",
+        "name": "Traffic Illuminator",
+        "sonataIds": ["void_thunder", "sierra_gale", "molten_rift"],
+        "icon": "/assets/echoes/traffic_illuminator.png"
+      },
+      {
+        "id": "clang_bang",
+        "name": "Clang Bang",
+        "sonataIds": ["celestial_light", "freezing_frost"],
+        "icon": "/assets/echoes/clang_bang.png"
+      },
+      {
+        "id": "lava_larva",
+        "name": "Lava Larva",
+        "sonataIds": ["lingering_tunes", "molten_rift"],
+        "icon": "/assets/echoes/lava_larva.png"
+      },
+      {
+        "id": "dwarf_cassowary",
+        "name": "Dwarf Cassowary",
+        "sonataIds": ["sierra_gale", "rejuvenating_glow"],
+        "icon": "/assets/echoes/dwarf_cassowary.png"
+      },
+      {
+        "id": "galescourge_stalker",
+        "name": "Galescourge Stalker",
+        "sonataIds": ["frosty_resolve", "empyrean_anthem"],
+        "icon": "/assets/echoes/galescourge_stalker.png"
+      },
+      {
+        "id": "voltscourge_stalker",
+        "name": "Voltscourge Stalker",
+        "sonataIds": ["empyrean_anthem", "midnight_veil"],
+        "icon": "/assets/echoes/voltscourge_stalker.png"
+      },
+      {
+        "id": "frostscourge_stalker",
+        "name": "Frostscourge Stalker",
+        "sonataIds": ["midnight_veil", "eternal_radiance"],
+        "icon": "/assets/echoes/frostscourge_stalker.png"
+      },
+      {
+        "id": "chop_chop_headless",
+        "name": "Chop Chop: Headless",
+        "sonataIds": ["eternal_radiance", "tidebreaker_courage"],
+        "icon": "/assets/echoes/chop_chop_headless.png"
+      },
+      {
+        "id": "chop_chop_leftless",
+        "name": "Chop Chop: Leftless",
+        "sonataIds": ["frosty_resolve", "tidebreaking_courage"],
+        "icon": "/assets/echoes/chop_chop_leftless.png"
+      },
+      {
+        "id": "chop_chop_rightless",
+        "name": "Chop Chop: Rightless",
+        "sonataIds": ["tidebreaking_courage", "frosty_resolve"],
+        "icon": "/assets/echoes/chop_chop_rightless.png"
+      },
+      {
+        "id": "fae_ignis",
+        "name": "Fae Ignis",
+        "sonataIds": ["midnight_veil", "eternal_radiance", "dream_of_the_lost"],
+        "icon": "/assets/echoes/fae_ignis.png"
+      },
+      {
+        "id": "nimbus_wraith",
+        "name": "Nimbus Wraith",
+        "sonataIds": ["empyrean_anthem", "midnight_veil", "flamewing's_shadow"],
+        "icon": "/assets/echoes/nimbus_wraith.png"
+      },
+      {
+        "id": "hocus_pocus",
+        "name": "Hocus Pocus",
+        "sonataIds": ["frosty_resolve", "empyrean_anthem"],
+        "icon": "/assets/echoes/hocus_pocus.png"
+      },
+      {
+        "id": "lottie_lost",
+        "name": "Lottie Lost",
+        "sonataIds": ["tidebreaking_courage", "frosty_resolve"],
+        "icon": "/assets/echoes/lottie_lost.png"
+      },
+      {
+        "id": "diggy_duggy",
+        "name": "Diggy Duggy",
+        "sonataIds": ["tidebreaking_courage", "frosty_resolve"],
+        "icon": "/assets/echoes/diggy_duggy.png"
+      },
+      {
+        "id": "chest_mimic",
+        "name": "Chest Mimic",
+        "sonataIds": ["midnight_veil", "empyrean_anthem", "frosty_resolve"],
+        "icon": "/assets/echoes/chest_mimic.png"
+      },
+      {
+        "id": "golden_junrock",
+        "name": "Golden Junrock",
+        "sonataIds": ["eternal_radiance", "frosty_resolve", "law_of_harmony"],
+        "icon": "/assets/echoes/golden_junrock.png"
+      },
+      {
+        "id": "calcified_junrock",
+        "name": "Calcified Junrock",
+        "sonataIds": ["tidebreaking_courage", "empyrean_anthem", "crown_of_valor"],
+        "icon": "/assets/echoes/calcified_junrock"
+      },
+      {
+        "id": "aero_prism",
+        "name": "Aero Prism",
+        "sonataIds": ["eternal_radiance", "tidebreaking_courage"],
+        "icon": "/assets/echoes/aero_prism.png"
+      },
+      {
+        "id": "la_guardia",
+        "name": "La Guardia",
+        "sonataIds": ["gusts_of_welkin", "midnight_veil", "flaming_clawprint"],
+        "icon": "/assets/echoes/la_guardia.png"
+      },
+      {
+        "id": "sagittario",
+        "name": "Sagittario",
+        "sonataIds": ["gusts_of_welkin", "eternal_radiance", "flaming_clawprint"],
+        "icon": "/assets/echoes/sagittario.png"
+      },
+      {
+        "id": "sacerdos",
+        "name": "Sacerdos",
+        "sonataIds": ["gusts_of_welkin", "windward_pilgrimage"],
+        "icon": "/assets/echoes/sacerdos.png"
+      },
+      {
+        "id": "aero_drake",
+        "name": "Aero Drake",
+        "sonataIds": ["gusts_of_welkin", "tidebreaking_courage", "flaming_clawprint"], 
+        "icon": "/assets/echoes/aero_drake.png"
+      },
+      {
+        "id": "electro_drake",
+        "name": "Electro Drake",
+        "sonataIds": ["gusts_of_welkin", "midnight_veil", "flaming_clawprint"],
+        "icon": "/assets/echoes/electro_drake.png"
+      },
+      {
+        "id": "glacio_drake",
+        "name": "Glacio Drake",
+        "sonataIds": ["gusts_of_welkin", "windward_pilgrimage"],
+        "icon": "/assets/echoes/glacio_drake.png"
+      },
+      {
+        "id": "fusion_drake",
+        "name": "Fusion Drake",
+        "sonataIds": ["flaming_clawprint", "windward_pilgrimage"],
+        "icon": "/assets/echoes/fusion_drake.png"
+      },
+      {
+        "id": "spectro_drake",
+        "name": "Spectro Drake",
+        "sonataIds": ["flaming_clawprint", "windward_pilgrimage"],
+        "icon": "/assets/echoes/spectro_drake.png"
+      },
+      {
+        "id": "havoc_drake",
+        "name": "Havoc Drake",
+        "sonataIds": ["flaming_clawprint", "windward_pilgrimage", "thread_of_severed_fate"],
+        "icon": "/assets/echoes/havoc_drake.png"
+      },
+      {
+        "id": "devotee's_flesh",
+        "name": "Devotee's Flesh",
+        "sonataIds": ["gusts_of_welkin", "windward_pilgrimage", "flaming_clawprint"],
+        "icon": "/assets/echoes/devotee's_flesh.png"
+      },
+      {
+        "id": "nightmare_havoc_warrior",
+        "name": "Nightmare: Havoc Warrior",
+        "sonataIds": ["dream_of_the_lost"],
+        "icon": "/assets/echoes/nightmare_havoc_warrior.png"
+      },
+      {
+        "id": "nightmare_glacio_predator",
+        "name": "Nightmare: Glacio Predator",
+        "sonataIds": ["dream_of_the_lost"],
+        "icon": "/assets/echoes/nightmare_glacio_predator.png"
+      },
+      {
+        "id": "nightmare_electro_predator",
+        "name": "Nightmare: Electro Predator",
+        "sonataIds": ["crown_of_valor"],
+        "icon": "/assets/echoes/nightmare_electro_predator.png"
+      },
+      {
+        "id": "nightmare_aero_predator",
+        "name": "Nightmare: Aero Predator",
+        "sonataIds": ["crown_of_valor"],
+        "icon": "/assets/echoes/nightmare_aero_predator.png"
+      },
+      {
+        "id": "nightmare_gulpuff",
+        "name": "Nightmare: Gulpuff",
+        "sonataIds": ["law_of_harmony"],
+        "icon": "/assets/echoes/nightmare_gulpuff.png"
+      },
+      {
+        "id": "nightmare_chirpuff",
+        "name": "Nightmare: Chirpuff",
+        "sonataIds": ["law_of_harmony"],
+        "icon": "/assets/echoes/nightmare_chirpuff.png"
+      },
+      {
+        "id": "nightmare_baby_viridblaze_saurian",
+        "name": "Nightmare: Baby Viridblaze Saurian",
+        "sonataIds": ["flamewing's_shadow"],
+        "icon": "/assets/echoes/nightmare_baby_viridblaze_saurian.png"
+      },
+      {
+        "id": "nightmare_baby_roseshroom",
+        "name": "Nightmare: Baby Roseshroom",
+        "sonataIds": ["flamewing's_shadow"],
+        "icon": "/assets/echoes/nightmare_baby_roseshroom.png"
+      },
+      {
+        "id": "nightmare_tick_tack",
+        "name": "Nightmare: Tick Tack",
+        "sonataIds": ["thread_of_severed_fate"],
+        "icon": "/assets/echoes/nightmare_tick_tack.png"
+      },
+      {
+        "id": "nightmare_dwarf_cassowary",
+        "name": "Nightmare: Dwarf Cassowary",
+        "sonataIds": ["thread_of_severed_fate"],
+        "icon": "/assets/echoes/nightmare_dwarf_cassowary.png"
+      }
+    ],
+
+
+
+
+
+
+    "cost_3": [
+      {
+        "id": "tambournist",
+        "name": "Tambournist",
+        "sonataIds": ["freezing_frost", "havoc_eclipse"],
+        "icon": "/assets/echoes/tambournist.png"
+      }
+    ],
+    "cost_4": [
+      {
+        "id": "lampylumen_myriad",
+        "name": "Lampylumen Myriad",
+        "sonataIds": ["freezing_frost"],
+        "icon": "/assets/echoes/lampylumen_myriad.png"
+      }
+    ]
+  }
 }

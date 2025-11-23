@@ -78,10 +78,10 @@
     "descriptionPath": "/data/sonatas/empyrean_anthem/description.md"
   },
   {
-    "id": "tidebreadking_courage",
-    "name": "Tidebreadking Courage",
-    "icon": "/assets/sonata/tidebreadking_courage.png",
-    "descriptionPath": "/data/sonatas/tidebreadking_courage/description.md"
+    "id": "tidebreaking_courage",
+    "name": "Tidebreaking Courage",
+    "icon": "/assets/sonata/tidebreaking_courage.png",
+    "descriptionPath": "/data/sonatas/tidebreaking_courage/description.md"
   },
   {
     "id": "gusts_of_welkin",

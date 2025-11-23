@@ -84,14 +84,32 @@ export default function EchoesExplorer({
           {/* 4 cost */}
           {echosByRarity.cost_4.length > 0 && (
             <section>
-              <h3 className="text-sm font-semibold mb-2">4-Cost</h3>
-              <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <header className="px-2 py-1 rounded-lg border border-yellow-400/50">
+                  <h3 className="text-lg font-semibold">4-Cost</h3>
+                </header>
+              </div>
+
+              <div className="mt-2 flex gap-3 flex-wrap overflow-x-auto py-1">
                 {echosByRarity.cost_4.map((e) => (
-                  <Item key={e.id} variant="muted">
-                    <ItemContent>
-                      <ItemTitle>{e.name}</ItemTitle>
-                    </ItemContent>
-                  </Item>
+                  <Tooltip key={e.id}>
+                    <TooltipTrigger>
+                      <div className="w-20 h-20 shrink-0">
+                        <Item variant="muted" className="w-full h-full">
+                          <ItemContent className="p-0 flex items-center justify-center">
+                            <Image 
+                              src={`/assets/echoes/${e.id}.png`}
+                              alt={e.name}
+                              width={64}
+                              height={64}
+                              className="object-contain rounded-xl"
+                            />
+                          </ItemContent>
+                        </Item>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>{e.name}</TooltipContent>
+                  </Tooltip>
                 ))}
               </div>
             </section>
@@ -100,14 +118,32 @@ export default function EchoesExplorer({
           {/* 3 cost */}
           {echosByRarity.cost_3.length > 0 && (
             <section>
-              <h3 className="text-sm font-semibold mb-2">3-Cost</h3>
-              <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <header className="px-2 py-1 rounded-lg border border-yellow-400/50">
+                  <h3 className="text-lg font-semibold">3-Cost</h3>
+                </header>
+              </div>
+
+              <div className="mt-2 flex gap-3 flex-wrap overflow-x-auto py-1">
                 {echosByRarity.cost_3.map((e) => (
-                  <Item key={e.id} variant="muted">
-                    <ItemContent>
-                      <ItemTitle>{e.name}</ItemTitle>
-                    </ItemContent>
-                  </Item>
+                  <Tooltip key={e.id}>
+                    <TooltipTrigger>
+                      <div className="w-20 h-20 shrink-0">
+                        <Item variant="muted" className="w-full h-full">
+                          <ItemContent className="p-0 flex items-center justify-center">
+                            <Image 
+                              src={`/assets/echoes/${e.id}.png`}
+                              alt={e.name}
+                              width={64}
+                              height={64}
+                              className="object-contain rounded-xl"
+                            />
+                          </ItemContent>
+                        </Item>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>{e.name}</TooltipContent>
+                  </Tooltip>
                 ))}
               </div>
             </section>
@@ -120,10 +156,9 @@ export default function EchoesExplorer({
                 <header className="px-2 py-1 rounded-lg border border-yellow-400/50">
                   <h3 className="text-lg font-semibold">1-Cost</h3>
                 </header>
-                <span className="text-sm text-muted-foreground">Tap icons to view names</span>
               </div>
 
-              <div className="mt-2 flex gap-3 flex-wrap sm:flex-nowrap overflow-x-auto py-1">
+              <div className="mt-2 flex gap-3 flex-wrap overflow-x-auto py-1">
                 {echosByRarity.cost_1.map((e) => (
                   <Tooltip key={e.id}>
                     <TooltipTrigger>
