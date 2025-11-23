@@ -1,0 +1,32 @@
+{
+  "echoes": [
+    {
+      "id": "vanguard_junrock",
+      "name": "Vanguard Junrock",
+      "sonataIds": ["rejuvenating_glow", "void_thunder", "lingering_tunes"],
+      "rarity": "cost_1",
+      "icon": "/assets/echoes/vanguard_junrock.png"
+    },
+    {
+      "id": "fission_junrock",
+      "name": "Fission Junrock",
+      "sonataIds": ["moonlit_clouds", "void_thunder", "rejuvenating_glow"],
+      "rarity": "cost_1",
+      "icon": "/assets/echoes/fission_junrock.png"
+    },
+    {
+      "id": "electro_predator",
+      "name": "Electro Predator",
+      "sonataIds": ["molten_rift", "void_thunder"],
+      "rarity": "cost_1",
+      "icon": "/assets/echoes/electro_predator.png"
+    },
+    {
+      "id": "fusion_warrior",
+      "name": "Fusion Warrior",
+      "sonataIds": ["sierra_gale", "void_thunder", "molten_rift"],
+      "rarity": "cost_1",
+      "icon": "/assets/echoes/fusion_warrior.png"
+    }
+  ]
+}

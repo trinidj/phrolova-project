@@ -76,5 +76,59 @@
     "name": "Empyrean Anthem",
     "icon": "/assets/sonata/empyrean_anthem.png",
     "descriptionPath": "/data/sonatas/empyrean_anthem/description.md"
+  },
+  {
+    "id": "tidebreadking_courage",
+    "name": "Tidebreadking Courage",
+    "icon": "/assets/sonata/tidebreadking_courage.png",
+    "descriptionPath": "/data/sonatas/tidebreadking_courage/description.md"
+  },
+  {
+    "id": "gusts_of_welkin",
+    "name": "Gusts of Welkin",
+    "icon": "/assets/sonata/gusts_of_welkin.png",
+    "descriptionPath": "/data/sonatas/gusts_of_welkin/description.md"
+  },
+  {
+    "id": "flaming_clawprint",
+    "name": "Flaming Clawprint",
+    "icon": "/assets/sonata/flaming_clawprint.png",
+    "descriptionPath": "/data/sonatas/flaming_clawprint/description.md"
+  },
+  {
+    "id": "windward_pilgrimage",
+    "name": "Windward Pilgrimage",
+    "icon": "/assets/sonata/windward_pilgrimage.png",
+    "descriptionPath": "/data/sonatas/windward_pilgrimage/description.md"
+  },
+  {
+    "id": "dream_of_the_lost",
+    "name": "Dream of the Lost",
+    "icon": "/assets/sonata/dream_of_the_lost.png",
+    "descriptionPath": "/data/sonatas/dream_of_the_lost/description.md"
+  },
+  {
+    "id": "crown_of_valor",
+    "name": "Crown of Valor",
+    "icon": "/assets/sonata/crown_of_valor.png",
+    "descriptionPath": "/data/sonatas/crown_of_valor/description.md"
+  },
+  {
+    "id": "law_of_harmony",
+    "name": "Law of Harmony",
+    "icon": "/assets/sonata/law_of_harmony.png",
+    "descriptionPath": "/data/sonatas/law_of_harmony/description.md"
+  },
+  {
+    "id": "flamewing's_shadow",
+    "name": "Flamewing's Shadow",
+    "icon": "/assets/sonata/flamewing's_shadow.png",
+    "descriptionPath": "/data/sonatas/flamewing's_shadow/description.md"
+  },
+  {
+    "id": "thread_of_severed_fate",
+    "name": "Thread of Severed Fate",
+    "icon": "/assets/sonata/thread_of_severed_fate.png",
+    "descriptionPath": "/data/sonatas/thread_of_severed_fate/description.md"
   }
 ]

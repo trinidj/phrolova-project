@@ -1,6 +1,6 @@
 **2-pc Set**
 
-Fusion DMG% +10%.
+Fusion DMG +10%.
 
 ---
 
