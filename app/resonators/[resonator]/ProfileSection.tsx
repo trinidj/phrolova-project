@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dialog"
 
 import combatRolesData from "@/app/data/combat_roles.json"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface ProfileSectionProps {
   resonator: Resonator
@@ -127,29 +128,29 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                     <DialogHeader>
                       <DialogTitle>Combat Roles</DialogTitle>
                     </DialogHeader>
-                  <div className="grid gap-3">
-                    {resonator.combatRoles.map((role) => {
-                      const details = combatRoleMap[role]
-                      return (
-                        <div
-                          key={role}
-                          className="flex items-start gap-3 rounded-md border p-3"
-                        >
-                          <Image
-                            alt={`${role} icon`}
-                            src={getCombatRoleIcon(role)}
-                            width={36}
-                            height={36}
-                            quality={100}
-                            className="mt-0.5"
-                          />
-                          <div className="flex flex-col gap-1">
-                            <p className="font-semibold leading-none">{role}</p>
-                            <p className="text-sm text-muted-foreground">
-                                {details?.description ??
-                                  "Description not available for this combat role."}
-                              </p>
-                            </div>
+                    <div className="grid gap-3">
+                      {resonator.combatRoles.map((role) => {
+                        const details = combatRoleMap[role]
+                        return (
+                          <div
+                            key={role}
+                            className="flex items-start gap-3 rounded-md border p-3"
+                          >
+                            <Image
+                              alt={`${role} icon`}
+                              src={getCombatRoleIcon(role)}
+                              width={36}
+                              height={36}
+                              quality={100}
+                              className="mt-0.5"
+                            />
+                            <div className="flex flex-col gap-1">
+                              <p className="font-semibold leading-none">{role}</p>
+                              <p className="text-sm text-muted-foreground">
+                                  {details?.description ??
+                                    "Description not available for this combat role."}
+                                </p>
+                              </div>
                           </div>
                         )
                       })}
@@ -214,6 +215,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                 <DialogHeader>
                   <DialogTitle>{resonator.name}</DialogTitle>
                 </DialogHeader>
+                <Skeleton className="max-h-[75vh] w-auto object-contain" />
                 <Image
                   src={splashArt}
                   alt={`${resonator.name} splash art`}

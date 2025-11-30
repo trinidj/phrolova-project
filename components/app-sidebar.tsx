@@ -1,18 +1,30 @@
 import * as React from "react"
-import Link from "next/link"
-import Image from "next/image"
+import { NavMain } from "@/components/nav-main"
+import { GameSwitcher } from "@/components/game-switcher"
 
 import {
   Sidebar,
   SidebarContent,
-  SidebarGroup,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
+  SidebarHeader,
 } from "@/components/ui/sidebar"
 
 const data = {
+  games: [
+    {
+      title: "Phrolova Project",
+      logo: "/assets/site_icon.png"
+    },
+    {
+      title: "Gambit Project",
+      logo: "/assets/site_icon.png"
+    }
+  ],
   navMain: [
+    {
+      title: "Home",
+      url: "/",
+      icon: "/assets/home_icon.png"
+    },
     {
       title: "Resonators",
       url: "/resonators",
@@ -32,31 +44,13 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { navMain } = data
-
   return (
-    <Sidebar {...props} collapsible="icon" variant="inset">
+    <Sidebar {...props} collapsible="icon">
+      <SidebarHeader>
+        <GameSwitcher games={data.games} />
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarMenu className="gap-2">
-            {navMain.map((item) => (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild size="lg" tooltip={item.title}>
-                  <Link href={item.url}>
-                    <Image 
-                      src={item.icon}
-                      alt="Resonator Icon"
-                      width={30}
-                      height={30}
-                      className="object-contain"
-                    />
-                    <span className="font-semibold">{item.title}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarGroup>
+        <NavMain items={data.navMain} />
       </SidebarContent>
     </Sidebar>
   )
