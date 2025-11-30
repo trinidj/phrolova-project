@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Filter, Search } from "lucide-react"
+import { Filter, Search, Grid3x2, LayoutGrid } from "lucide-react"
 
 import {
   ToggleGroup,
@@ -40,11 +40,17 @@ import {
 import { FieldGroup, FieldSet, Field, FieldLabel } from "@/components/ui/field"
 import resonatorsData from "@/app/data/resonators/index.json"
 import { Resonator, getResonatorAssets } from "@/app/types/resonator"
-import { getAttributeColor, getAttributeBackgroundStyle } from "@/lib/utils"
+import { getAttributeColor, getAttributeBackgroundStyle, cn } from "@/lib/utils"
 import { ATTRIBUTES, WEAPON_TYPES, RARITIES } from "@/app/lib/constants"
 
 import Image from "next/image"
 import Link from "next/link"
+
+type ResonatorIndexEntry = Omit<Resonator, "weaponType" | "stats" | "combatRoles"> & {
+  weaponType?: Resonator["weaponType"]
+  stats?: Resonator["stats"]
+  combatRoles?: Resonator["combatRoles"] | string
+}
 
 export default function ResonatorsPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -52,14 +58,24 @@ export default function ResonatorsPage() {
   const [selectedWeaponTypes, setSelectedWeaponTypes] = useState<string[]>([])
   const [selectedRarities, setSelectedRarities] = useState<string[]>([])
   const [isFilterOpen, setIsFilterOpen] = useState(false)
+  const [showSprites, setShowSprites] = useState(false)
+
+  const iconCardImageClassName =
+    "object-contain w-full h-full transition-transform duration-200 hover:scale-110 transform-gpu"
+  const spriteCardImageClassName =
+    "object-cover w-full h-full transition-transform duration-200 scale-125 transform-gpu"
+  const iconPreviewImageClassName = "rounded"
+  const spritePreviewImageClassName = "rounded"
 
   // Temporary filter states (before saving)
   const [tempAttributes, setTempAttributes] = useState<string[]>([])
   const [tempWeaponTypes, setTempWeaponTypes] = useState<string[]>([])
   const [tempRarities, setTempRarities] = useState<string[]>([])
 
+  const resonators = resonatorsData.resonators as ResonatorIndexEntry[]
+
   // Filter resonators based on search query and filters
-  const filteredResonators = (resonatorsData.resonators as Resonator[]).filter((resonator) => {
+  const filteredResonators = resonators.filter((resonator) => {
     const searchLower = searchQuery.toLowerCase()
     const matchesSearch = resonator.name.toLowerCase().includes(searchLower)
 
@@ -67,7 +83,7 @@ export default function ResonatorsPage() {
       selectedAttributes.includes(resonator.attribute.toLowerCase())
 
     const matchesWeapon = selectedWeaponTypes.length === 0 ||
-      selectedWeaponTypes.includes(resonator.weaponType.toLowerCase())
+      (resonator.weaponType && selectedWeaponTypes.includes(resonator.weaponType.toLowerCase()))
 
     const matchesRarity = selectedRarities.length === 0 ||
       selectedRarities.includes(resonator.rarity.toString())
@@ -182,10 +198,11 @@ export default function ResonatorsPage() {
                                   : {}
                               }
                             >
-                              <img
+                              <Image
                                 alt={attribute.label}
                                 src={attribute.icon}
                                 width={32}
+                                height={32}
                               />
                             </ToggleGroupItem>
                           )
@@ -203,10 +220,11 @@ export default function ResonatorsPage() {
                       >
                         {WEAPON_TYPES.map((weaponType) => (
                           <ToggleGroupItem key={weaponType.value} value={weaponType.value}>
-                            <img
+                            <Image
                               alt={weaponType.label}
                               src={weaponType.icon}
                               width={32}
+                              height={32}
                             />
                           </ToggleGroupItem>
                         ))}
@@ -235,105 +253,153 @@ export default function ResonatorsPage() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
+          <Button
+            size="icon"
+            className="cursor-pointer"
+            variant={showSprites ? "secondary" : "outline"}
+            onClick={() => setShowSprites((prev) => !prev)}
+            aria-pressed={showSprites}
+            title={showSprites ? "Show icons" : "Show sprites"}
+          >
+            {showSprites ? <LayoutGrid /> : <Grid3x2 />}
+          </Button>
         </div>
       </header>
 
       <main className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6">
         {filteredResonators.map((resonator) => {
-          const assets = getResonatorAssets(resonator);
+          const hasDetailData = Boolean(
+            resonator.weaponType &&
+            resonator.stats?.hp &&
+            resonator.stats?.atk &&
+            resonator.stats?.def &&
+            resonator.description !== "???"
+          )
+
+          const assets = resonator.weaponType ? getResonatorAssets(resonator as Resonator) : undefined
+          const fallbackSprite = `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/sprite.png`
+          const fallbackIcon = `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/icon.png`
+          const displayImage = showSprites
+            ? assets?.sprite ?? fallbackSprite
+            : assets?.image ?? fallbackIcon
+          const displayCardImageClassName = showSprites ? spriteCardImageClassName : iconCardImageClassName
+          const displayPreviewImageClassName = showSprites ? spritePreviewImageClassName : iconPreviewImageClassName
+          const attributeIcon = assets?.attribute ?? `/assets/attributes/${resonator.attribute}.png`
+
+          const cardContent = (
+            <Card
+              className={cn(
+                "transition-transform rounded-lg duration-200 border-none hover:scale-105 will-change-transform p-0 gap-0 overflow-hidden transform-gpu",
+                getRarityGradient(resonator.rarity),
+                !hasDetailData && "opacity-70 cursor-not-allowed"
+              )}
+              style={{ backfaceVisibility: 'hidden', perspective: 1000 }}
+            >
+              <div 
+                className="absolute left-1 top-1 z-10 transform-gpu rounded-full" 
+                style={{ 
+                  backfaceVisibility: 'hidden',
+                  borderColor: getAttributeColor(resonator.attribute),
+                  ...getAttributeBackgroundStyle(resonator.attribute, 0.5) 
+                }}
+              >
+                <Image
+                  alt="Attribute"
+                  width={24}
+                  height={24}
+                  src={attributeIcon}
+                />
+              </div>
+              {resonator.isNew && (
+                <div className="absolute right-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
+                  <Badge className="text-white text-xs bg-red-600/80 ">
+                    New
+                  </Badge>
+                </div>
+              )}
+              {!hasDetailData && (
+                <div className="absolute right-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
+                  <Badge variant="outline" className="bg-background/80 text-xs">
+                    Data coming soon
+                  </Badge>
+                </div>
+              )}
+              <Image
+                alt={resonator.name}
+                src={displayImage}
+                width={200}
+                height={200}
+                className={displayCardImageClassName}
+                style={{ backfaceVisibility: 'hidden' }}
+              />
+              <div
+                className="text-center w-4/5 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2 bg-accent/75"
+              >
+                <CardTitle className="text-sm">{resonator.name}</CardTitle>
+              </div>
+            </Card>
+          )
+
           return (
             <HoverCard key={resonator.id}>
               <HoverCardTrigger asChild>
-                <Link href={`/resonators/${resonator.name}`}>
-                  <Card
-                    className={
-                      `transition-transform rounded-lg duration-200 border-none hover:scale-105 will-change-transform p-0 gap-0 overflow-hidden transform-gpu ${getRarityGradient(resonator.rarity)}`
-                    }
-                    style={{ backfaceVisibility: 'hidden', perspective: 1000 }}
-                  >
-                    <div 
-                      className="absolute left-1 top-1 z-10 transform-gpu rounded-full" 
-                      style={{ 
-                        backfaceVisibility: 'hidden',
-                        borderColor: getAttributeColor(resonator.attribute),
-                        ...getAttributeBackgroundStyle(resonator.attribute, 0.5) 
-                      }}
-                    >
-                      <Image
-                        alt="Attribute"
-                        width={24}
-                        height={24}
-                        src={assets.attribute}
-                      />
-                    </div>
-                    {resonator.isNew && (
-                      <div className="absolute right-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
-                        <Badge className="text-white text-xs bg-red-600/80 ">
-                          New
+                {hasDetailData ? (
+                  <Link href={`/resonators/${resonator.name}`}>
+                    {cardContent}
+                  </Link>
+                ) : (
+                  <div aria-disabled="true" className="pointer-events-none">
+                    {cardContent}
+                  </div>
+                )}
+              </HoverCardTrigger>
+              {hasDetailData && assets && (
+                <HoverCardContent side="top" className="w-fit">
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src={displayImage}
+                      alt={resonator.name}
+                      width={64}
+                      height={64}
+                      className={displayPreviewImageClassName}
+                    />
+
+                    <div className="flex flex-col gap-2">
+                      <h2 className="text-2xl font-medium">{resonator.name}</h2>
+
+                      <div className="flex gap-2">
+                        <Badge
+                          variant="outline"
+                          className="flex gap-2 text-sm font-medium"
+                          style={{
+                            borderColor: getAttributeColor(resonator.attribute),
+                            ...getAttributeBackgroundStyle(resonator.attribute, 0.15)
+                          }}
+                        >
+                          <Image
+                            src={assets.attribute}
+                            alt={resonator.attribute}
+                            width={20}
+                            height={20}
+                          />
+                          <span style={{ color: getAttributeColor(resonator.attribute) }}>
+                            {resonator.attribute}
+                          </span>
+                        </Badge>
+                        <Badge variant="outline" className="flex gap-2 text-sm">
+                          <Image
+                            src={assets.weaponType}
+                            alt={resonator.weaponType}
+                            width={20}
+                            height={20}
+                          />
+                          {resonator.weaponType}
                         </Badge>
                       </div>
-                    )}
-                    <Image
-                      alt={resonator.name}
-                      src={assets.image}
-                      width={200}
-                      height={200}
-                      className="object-contain w-full h-full transition-transform duration-200 hover:scale-110 transform-gpu"
-                      style={{ backfaceVisibility: 'hidden' }}
-                    />
-                    <div
-                      className="text-center w-4/5 px-4 rounded-xl absolute bottom-2 left-1/2 -translate-x-1/2 bg-accent/75"
-                    >
-                      <CardTitle className="text-sm">{resonator.name}</CardTitle>
-                    </div>
-                  </Card>
-                </Link>
-              </HoverCardTrigger>
-              <HoverCardContent side="top" className="w-fit">
-                <div className="flex items-center gap-4">
-                  <Image
-                    src={assets.image}
-                    alt={resonator.name}
-                    width={64}
-                    height={64}
-                    className="rounded"
-                  />
-
-                  <div className="flex flex-col gap-2">
-                    <h2 className="text-2xl font-medium">{resonator.name}</h2>
-
-                    <div className="flex gap-2">
-                      <Badge
-                        variant="outline"
-                        className="flex gap-2 text-sm font-medium"
-                        style={{
-                          borderColor: getAttributeColor(resonator.attribute),
-                          ...getAttributeBackgroundStyle(resonator.attribute, 0.15)
-                        }}
-                      >
-                        <Image
-                          src={assets.attribute}
-                          alt={resonator.attribute}
-                          width={20}
-                          height={20}
-                        />
-                        <span style={{ color: getAttributeColor(resonator.attribute) }}>
-                          {resonator.attribute}
-                        </span>
-                      </Badge>
-                      <Badge variant="outline" className="flex gap-2 text-sm">
-                        <Image
-                          src={assets.weaponType}
-                          alt={resonator.weaponType}
-                          width={20}
-                          height={20}
-                        />
-                        {resonator.weaponType}
-                      </Badge>
                     </div>
                   </div>
-                </div>
-              </HoverCardContent>
+                </HoverCardContent>
+              )}
             </HoverCard>
           );
         })}

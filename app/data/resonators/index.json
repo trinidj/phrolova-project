@@ -271,6 +271,24 @@
       }
     },
     {
+      "id": "lynae",
+      "name": "Lynae",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Pistol",
+      "description": "???",
+      "combatRoles": "???"
+    },
+    {
+      "id": "mornye",
+      "name": "Mornye",
+      "rarity": 5,
+      "attribute": "Fusion",
+      "weaponType": "Broadblade",
+      "description": "???",
+      "combatRoles": "???"
+    },
+    {
       "id": "phoebe",
       "name": "Phoebe",
       "rarity": 5,

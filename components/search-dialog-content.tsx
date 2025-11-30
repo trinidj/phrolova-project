@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useMemo } from "react"
 import { Search } from "lucide-react"
 import Link from "next/link"
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -22,25 +22,19 @@ interface SearchDialogContentProps {
 
 export function SearchDialogContent({ resonators }: SearchDialogContentProps) {
   const [query, setQuery] = useState("")
-  const [results, setResults] = useState<Resonator[]>([])
 
-  // Filter resonators based on search query
-  useEffect(() => {
-    if (!query.trim()) {
-      setResults([])
-      return
-    }
+  const results = useMemo(() => {
+    const trimmed = query.trim()
+    if (!trimmed) return []
 
-    const searchLower = query.toLowerCase()
-    const filtered = resonators.filter(
+    const searchLower = trimmed.toLowerCase()
+    return resonators.filter(
       (resonator) =>
         resonator.name.toLowerCase().includes(searchLower) ||
         resonator.attribute.toLowerCase().includes(searchLower) ||
         resonator.weaponType.toLowerCase().includes(searchLower) ||
         resonator.description.toLowerCase().includes(searchLower)
     )
-
-    setResults(filtered)
   }, [query, resonators])
 
   return (

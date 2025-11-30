@@ -44,7 +44,7 @@ export function DynamicBreadcrumb() {
         {breadcrumbs.length > 0 && (
           <>
             <BreadcrumbSeparator />
-            {breadcrumbs.map((crumb, index) => (
+            {breadcrumbs.map((crumb) => (
               <div key={crumb.href} className="contents">
                 <BreadcrumbItem>
                   {crumb.isLast ? (

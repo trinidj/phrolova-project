@@ -52,7 +52,7 @@ export const getResonatorTalents = cache(async (id: string): Promise<string | nu
   try {
     const talentsPath = path.join(RESONATORS_DIR, id, 'talents.md')
     return await fs.readFile(talentsPath, 'utf-8')
-  } catch (error) {
+  } catch {
     // It's okay if talents.md doesn't exist
     return null
   }
@@ -65,7 +65,7 @@ export const getResonatorSequenceNodes = cache(async (id: string): Promise<strin
   try {
     const sequenceNodesPath = path.join(RESONATORS_DIR, id, 'sequence-nodes.md')
     return await fs.readFile(sequenceNodesPath, 'utf-8')
-  } catch (error) {
+  } catch {
     // It's okay if sequence-nodes.md doesn't exist
     return null
   }
@@ -79,7 +79,7 @@ export const getResonatorAscension = cache(async (id: string): Promise<Ascension
     const ascensionPath = path.join(RESONATORS_DIR, id, 'ascension.json')
     const content = await fs.readFile(ascensionPath, 'utf-8')
     return JSON.parse(content)
-  } catch (error) {
+  } catch {
     // It's okay if ascension.json doesn't exist
     return null
   }
@@ -93,7 +93,7 @@ export const getResonatorSkillAscension = cache(async (id: string): Promise<Skil
     const skillAscensionPath = path.join(RESONATORS_DIR, id, 'skill-ascension.json')
     const content = await fs.readFile(skillAscensionPath, 'utf-8')
     return JSON.parse(content)
-  } catch (error) {
+  } catch {
     // It's okay if skill-ascension.json doesn't exist
     return null
   }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import Image from "next/image"
 import { Slider } from "@/components/ui/slider"
 import { Resonator, calculateStat } from "@/app/types/resonator"
 import {
@@ -72,9 +73,10 @@ export default function LevelSlider({ resonator }: { resonator: Resonator }) {
           {stats.map((stat) => (
             <TableRow key={stat.label} className="flex justify-between">
               <TableCell className="flex items-center gap-2 font-bold">
-                <img
+                <Image
                   src={`/assets/stats/stat_${stat.icon}.png`}
                   width={20}
+                  height={20}
                   alt={stat.label}
                 />
                 {stat.label}

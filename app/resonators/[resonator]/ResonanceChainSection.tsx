@@ -2,6 +2,7 @@
 
 import { renderDescription } from "@/app/lib/talents"
 import { Resonator, getSequenceNodeAssets, SequenceNode } from "@/app/types/resonator"
+import Image from "next/image"
 
 import {
   Accordion,
@@ -50,9 +51,11 @@ export default function ResonanceChainSection({ sequenceNodes, resonator }: Reso
                 <AccordionTrigger>
                   <Item variant="muted" className="w-full">
                     {nodeImage ? (
-                      <img
+                      <Image
                         src={nodeImage}
                         alt={`${node.name} icon`}
+                        width={64}
+                        height={64}
                         className="size-12 sm:size-14 md:size-16 rounded-full object-cover shrink-0"
                       />
                     ) : (

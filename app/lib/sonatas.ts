@@ -37,7 +37,7 @@ export const getSonataDescription = cache(async (id: string): Promise<string | n
   try {
     const descriptionPath = path.join(SONATAS_DIR, id, 'description.md')
     return await fs.readFile(descriptionPath, 'utf-8')
-  } catch (error) {
+  } catch {
     // It's okay if description.md doesn't exist
     return null
   }

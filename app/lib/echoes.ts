@@ -13,7 +13,12 @@ export async function getAllEchoes(): Promise<Echo[]> {
   // 1) { echoes: [ ... ] } (flat array, legacy)
   // 2) { echoes: { cost_1: [...], cost_3: [...], cost_4: [...] } } (grouped by rarity)
   // Additionally, a top-level `categories` map may exist for alternate rarity mapping.
-  const data = echoesData as any
+  type EchoesData = {
+    echoes: Echo[] | Record<string, Echo[]>
+    categories?: Record<string, string[]>
+  }
+
+  const data = echoesData as EchoesData
 
   // build id -> rarity map from categories (if present)
   const rarityMap: Record<string, string> = {}
@@ -63,8 +68,10 @@ export async function getEchoById(id: string): Promise<Echo | undefined> {
   return echoes.find((e) => e.id === id)
 }
 
-export default {
+const echoesApi = {
   getAllEchoes,
   getEchoesBySonataId,
   getEchoById,
 }
+
+export default echoesApi

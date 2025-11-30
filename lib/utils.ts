@@ -1,7 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import type { Attribute } from "@/app/types/resonator"
-import Image from "next/image"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
