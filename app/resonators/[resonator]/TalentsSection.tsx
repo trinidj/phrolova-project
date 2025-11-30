@@ -4,20 +4,7 @@ import { Resonator, getResonatorSkillAssets, TalentData } from "@/app/types/reso
 import { renderDescription } from "@/app/lib/talents"
 import Image from "next/image"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemMedia,
-  ItemTitle,
-} from "@/components/ui/item"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface SkillItem {
   type: string
@@ -26,46 +13,66 @@ interface SkillItem {
 }
 
 interface TalentsSectionProps {
-  talents?: Resonator['talents']
+  talents?: Resonator["talents"]
   resonatorName: string
   resonatorRarity: number
 }
 
-function SkillAccordion({ skill }: { skill: SkillItem }) {
-  if (!skill.talent) return null
+function SkillTabs({
+  title,
+  items,
+}: {
+  title: string
+  items: SkillItem[]
+}) {
+  const toValue = (item: SkillItem, index: number) =>
+    `${item.type}-${item.talent?.name ?? "unnamed"}-${index}`.toLowerCase().replace(/\s+/g, "_")
+
+  const validItems = items.filter((item) => item.talent)
+  if (validItems.length === 0) return null
+  const defaultValue = toValue(validItems[0], 0)
 
   return (
-    <Accordion type="single" collapsible>
-      <AccordionItem value={skill.type.toLowerCase().replace(/ /g, '_')}>
-        <AccordionTrigger>
-          <Item variant="muted" className="w-full">
-            <ItemMedia>
+    <Tabs defaultValue={defaultValue} className="space-y-3 sm:space-y-4">
+      <div className="flex flex-col gap-2">
+        <h3 className="text-lg sm:text-xl font-bold">{title}</h3>
+        <TabsList className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4">
+          {validItems.map((skill, index) => (
+            <TabsTrigger
+              key={toValue(skill, index)}
+              value={toValue(skill, index)}
+              className="flex flex-col items-center gap-2 py-3"
+            >
               <Image
-                alt={`${skill.type} Icon`}
-                src={skill.asset || ''}
-                width={64}
-                height={64}
-                className="size-12 sm:size-16"
+                alt={`${skill.type} icon`}
+                src={skill.asset || ""}
+                width={48}
+                height={48}
+                className="h-10 w-10 object-contain"
               />
-            </ItemMedia>
-            <ItemContent>
-              <ItemTitle className="text-base sm:text-lg">{skill.talent.name}</ItemTitle>
-              <ItemDescription className="text-xs sm:text-sm">{skill.type}</ItemDescription>
-            </ItemContent>
-          </Item>
-        </AccordionTrigger>
-        <AccordionContent>
-          <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
-            {renderDescription(skill.talent.description)}
+              <span className="text-xs font-semibold leading-tight sm:text-sm">{skill.type}</span>
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
+
+      {validItems.map((skill, index) => (
+        <TabsContent
+          key={toValue(skill, index)}
+          value={toValue(skill, index)}
+          className="space-y-2 sm:space-y-3"
+        >
+          <p className="text-base sm:text-lg font-semibold">{skill.talent?.name}</p>
+          <div className="text-sm sm:text-base space-y-2 sm:space-y-3">
+            {renderDescription(skill.talent?.description)}
           </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+        </TabsContent>
+      ))}
+    </Tabs>
   )
 }
 
 export default function TalentsSection({ talents, resonatorName, resonatorRarity }: TalentsSectionProps) {
-  // Create a minimal resonator object to get skill assets
   const resonator = {
     rarity: resonatorRarity,
     name: resonatorName,
@@ -87,14 +94,16 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
 
   const concertoSkillItems = [
     { type: "Intro Skill", asset: assets.introSkill, talent: talents?.introSkill },
-    { type: "Outro Skill", asset: assets.outroSkill, talent: talents?.outroSkill }
+    { type: "Outro Skill", asset: assets.outroSkill, talent: talents?.outroSkill },
   ]
 
   if (!talents) {
     return (
       <section id="skills">
         <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Skills & Talents</h2>
-        <p className="text-sm sm:text-base text-muted-foreground">Talent information not yet available for this resonator.</p>
+        <p className="text-sm sm:text-base text-muted-foreground">
+          Talent information not yet available for this resonator.
+        </p>
       </section>
     )
   }
@@ -103,40 +112,10 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
     <section id="skills">
       <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Skills & Talents</h2>
 
-      {/* Skill Content */}
-      <div className="flex flex-col gap-4 sm:gap-6">
-        {/* Active Skills */}
-        <div className="flex flex-col">
-          <h3 className="text-lg sm:text-xl font-bold">Active Skills</h3>
-          {skillItems.map((skill, index) => (
-            <SkillAccordion
-              key={`${skill.type}-${skill.talent?.name ?? index}`}
-              skill={skill}
-            />
-          ))}
-        </div>
-
-        {/* Inherent Skills */}
-        <div className="flex flex-col">
-          <h3 className="text-lg sm:text-xl font-bold">Inherent Skills</h3>
-          {inheritSkillItems.map((skill, index) => (
-            <SkillAccordion
-              key={`${skill.type}-${skill.talent?.name ?? index}`}
-              skill={skill}
-            />
-          ))}
-        </div>
-
-        {/* Concerto Skills */}
-        <div className="flex flex-col">
-          <h3 className="text-lg sm:text-xl font-bold">Concerto Skills</h3>
-          {concertoSkillItems.map((skill, index) => (
-            <SkillAccordion
-              key={`${skill.type}-${skill.talent?.name ?? index}`}
-              skill={skill}
-            />
-          ))}
-        </div>
+      <div className="flex flex-col gap-8">
+        <SkillTabs title="Active Skills" items={skillItems} />
+        <SkillTabs title="Inherent Skills" items={inheritSkillItems} />
+        <SkillTabs title="Concerto Skills" items={concertoSkillItems} />
       </div>
     </section>
   )
