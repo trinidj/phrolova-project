@@ -9,6 +9,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Label } from "@/components/ui/label"
 import { getAttributeColor } from "@/lib/utils"
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
+
 interface SkillItem {
   type: string
   asset: string | undefined
@@ -44,21 +51,27 @@ function SkillTabs({
         <h3 className="text-lg sm:text-xl font-bold">{title}</h3>
         <TabsList className="justify-start w-fit ">
           {validItems.map((skill, index) => (
-            <TabsTrigger
-              key={toValue(skill, index)}
-              value={toValue(skill, index)}
-              className="flex flex-col items-center gap-2 w-fit h-fit"
-              activeColor={activeColor}
-            >
-
-              <Image
-                alt={`${skill.type} icon`}
-                src={skill.asset || ""}
-                width={48}
-                height={48}
-                className="object-contain"
-              />
-            </TabsTrigger>
+            <Tooltip>
+              <TooltipTrigger>
+                <TabsTrigger
+                  key={toValue(skill, index)}
+                  value={toValue(skill, index)}
+                  className="flex flex-col items-center gap-2 w-fit h-fit"
+                  activeColor={activeColor}
+                >
+                  <Image
+                    alt={`${skill.type} icon`}
+                    src={skill.asset || ""}
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
+                </TabsTrigger>
+              </TooltipTrigger>
+              <TooltipContent>
+                {skill.talent?.type}
+              </TooltipContent>
+            </Tooltip>
           ))}
         </TabsList>
       </div>
