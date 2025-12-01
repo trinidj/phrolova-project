@@ -3,6 +3,7 @@
 import { Resonator, getResonatorSkillAssets, TalentData } from "@/app/types/resonator"
 import { renderDescription } from "@/app/lib/talents"
 import Image from "next/image"
+import { Separator } from "@/components/ui/separator"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Label } from "@/components/ui/label"
@@ -121,7 +122,9 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
 
       <div className="flex flex-col gap-8">
         <SkillTabs title="Active Skills" items={skillItems} activeColor={attributeColor} />
+        <Separator />
         <SkillTabs title="Inherent Skills" items={inheritSkillItems} activeColor={attributeColor} />
+        <Separator />
         <SkillTabs title="Concerto Skills" items={concertoSkillItems} activeColor={attributeColor} />
       </div>
     </section>

@@ -51,8 +51,8 @@ export default function AscensionSection({ ascensionData, skillAscensionData, at
 
       {/* ascension Content */}
       <div>
-        <Tabs defaultValue="level" >
-          <TabsList>
+        <Tabs defaultValue="level">
+          <TabsList className="w-full bg-muted">
             <TabsTrigger value="level" activeColor={attributeColor}>Character Ascension</TabsTrigger>
             <TabsTrigger value="talent" activeColor={attributeColor}>Skill Ascension</TabsTrigger>
           </TabsList>
