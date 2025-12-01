@@ -13,9 +13,10 @@ import { Label } from "@/components/ui/label"
 interface AscensionSectionProps {
   ascensionData: AscensionPhase[] | null
   skillAscensionData: SkillAscensionPhase[] | null
+  attributeColor?: string
 }
 
-export default function AscensionSection({ ascensionData, skillAscensionData }: AscensionSectionProps) {
+export default function AscensionSection({ ascensionData, skillAscensionData, attributeColor }: AscensionSectionProps) {
   const totalMaterials = useMemo(() => {
     if (!ascensionData) return null;
 
@@ -52,8 +53,8 @@ export default function AscensionSection({ ascensionData, skillAscensionData }: 
       <div>
         <Tabs defaultValue="level" >
           <TabsList>
-            <TabsTrigger value="level">Character Ascension</TabsTrigger>
-            <TabsTrigger value="talent">Skill Ascension</TabsTrigger>
+            <TabsTrigger value="level" activeColor={attributeColor}>Character Ascension</TabsTrigger>
+            <TabsTrigger value="talent" activeColor={attributeColor}>Skill Ascension</TabsTrigger>
           </TabsList>
           {/* Character Ascension */}
           <TabsContent value="level">

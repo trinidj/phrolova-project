@@ -6,6 +6,7 @@ import TalentsSection from "./TalentsSection"
 import ResonanceChainSection from "./ResonanceChainSection"
 import Link from "next/link"
 import resonatorsData from "@/app/data/resonators/index.json"
+import { getAttributeColor } from "@/lib/utils"
 
 import {
   NavigationMenu,
@@ -39,14 +40,24 @@ export default async function ResonatorDetails({
 
   // Load skill ascension data if available
   const skillAscensionData = await getResonatorSkillAscension(resonator.id)
+  const attributeColor = getAttributeColor(resonator.attribute)
 
   return (
     <div className="flex flex-col gap-20">
       <ProfileSection resonator={resonator} />
       <Separator />
-      <TalentsSection talents={parsedTalents} resonatorName={resonator.name} resonatorRarity={resonator.rarity} />
+      <TalentsSection
+        talents={parsedTalents}
+        resonatorName={resonator.name}
+        resonatorRarity={resonator.rarity}
+        resonatorAttribute={resonator.attribute}
+      />
       <Separator />
-      <AscensionSection ascensionData={ascensionData} skillAscensionData={skillAscensionData} />
+      <AscensionSection
+        ascensionData={ascensionData}
+        skillAscensionData={skillAscensionData}
+        attributeColor={attributeColor}
+      />
       <Separator />
       <ResonanceChainSection sequenceNodes={parsedSequenceNodes} resonator={resonator} />
 

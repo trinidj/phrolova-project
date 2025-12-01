@@ -5,6 +5,8 @@ import { renderDescription } from "@/app/lib/talents"
 import Image from "next/image"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Label } from "@/components/ui/label"
+import { getAttributeColor } from "@/lib/utils"
 
 interface SkillItem {
   type: string
@@ -16,14 +18,17 @@ interface TalentsSectionProps {
   talents?: Resonator["talents"]
   resonatorName: string
   resonatorRarity: number
+  resonatorAttribute: Resonator["attribute"]
 }
 
 function SkillTabs({
   title,
   items,
+  activeColor,
 }: {
   title: string
   items: SkillItem[]
+  activeColor: string
 }) {
   const toValue = (item: SkillItem, index: number) =>
     `${item.type}-${item.talent?.name ?? "unnamed"}-${index}`.toLowerCase().replace(/\s+/g, "_")
@@ -36,21 +41,22 @@ function SkillTabs({
     <Tabs defaultValue={defaultValue} className="space-y-3 sm:space-y-4">
       <div className="flex flex-col gap-2">
         <h3 className="text-lg sm:text-xl font-bold">{title}</h3>
-        <TabsList className="grid w-full grid-cols-2 gap-2 sm:grid-cols-4">
+        <TabsList className="justify-start w-fit ">
           {validItems.map((skill, index) => (
             <TabsTrigger
               key={toValue(skill, index)}
               value={toValue(skill, index)}
-              className="flex flex-col items-center gap-2 py-3"
+              className="flex flex-col items-center gap-2 w-fit h-fit"
+              activeColor={activeColor}
             >
+
               <Image
                 alt={`${skill.type} icon`}
                 src={skill.asset || ""}
                 width={48}
                 height={48}
-                className="h-10 w-10 object-contain"
+                className="object-contain"
               />
-              <span className="text-xs font-semibold leading-tight sm:text-sm">{skill.type}</span>
             </TabsTrigger>
           ))}
         </TabsList>
@@ -62,7 +68,7 @@ function SkillTabs({
           value={toValue(skill, index)}
           className="space-y-2 sm:space-y-3"
         >
-          <p className="text-base sm:text-lg font-semibold">{skill.talent?.name}</p>
+          <Label className="text-base sm:text-xl font-semibold italic">{skill.talent?.type} - {skill.talent?.name}</Label>
           <div className="text-sm sm:text-base space-y-2 sm:space-y-3">
             {renderDescription(skill.talent?.description)}
           </div>
@@ -72,13 +78,14 @@ function SkillTabs({
   )
 }
 
-export default function TalentsSection({ talents, resonatorName, resonatorRarity }: TalentsSectionProps) {
+export default function TalentsSection({ talents, resonatorName, resonatorRarity, resonatorAttribute }: TalentsSectionProps) {
   const resonator = {
     rarity: resonatorRarity,
     name: resonatorName,
   } as Resonator
 
   const assets = getResonatorSkillAssets(resonator)
+  const attributeColor = getAttributeColor(resonatorAttribute)
 
   const skillItems = [
     { type: "Normal Attack", asset: assets.normalAttack, talent: talents?.normalAttack },
@@ -113,9 +120,9 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
       <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Skills & Talents</h2>
 
       <div className="flex flex-col gap-8">
-        <SkillTabs title="Active Skills" items={skillItems} />
-        <SkillTabs title="Inherent Skills" items={inheritSkillItems} />
-        <SkillTabs title="Concerto Skills" items={concertoSkillItems} />
+        <SkillTabs title="Active Skills" items={skillItems} activeColor={attributeColor} />
+        <SkillTabs title="Inherent Skills" items={inheritSkillItems} activeColor={attributeColor} />
+        <SkillTabs title="Concerto Skills" items={concertoSkillItems} activeColor={attributeColor} />
       </div>
     </section>
   )
