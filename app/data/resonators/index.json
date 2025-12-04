@@ -277,7 +277,12 @@
       "attribute": "Spectro",
       "weaponType": "Pistol",
       "description": "???",
-      "combatRoles": []
+      "combatRoles": [],
+      "stats": {
+        "hp": { "min": 953, "max": 11913 },
+        "atk": { "min": 31, "max": 388 },
+        "def": { "min": 97, "max": 1186 }
+      }
     },
     {
       "id": "mornye",
@@ -286,7 +291,12 @@
       "attribute": "Fusion",
       "weaponType": "Broadblade",
       "description": "???",
-      "combatRoles": []
+      "combatRoles": [],
+      "stats": {
+        "hp": { "min": 953, "max": 11913 },
+        "atk": { "min": 31, "max": 388 },
+        "def": { "min": 97, "max": 1186 }
+      }
     },
     {
       "id": "phoebe",
