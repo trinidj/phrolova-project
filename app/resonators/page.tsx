@@ -126,7 +126,7 @@ export default function ResonatorsPage() {
           <p className="text-muted-foreground text-sm sm:text-base md:text-lg">Browse all Resonators in Wuthering Waves</p>
         </div>
 
-        <div className="flex gap-2 flex-col sm:flex-row">
+        <div className="flex gap-2 sm:flex-row">
           <InputGroup>
             <InputGroupInput
               placeholder="Search Resonator..."
@@ -137,6 +137,7 @@ export default function ResonatorsPage() {
               <Search />
             </InputGroupAddon>
           </InputGroup>
+
           <Dialog open={isFilterOpen} onOpenChange={handleOpenChange}>
             <DialogTrigger asChild>
               <Button size="icon" className="cursor-pointer">
@@ -249,6 +250,7 @@ export default function ResonatorsPage() {
               </DialogFooter>
             </DialogContent>
           </Dialog>
+
           <Button
             size="icon"
             className="cursor-pointer"
