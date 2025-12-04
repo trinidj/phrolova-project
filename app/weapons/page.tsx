@@ -7,7 +7,7 @@ export default function SonataGalleryPage() {
       <header className="flex flex-col gap-4 sm:gap-6">
         <div className="flex flex-col gap-2">
           <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl">Weapons</h1>
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">Browse all playable characters in Wuthering Waves with their stats, abilities, and element types.</p>
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">Browse all Weapons in Wuthering Waves</p>
         </div>
       </header>
 

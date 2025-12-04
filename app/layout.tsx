@@ -41,22 +41,26 @@ export const metadata: Metadata = {
   description: "Wuwa Database",
 };
 
-const components: { title: string; url: string; }[] = [
+const components: { title: string; url: string; icon: string; }[] = [
   {
     title: "Home",
-    url: "/"
+    url: "/",
+    icon: "/assets/home_icon.png"
   },
   {
     title: "Resonators",
-    url: "/resonators"
+    url: "/resonators",
+    icon: "/assets/resonators_icon.png"
   },
   {
     title: "Weapons",
-    url: "/weapons"
+    url: "/weapons",
+    icon: "/assets/weapons_icon.png"
   },
   {
     title: "Echoes",
-    url: "/echoes"
+    url: "/echoes",
+    icon: "/assets/echoes_icon.png"
   }
 ]
 
@@ -88,10 +92,20 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                   <NavigationMenuList className="gap-3">
                     {components.map((component) => (
                       <NavigationMenuItem key={component.title}>
-                        <NavigationMenuLink asChild >
-                          <Link href={component.url}>
-                            <span className="font-medium">{component.title}</span>
-                          </Link>
+                        <NavigationMenuLink asChild>
+                          <div className="flex flex-row items-center gap-2">
+                            <Image 
+                              src={component.icon}
+                              alt={`${component.title} Icon`}
+                              width={24}
+                              height={24}
+                              quality={100}
+                            />
+
+                            <Link href={component.url}>
+                              <span className="font-medium">{component.title}</span>
+                            </Link>
+                          </div>
                         </NavigationMenuLink>
                       </NavigationMenuItem>
                     ))}

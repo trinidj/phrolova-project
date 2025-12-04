@@ -123,7 +123,7 @@ export default function ResonatorsPage() {
       <header className="flex flex-col gap-4 sm:gap-6">
         <div className="flex flex-col gap-2">
           <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl">Resonators</h1>
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">Browse all playable characters in Wuthering Waves with their stats, abilities, and element types.</p>
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">Browse all Resonators in Wuthering Waves</p>
         </div>
 
         <div className="flex gap-2 flex-col sm:flex-row">
