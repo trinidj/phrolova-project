@@ -277,7 +277,7 @@
       "attribute": "Spectro",
       "weaponType": "Pistol",
       "description": "???",
-      "combatRoles": "???"
+      "combatRoles": []
     },
     {
       "id": "mornye",
@@ -286,7 +286,7 @@
       "attribute": "Fusion",
       "weaponType": "Broadblade",
       "description": "???",
-      "combatRoles": "???"
+      "combatRoles": []
     },
     {
       "id": "phoebe",
