@@ -486,7 +486,12 @@
       "attribute": "Electro",
       "weaponType": "Rectifier",
       "description": "???",
-      "combatRoles": "???"
+      "combatRoles": [],
+      "stats": {
+        "hp": { "min": 1025, "max": 12813 },
+        "atk": { "min": 17, "max": 213 },
+        "def": { "min": 82, "max": 1002 }
+      }
     },
     {
       "id": "chixia",
