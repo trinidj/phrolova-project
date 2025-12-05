@@ -307,17 +307,17 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
           </Card>
 
           <div className="w-full">
-            <Table className="bg-accent rounded-sm overflow-hidden w-full text-sm sm:text-base">
+            <Table className="bg-accent rounded-sm overflow-hidden w-full text-sm ">
               <TableBody>
                 {details.map((detail) => (
                   <TableRow
                     key={detail.label}
                     className="grid grid-cols-2 items-center gap-2 sm:table-row sm:gap-0"
                   >
-                    <TableCell className="font-medium p-3 sm:p-4 sm:table-cell">
+                    <TableCell className="font-medium p-3 sm:p-2 sm:table-cell">
                       {detail.label}
                     </TableCell>
-                    <TableCell className="font-medium text-left sm:text-right p-3 sm:p-4 sm:table-cell">
+                    <TableCell className="font-medium text-right sm:text-right p-3 sm:p-2 sm:table-cell">
                       {detail.value}
                     </TableCell>
                   </TableRow>
