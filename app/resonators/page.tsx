@@ -126,7 +126,7 @@ export default function ResonatorsPage() {
           <p className="text-muted-foreground text-sm sm:text-base md:text-lg">Browse all Resonators in Wuthering Waves</p>
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <div className="w-full sm:flex-1">
             <InputGroup>
               <InputGroupInput
@@ -140,133 +140,137 @@ export default function ResonatorsPage() {
             </InputGroup>
           </div>
 
-          <Dialog open={isFilterOpen} onOpenChange={handleOpenChange}>
-            <DialogTrigger asChild>
-              <Button size="icon" className="cursor-pointer">
-                <Filter />
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Filter</DialogTitle>
-                <DialogDescription>
-                  Filter resonators by attribute, rarity, or weapon type
-                </DialogDescription>
-              </DialogHeader>
+          <div className="flex items-center gap-2 sm:justify-end">
+            <Dialog open={isFilterOpen} onOpenChange={handleOpenChange}>
+              <DialogTrigger asChild>
+                <Button size="icon" className="cursor-pointer">
+                  <Filter />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-[min(90vw,480px)] sm:max-w-lg">
+                <DialogHeader>
+                  <DialogTitle>Filter</DialogTitle>
+                  <DialogDescription>
+                    Filter resonators by attribute, rarity, or weapon type
+                  </DialogDescription>
+                </DialogHeader>
 
-              <form>
-                <FieldSet>
-                  <FieldGroup>
-                    <Field>
-                      <FieldLabel>Rarity</FieldLabel>
-                      <ToggleGroup
-                        type="multiple"
-                        variant="outline"
-                        value={tempRarities}
-                        onValueChange={setTempRarities}
-                      >
-                        {RARITIES.map((rarity) => (
-                          <ToggleGroupItem key={rarity.value} value={rarity.value}>
-                            {rarity.label}
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </Field>
+                <form>
+                  <FieldSet>
+                    <FieldGroup>
+                      <Field>
+                        <FieldLabel>Rarity</FieldLabel>
+                        <ToggleGroup
+                          type="multiple"
+                          variant="outline"
+                          value={tempRarities}
+                          onValueChange={setTempRarities}
+                          className="flex flex-wrap gap-2"
+                        >
+                          {RARITIES.map((rarity) => (
+                            <ToggleGroupItem key={rarity.value} value={rarity.value}>
+                              {rarity.label}
+                            </ToggleGroupItem>
+                          ))}
+                        </ToggleGroup>
+                      </Field>
 
-                    <Field>
-                      <FieldLabel>Attribute</FieldLabel>
-                      <ToggleGroup
-                        type="multiple"
-                        variant="outline"
-                        className="cursor-pointer"
-                        value={tempAttributes}
-                        onValueChange={setTempAttributes}
-                      >
-                        {ATTRIBUTES.map((attribute) => {
-                          const isSelected = tempAttributes.includes(attribute.value)
-                          return (
-                            <ToggleGroupItem
-                              key={attribute.value}
-                              value={attribute.value}
-                              style={
-                                isSelected
-                                  ? {
-                                      borderColor: getAttributeColor(attribute.label),
-                                      ...getAttributeBackgroundStyle(attribute.label, 0.2)
-                                    }
-                                  : {}
-                              }
-                            >
+                      <Field>
+                        <FieldLabel>Attribute</FieldLabel>
+                        <ToggleGroup
+                          type="multiple"
+                          variant="outline"
+                          className="cursor-pointer flex flex-wrap gap-2"
+                          value={tempAttributes}
+                          onValueChange={setTempAttributes}
+                        >
+                          {ATTRIBUTES.map((attribute) => {
+                            const isSelected = tempAttributes.includes(attribute.value)
+                            return (
+                              <ToggleGroupItem
+                                key={attribute.value}
+                                value={attribute.value}
+                                style={
+                                  isSelected
+                                    ? {
+                                        borderColor: getAttributeColor(attribute.label),
+                                        ...getAttributeBackgroundStyle(attribute.label, 0.2)
+                                      }
+                                    : {}
+                                }
+                              >
+                                <Image
+                                  alt={attribute.label}
+                                  src={attribute.icon}
+                                  width={32}
+                                  height={32}
+                                />
+                              </ToggleGroupItem>
+                            )
+                          })}
+                        </ToggleGroup>
+                      </Field>
+
+                      <Field>
+                        <FieldLabel>Weapon Type</FieldLabel>
+                        <ToggleGroup
+                          type="multiple"
+                          variant="outline"
+                          value={tempWeaponTypes}
+                          onValueChange={setTempWeaponTypes}
+                          className="flex flex-wrap gap-2"
+                        >
+                          {WEAPON_TYPES.map((weaponType) => (
+                            <ToggleGroupItem key={weaponType.value} value={weaponType.value}>
                               <Image
-                                alt={attribute.label}
-                                src={attribute.icon}
+                                alt={weaponType.label}
+                                src={weaponType.icon}
                                 width={32}
                                 height={32}
                               />
                             </ToggleGroupItem>
-                          )
-                        })}
-                      </ToggleGroup>
-                    </Field>
+                          ))}
+                        </ToggleGroup>
+                      </Field>
+                    </FieldGroup> 
+                  </FieldSet>
+                </form>
 
-                    <Field>
-                      <FieldLabel>Weapon Type</FieldLabel>
-                      <ToggleGroup
-                        type="multiple"
-                        variant="outline"
-                        value={tempWeaponTypes}
-                        onValueChange={setTempWeaponTypes}
-                      >
-                        {WEAPON_TYPES.map((weaponType) => (
-                          <ToggleGroupItem key={weaponType.value} value={weaponType.value}>
-                            <Image
-                              alt={weaponType.label}
-                              src={weaponType.icon}
-                              width={32}
-                              height={32}
-                            />
-                          </ToggleGroupItem>
-                        ))}
-                      </ToggleGroup>
-                    </Field>
-                  </FieldGroup> 
-                </FieldSet>
-              </form>
+                <DialogFooter>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="cursor-pointer"
+                    onClick={handleCancelFilters}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="button"
+                    className="cursor-pointer"
+                    onClick={handleSaveFilters}
+                  >
+                    Save
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
 
-              <DialogFooter>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="cursor-pointer"
-                  onClick={handleCancelFilters}
-                >
-                  Cancel
-                </Button>
-                <Button
-                  type="button"
-                  className="cursor-pointer"
-                  onClick={handleSaveFilters}
-                >
-                  Save
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-
-          <Button
-            size="icon"
-            className="cursor-pointer"
-            variant={showSprites ? "secondary" : "outline"}
-            onClick={() => setShowSprites((prev) => !prev)}
-            aria-pressed={showSprites}
-            title={showSprites ? "Show icons" : "Show sprites"}
-          >
-            {showSprites ? <LayoutGrid /> : <Grid3x2 />}
-          </Button>
+            <Button
+              size="icon"
+              className="cursor-pointer"
+              variant={showSprites ? "secondary" : "outline"}
+              onClick={() => setShowSprites((prev) => !prev)}
+              aria-pressed={showSprites}
+              title={showSprites ? "Show icons" : "Show sprites"}
+            >
+              {showSprites ? <LayoutGrid /> : <Grid3x2 />}
+            </Button>
+          </div>
         </div>
       </header>
 
-      <main className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-6">
+      <main className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 gap-4 sm:gap-6">
         {filteredResonators.map((resonator) => {
           const hasDetailData = Boolean(
             resonator.weaponType &&

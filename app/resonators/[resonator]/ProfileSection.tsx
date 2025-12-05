@@ -8,6 +8,7 @@ import { Expand, Ellipsis } from "lucide-react"
 
 import LevelSlider from "./LevelSlider"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 
 import {
   Tooltip,
@@ -26,6 +27,7 @@ import {
 import combatRolesData from "@/app/data/combat_roles.json"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Separator } from "@/components/ui/separator"
+import { Label } from "@/components/ui/label"
 
 interface ProfileSectionProps {
   resonator: Resonator
@@ -68,7 +70,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
         className="flex flex-col gap-6 lg:flex-row lg:gap-6 lg:justify-between"
       >
         {/* Left Side: Profile Info */}
-        <div className="flex flex-1 h-full flex-col gap-6 lg:gap-8">
+        <div className="flex flex-1 h-full flex-col gap-6 lg:gap-6">
           <Card className="px-6">
             <CardHeader className="px-0">
               <div className="flex justify-between gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -95,18 +97,31 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                     <CardDescription className="text-muted-foreground font-medium text-sm sm:text-base">
                       {resonator.description}
                     </CardDescription>
-                  </div>
-                </div>
 
-                <div className="w-30 sm:w-40 flex justify-start sm:justify-end items-center">
-                  <Image
-                    alt={`${resonator.rarity}-star`}
-                    src={`/assets/rarity/${resonator.rarity}_star.png`}
-                    width={160}
-                    height={40}
-                    quality={100}
-                    className="w-full h-auto"
-                  />
+                    <div className="flex gap-2 items-center">
+                      <Badge variant="secondary" className="h-8">
+                        <Image
+                          alt={`${resonator.rarity}-star`}
+                          src={`/assets/rarity/${resonator.rarity}_star.png`}
+                          width={95}
+                          height={40}
+                          quality={100}
+                          className="w-15 lg:w-20"
+                        />
+                      </Badge>
+
+                      <Badge variant="secondary" className="h-8">
+                        <Image
+                          alt={`${resonator.weaponType} icon`}
+                          src={assets.weaponType}
+                          width={20}
+                          height={40}
+                          quality={100}
+                        />
+                        <Label>{resonator.weaponType}</Label>
+                      </Badge>
+                    </div>
+                  </div>
                 </div>
               </div>
             </CardHeader>
@@ -202,7 +217,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
         </div>
 
         {/* Right Side: Character Sprite */}
-        <Card className="p-0 w-full max-w-[500px] self-center lg:self-end">
+        <Card className="p-0 w-full max-w-[500px] h-full">
           <CardContent className="relative p-0 overflow-hidden">
             <Image
               alt={`${resonator.name} sprite`}
@@ -210,7 +225,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
               width={524}
               height={600}
               quality={100}
-              className="object-cover w-full h-[360px] sm:h-[460px] lg:h-[575px] scale-105"
+              className="object-cover w-full h-[360px] sm:h-[460px] lg:h-[575px]"
             />
 
             <Dialog>

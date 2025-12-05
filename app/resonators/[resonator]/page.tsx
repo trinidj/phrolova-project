@@ -43,7 +43,7 @@ export default async function ResonatorDetails({
   const attributeColor = getAttributeColor(resonator.attribute)
 
   return (
-    <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20 px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20">
       <ProfileSection resonator={resonator} />
       <Separator />
       <TalentsSection
