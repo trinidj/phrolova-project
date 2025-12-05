@@ -135,7 +135,7 @@ export default function EchoesExplorer({
                       <CardContent className="flex flex-wrap gap-4">
                         {list.length > 0 ? (
                           list.map((echo) => (
-                            <Tooltip>
+                            <Tooltip key={echo.id}>
                               <TooltipTrigger asChild>
                                 <div className="relative overflow-hidden rounded-md bg-linear-to-t from-rarity-5 via-rarity-5/30">
                                   <Image

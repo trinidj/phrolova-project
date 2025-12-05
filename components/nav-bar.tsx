@@ -18,7 +18,7 @@ export default function NavBar() {
 
   return (
     <nav className="flex w-full items-center justify-between gap-6">
-      <div className="flex gap-4">
+      <div className="flex gap-6">
         <div className="shrink-0">
           <Image 
             src="/assets/site_icon.png"

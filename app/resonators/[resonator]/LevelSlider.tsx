@@ -68,15 +68,15 @@ export default function LevelSlider({ resonator }: { resonator: Resonator }) {
         />
       </div>
 
-      <Table>
+      <Table className="bg-accent border-2 rounded-sm overflow-hidden">
         <TableBody>
           {stats.map((stat) => (
             <TableRow key={stat.label} className="flex justify-between">
               <TableCell className="flex items-center gap-2 font-bold">
                 <Image
                   src={`/assets/stats/stat_${stat.icon}.png`}
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                   alt={stat.label}
                 />
                 {stat.label}

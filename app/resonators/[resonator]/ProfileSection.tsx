@@ -25,6 +25,7 @@ import {
 
 import combatRolesData from "@/app/data/combat_roles.json"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Separator } from "@/components/ui/separator"
 
 interface ProfileSectionProps {
   resonator: Resonator
@@ -64,136 +65,140 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
     <>
       <section
         id="profile"
-        className="flex flex-col gap-6 lg:flex-row lg:gap-6 lg:justify-between"
+        className="flex flex-col gap-6 lg:flex-row lg:gap-6 lg:justify-between lg:px-6"
       >
         {/* Left Side: Profile Info */}
         <div className="flex flex-1 h-full flex-col gap-6 lg:gap-8">
-          <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div
-                className="rounded-lg p-1 border-2"
-                style={{
-                  borderColor: getAttributeColor(resonator.attribute),
-                  ...getAttributeBackgroundStyle(resonator.attribute, 0.05)
-                }}
-              >
-                <Image
-                  alt={resonator.attribute}
-                  src={assets.attribute}
-                  width={500}
-                  height={500}
-                  quality={100}
-                  className="size-12 sm:size-16"
-                />
+          <Card className="px-6">
+            <CardHeader className="px-0">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div
+                    className="rounded-lg p-1 border-2"
+                    style={{
+                      borderColor: getAttributeColor(resonator.attribute),
+                      ...getAttributeBackgroundStyle(resonator.attribute, 0.05)
+                    }}
+                  >
+                    <Image
+                      alt={resonator.attribute}
+                      src={assets.attribute}
+                      width={500}
+                      height={500}
+                      quality={100}
+                      className="size-12 sm:size-16"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <h1 className="font-bold text-2xl sm:text-3xl">{resonator.name}</h1>
+                    <p className="text-muted-foreground font-medium text-sm sm:text-base">
+                      {resonator.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="w-full sm:w-40 flex justify-start sm:justify-end items-center">
+                  <Image
+                    alt={`${resonator.rarity}-star`}
+                    src={`/assets/rarity/${resonator.rarity}_star.png`}
+                    width={160}
+                    height={40}
+                    quality={100}
+                    className="w-full h-auto"
+                  />
+                </div>
               </div>
-
-              <div className="flex flex-col gap-1">
-                <h1 className="font-bold text-2xl sm:text-4xl">{resonator.name}</h1>
-                <p className="text-muted-foreground font-medium text-sm sm:text-base">
-                  {resonator.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="w-full sm:w-40 flex justify-start sm:justify-end items-center">
-              <Image
-                alt={`${resonator.rarity}-star`}
-                src={`/assets/rarity/${resonator.rarity}_star.png`}
-                width={160}
-                height={40}
-                quality={100}
-                className="w-full h-auto"
-              />
-            </div>
-          </header>
-
-          <Card className=" h-fit">
-            <CardContent className="flex flex-col gap-1">
-              <LevelSlider resonator={resonator} />
-            </CardContent>
-          </Card>
-
-          {resonator.combatRoles?.length ? (
-            <Card className="w-full gap-2">
-              <CardHeader className="flex justify-between items-center">
-                <CardTitle>Combat Roles</CardTitle>
-                
-                <Dialog>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <DialogTrigger asChild>
-                        <Button variant="outline" size="icon" className="cursor-pointer">
-                          <Ellipsis />
-                        </Button>
-                      </DialogTrigger>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <span>View Combat Roles</span>
-                    </TooltipContent>
-                  </Tooltip>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Combat Roles</DialogTitle>
-                    </DialogHeader>
-                    <div className="grid gap-3">
-                      {resonator.combatRoles.map((role) => {
-                        const details = combatRoleMap[role]
-                        return (
-                          <div
-                            key={role}
-                            className="flex items-start gap-3 rounded-md border p-3"
-                          >
-                            <Image
-                              alt={`${role} icon`}
-                              src={getCombatRoleIcon(role)}
-                              width={36}
-                              height={36}
-                              quality={100}
-                              className="mt-0.5"
-                            />
-                            <div className="flex flex-col gap-1">
-                              <p className="font-semibold leading-none">{role}</p>
-                              <p className="text-sm text-muted-foreground">
-                                  {details?.description ??
-                                    "Description not available for this combat role."}
-                                </p>
+            </CardHeader>
+            <Separator/>
+            <CardContent className="px-0">
+              {resonator.combatRoles?.length ? (
+                <div className="flex items-center justify-between">
+                  <ul className="flex flex-wrap items-center gap-3 sm:gap-2">
+                    {resonator.combatRoles.map((role) => {
+                      return (
+                        <li key={role} className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div className="flex items-center gap-2">
+                                <Image
+                                  alt={`${role} icon`}
+                                  src={getCombatRoleIcon(role)}
+                                  width={40}
+                                  height={40}
+                                  quality={100}
+                                />
                               </div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </DialogContent>
-                </Dialog>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="text-center font-semibold">{role}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </li>
+                      )
+                    })}
+                  </ul>
 
-              </CardHeader>
-              <CardContent>
-                <ul className="flex flex-wrap items-center gap-3 sm:gap-2">
-                  {resonator.combatRoles.map((role) => {
-                    return (
-                      <li key={role} className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <div className="flex items-center gap-2">
+                  <Dialog>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <DialogTrigger asChild>
+                          <Button variant="outline" size="icon" className="cursor-pointer">
+                            <Ellipsis />
+                          </Button>
+                        </DialogTrigger>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <span>View Combat Roles</span>
+                      </TooltipContent>
+                    </Tooltip>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Combat Roles</DialogTitle>
+                      </DialogHeader>
+                      <div className="grid gap-3">
+                        {resonator.combatRoles.map((role) => {
+                          const details = combatRoleMap[role]
+                          return (
+                            <div
+                              key={role}
+                              className="flex items-start gap-3 rounded-md border p-3"
+                            >
                               <Image
                                 alt={`${role} icon`}
                                 src={getCombatRoleIcon(role)}
-                                width={40}
-                                height={40}
+                                width={36}
+                                height={36}
                                 quality={100}
+                                className="mt-0.5"
                               />
+                              <div className="flex flex-col gap-1">
+                                <p className="font-semibold leading-none">{role}</p>
+                                <p className="text-sm text-muted-foreground">
+                                    {details?.description ??
+                                      "Description not available for this combat role."}
+                                  </p>
+                                </div>
                             </div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="text-center font-semibold">{role}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </CardContent>
-            </Card>
-          ) : null}
+                          )
+                        })}
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              ) : null}
+            </CardContent>
+          </Card>
+
+          <Card className="px-6">
+            <CardHeader className="px-0 gap-0">
+              <CardTitle className="text-2xl">Stats</CardTitle>
+            </CardHeader>
+            <Separator />
+            <CardContent className="px-0">
+              <LevelSlider resonator={resonator} />
+            </CardContent>
+          </Card>
         </div>
 
         {/* Right Side: Character Sprite */}
