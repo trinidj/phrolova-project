@@ -67,13 +67,13 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
     <>
       <section
         id="profile"
-        className="flex flex-col gap-6 lg:flex-row lg:gap-6 lg:justify-between"
+        className="flex flex-col gap-6 lg:flex-row lg:gap-8 lg:justify-between"
       >
         {/* Left Side: Profile Info */}
-        <div className="flex flex-1 h-full flex-col gap-6 lg:gap-6">
-          <Card className="px-6">
+        <div className="flex flex-1 h-full flex-col gap-6 lg:gap-6 min-w-0">
+          <Card className="px-4 sm:px-6">
             <CardHeader className="px-0">
-              <div className="flex justify-between gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div
                     className="rounded-lg p-1 border-2"
@@ -93,12 +93,12 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                   </div>
 
                   <div className="flex flex-col gap-1">
-                    <CardTitle className="font-bold text-2xl sm:text-3xl">{resonator.name}</CardTitle>
+                    <CardTitle className="font-bold text-2xl sm:text-3xl wrap-break-word">{resonator.name}</CardTitle>
                     <CardDescription className="text-muted-foreground font-medium text-sm sm:text-base">
                       {resonator.description}
                     </CardDescription>
 
-                    <div className="flex gap-2 items-center">
+                    <div className="flex gap-2 items-center flex-wrap">
                       <Badge variant="secondary" className="h-8">
                         <Image
                           alt={`${resonator.rarity}-star`}
@@ -128,7 +128,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
             <Separator/>
             <CardContent className="px-0">
               {resonator.combatRoles?.length ? (
-                <div className="flex justify-between gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex justify-between gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <ul className="flex flex-wrap items-center gap-3 sm:gap-2">
                     {resonator.combatRoles.map((role) => {
                       return (
@@ -167,7 +167,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                         <span>View Combat Roles</span>
                       </TooltipContent>
                     </Tooltip>
-                    <DialogContent>
+                    <DialogContent className="max-w-[95vw] sm:max-w-lg">
                       <DialogHeader>
                         <DialogTitle>Combat Roles</DialogTitle>
                       </DialogHeader>
@@ -205,7 +205,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
             </CardContent>
           </Card>
 
-          <Card className="px-6">
+          <Card className="px-4 sm:px-6">
             <CardHeader className="px-0 gap-0">
               <CardTitle className="text-2xl">Stats</CardTitle>
             </CardHeader>
@@ -217,7 +217,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
         </div>
 
         {/* Right Side: Character Sprite */}
-        <Card className="p-0 w-full max-w-[500px] h-full">
+        <Card className="p-0 w-full max-w-[500px] h-full self-stretch mx-auto lg:mx-0">
           <CardContent className="relative p-0 overflow-hidden">
             <Image
               alt={`${resonator.name} sprite`}
@@ -225,7 +225,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
               width={524}
               height={600}
               quality={100}
-              className="object-cover w-full h-[360px] sm:h-[460px] lg:h-[575px]"
+              className="object-cover w-full h-80 sm:h-[440px] lg:h-[575px]"
             />
 
             <Dialog>
@@ -246,11 +246,11 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                   <span>View Splash Art</span>
                 </TooltipContent>
               </Tooltip>
-              <DialogContent className="max-w-fit sm:max-w-[90vw] lg:max-w-fit">
+              <DialogContent className="max-w-[95vw] sm:max-w-[90vw] lg:max-w-fit">
                 <DialogHeader>
                   <DialogTitle>{resonator.name}</DialogTitle>
                 </DialogHeader>
-                <Skeleton className="max-h-[75vh] w-auto object-contain" />
+                <Skeleton className="max-h-[75vh] w-full sm:w-auto object-contain" />
                 <Image
                   src={splashArt}
                   alt={`${resonator.name} splash art`}
@@ -258,7 +258,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                   height={1873}
                   quality={100}
                   loading="lazy"
-                  className="max-h-[75vh] w-auto object-contain"
+                  className="max-h-[75vh] w-full sm:w-auto object-contain"
                 />
               </DialogContent>
             </Dialog>
