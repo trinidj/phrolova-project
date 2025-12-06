@@ -43,7 +43,7 @@ function SkillTabs({
     <Tabs defaultValue={defaultValue} className="space-y-3 sm:space-y-4">
       <div className="flex flex-col gap-2">
         <h3 className="text-lg sm:text-xl font-bold">{title}</h3>
-        <TabsList className="justify-start w-fit p-0">
+        <TabsList className="justify-start w-fit p-0 flex-wrap grid grid-cols-4 sm:flex md:flex lg:flex">
           {validItems.map((skill, index) => (
             <TabsTrigger
               value={toValue(skill, index)}
