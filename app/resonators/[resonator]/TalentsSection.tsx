@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getAttributeColor } from "@/lib/utils"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
 
 interface SkillItem {
   type: string
@@ -47,7 +48,7 @@ function SkillTabs({
             <TabsTrigger
               value={toValue(skill, index)}
               key={toValue(skill, index)}
-              className="flex flex-col items-center gap-2 w-fit h-fit"
+              className="flex flex-col rounded-none items-center gap-2 w-fit h-fit border-0 border-b-[3px]"
               activeColor={activeColor}
             >
               <Image
@@ -55,7 +56,7 @@ function SkillTabs({
                 src={skill.asset || ""}
                 width={48}
                 height={48}
-                className="object-contain"
+                className="object-contain scale-90"
               />
             </TabsTrigger>
           ))}
@@ -68,7 +69,8 @@ function SkillTabs({
           value={toValue(skill, index)}
           className="space-y-2 sm:space-y-3"
         >
-          <div className="text-sm sm:text-base space-y-2 sm:space-y-3">
+          <Label className="text-xl underline-offset-4">{skill.talent?.type}</Label>
+          <div className="text-sm font-medium sm:text-base space-y-2 sm:space-y-3">
             {renderDescription(skill.talent?.description)}
           </div>
         </TabsContent>
@@ -91,16 +93,13 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
     { type: "Resonance Skill", asset: assets.resonanceSkill, talent: talents?.resonanceSkill },
     { type: "Resonance Liberation", asset: assets.resonanceLiberation, talent: talents?.resonanceLiberation },
     { type: "Forte Circuit", asset: assets.forteCircuit, talent: talents?.forteCircuit },
+    { type: "Intro Skill", asset: assets.introSkill, talent: talents?.introSkill },
+    { type: "Outro Skill", asset: assets.outroSkill, talent: talents?.outroSkill },
   ]
 
   const inheritSkillItems = [
     { type: "Inherent Skill", asset: assets.inheritSkill1, talent: talents?.inheritSkill1 },
     { type: "Inherent Skill", asset: assets.inheritSkill2, talent: talents?.inheritSkill2 },
-  ]
-
-  const concertoSkillItems = [
-    { type: "Intro Skill", asset: assets.introSkill, talent: talents?.introSkill },
-    { type: "Outro Skill", asset: assets.outroSkill, talent: talents?.outroSkill },
   ]
 
   if (!talents) {
@@ -118,17 +117,14 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
     <section id="skills">
       <Card className="px-6">
         <CardHeader className="gap-0 px-0">
-          <CardTitle className="text-xl sm:text-2xl font-bold">Forte Skills</CardTitle>
+          <CardTitle className="text-xl sm:text-2xl font-bold">Forte</CardTitle>
         </CardHeader>
         <Separator />
         <CardContent className="px-0">
           <div className="flex flex-col gap-8">
             <SkillTabs title="Active Skills" items={skillItems} activeColor={attributeColor} />
             <Separator />
-            <SkillTabs title="Inherent Skills" items={inheritSkillItems} activeColor={attributeColor} />
-            <Separator />
-            <SkillTabs title="Concerto Skills" items={concertoSkillItems} activeColor={attributeColor} />
-          </div>
+            <SkillTabs title="Inherent Skills" items={inheritSkillItems} activeColor={attributeColor} />          </div>
         </CardContent>
       </Card>
     </section>

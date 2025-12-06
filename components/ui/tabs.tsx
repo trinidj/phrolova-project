@@ -39,7 +39,7 @@ const TabsTrigger = React.forwardRef<
       ref={ref}
       style={styleWithColor}
       className={cn(
-        "inline-flex w-full flex-col items-center justify-center gap-2 whitespace-nowrap rounded-md border-2 border-transparent px-3 py-3 text-sm font-medium leading-tight text-center ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-border data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow",
+        "inline-flex w-full flex-col items-center justify-center gap-2 whitespace-nowrap rounded-md border-2 border-transparent px-3 py-3 text-sm font-medium leading-tight text-center ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:border-border data-[state=active]:text-foreground data-[state=active]:shadow",
         activeColor && "data-[state=active]:text-(--tab-active-color) data-[state=active]:border-[color:var(--tab-active-color)]",
         className
       )}

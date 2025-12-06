@@ -154,7 +154,7 @@ export default function ResonatorsPage() {
           <div className="flex items-center gap-2 sm:justify-end">
             <Dialog open={isFilterOpen} onOpenChange={handleOpenChange}>
               <DialogTrigger asChild>
-                <Button size="icon" className="cursor-pointer">
+                <Button size="icon" variant="outline" className="cursor-pointer">
                   <Filter />
                 </Button>
               </DialogTrigger>
@@ -238,6 +238,7 @@ export default function ResonatorsPage() {
                                 src={weaponType.icon}
                                 width={32}
                                 height={32}
+                                className="w-8 h-auto object-contain"
                               />
                             </ToggleGroupItem>
                           ))}
@@ -294,7 +295,7 @@ export default function ResonatorsPage() {
           const iconCardImageClassName =
             "object-contain w-full h-full"
           const spriteCardImageClassName =
-            "object-cover w-full h-full"
+            "object-cover w-full h-full scale-125"
 
           const assets = resonator.weaponType ? getResonatorAssets(resonator as Resonator) : undefined
           const fallbackSprite = `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/sprite.png`
@@ -358,13 +359,15 @@ export default function ResonatorsPage() {
               )}
               <div 
                 className={cn(
+                  "overflow-hidden",
                   getRarityGradient(resonator.rarity)
-                )}>
+              )}>
                 <Image
                   alt={resonator.name}
                   src={displayImage}
                   width={200}
                   height={200}
+                  quality={100}
                   className={cn("block", displayCardImageClassName)}
                   style={{ backfaceVisibility: "hidden" }}
                 />

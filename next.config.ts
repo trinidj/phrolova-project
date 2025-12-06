@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   output: "standalone",
   experimental: {
     optimizePackageImports: ["lucide-react"],
+  },
+  images: {
+    qualities: [100, 75]
   }
 };
 

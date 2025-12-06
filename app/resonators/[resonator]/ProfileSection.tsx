@@ -35,8 +35,6 @@ import combatRolesData from "@/app/data/combat_roles.json"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
-import { useMemo } from "react"
-
 interface ProfileSectionProps {
   resonator: Resonator
 }
