@@ -66,7 +66,9 @@ export default function ResonanceChainSection({ sequenceNodes, resonator }: Reso
               </CardHeader>
               <Separator />
               <CardContent className="p-0">
-                {renderDescription(node.description)}
+                <div className="text-sm font-medium sm:text-base space-y-2 sm:space-y-3">
+                  {renderDescription(node.description)}
+                </div>
               </CardContent>
             </Card>
           )
