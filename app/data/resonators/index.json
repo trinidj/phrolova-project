@@ -36,6 +36,14 @@
         "hp": { "min": 934, "max": 11675 },
         "atk": { "min": 30, "max": 375 },
         "def": { "min": 107, "max": 1308 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.1,
+      "voiceActors": {
+        "english": "Hyoie O'Grady",
+        "chinese": "Moran (莫然)",
+        "japanese": "Kishio Daisuke (岸尾だいすけ)",
+        "korean": "Lee Ju-seung (이주승)"
       }
     },
     {
@@ -51,6 +59,14 @@
         "hp": { "min": 840, "max": 10500 },
         "atk": { "min": 35, "max": 438 },
         "def": { "min": 97, "max": 1186 }
+      },
+      "nation": "New Federation",
+      "versionRelease": 1.0,
+      "voiceActors": {
+        "english": "Ben Cura",
+        "chinese": "Xu Xiang (徐翔)",
+        "japanese": "Toshiyuki Morikawa (森川智之)",
+        "korean": "Park Min-gi (박민기)"
       }
     },
     {
@@ -66,6 +82,14 @@
         "hp": { "min": 840, "max": 10325 },
         "atk": { "min": 36, "max": 450 },
         "def": { "min": 95, "max": 1161 }
+      },
+      "nation": "The Black Shores",
+      "versionRelease": 1.4,
+      "voiceActors": {
+        "english": "Meaghan Martin",
+        "chinese": "Liu Zhixiao (柳知萧)",
+        "japanese": "Ise Mariya (伊瀬茉莉也)",
+        "korean": "Yu Hye-ji (유혜지)"
       }
     },
     {
@@ -81,6 +105,14 @@
         "hp": { "min": 928, "max": 11600 },
         "atk": { "min": 32, "max": 400 },
         "def": { "min": 90, "max": 1100 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.2,
+      "voiceActors": {
+        "english": "Alexandra Guelff",
+        "chinese": "Xiao Mi (小米)",
+        "japanese": "Nakahara Mai (中原麻衣)",
+        "korean": "Kim Yul (김율)"
       }
     },
     {
@@ -96,6 +128,14 @@
         "hp": { "min": 996, "max": 12450 },
         "atk": { "min": 37, "max": 463 },
         "def": { "min": 98, "max": 1198 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.0,
+      "voiceActors": {
+        "english": "Jennifer English",
+        "chinese": "Yan Yeqiao (闫夜桥)",
+        "japanese": "Ueda Kana (植田佳奈)",
+        "korean": "Kim Soon-mi (김순미)"
       }
     },
     {
@@ -111,6 +151,14 @@
         "hp": { "min": 1184, "max": 14800 },
         "atk": { "min": 25, "max": 313 },
         "def": { "min": 50, "max": 611 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.4,
+      "voiceActors": {
+        "english": "Amanda Elizabeth Rischel",
+        "chinese": "Yun He Zhui (云鹤追)",
+        "japanese": "Asakawa Yū (浅川悠)",
+        "korean": "Bae Ha-gyoung (배하경)"
       }
     },
     {
@@ -126,6 +174,14 @@
         "hp": { "min": 831, "max": 10388 },
         "atk": { "min": 37, "max": 463 },
         "def": { "min": 90, "max": 1100 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.1,
+      "voiceActors": {
+        "english": "Ashleigh Haddad",
+        "chinese": "Mufei (沐霏)",
+        "japanese": "Saitō Chiwa (斎藤千和)",
+        "korean": "Shin Nari (신나리)"
       }
     },
     {
@@ -141,6 +197,14 @@
         "hp": { "min": 862, "max": 10775 },
         "atk": { "min": 37, "max": 438 },
         "def": { "min": 93, "max": 1137 }
+      },
+      "nation": "Ashinohara",
+      "versionRelease": 2.8,
+      "voiceActors": {
+        "english": "Leader Looi",
+        "chinese": "Zhao Lingze (赵灵泽)",
+        "japanese": "Kanemoto Hisako (金元寿子)",
+        "korean": "Lee Joo-eun (이주은)"
       }
     },
     {
@@ -156,6 +220,14 @@
         "hp": { "min": 979, "max": 12238 },
         "atk": { "min": 30, "max": 375 },
         "def": { "min": 98, "max": 1198 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.3,
+      "voiceActors": {
+        "english": "Rebecca Hanssen",
+        "chinese": "Ye Zhiqiu (叶知秋)",
+        "japanese": "Hasegawa Ikumi (長谷川育美)",
+        "korean": "Kim Ye-rim (김예림)"
       }
     },
     {
@@ -171,6 +243,14 @@
         "hp": { "min": 841, "max": 10513 },
         "atk": { "min": 34, "max": 425 },
         "def": { "min": 102, "max": 1247 }
+      },
+      "nation": "The Black Shores",
+      "versionRelease": 1.0,
+      "voiceActors": {
+        "english": "Carina Reeves",
+        "chinese": "Xiao Sibai (皛四白)",
+        "japanese": "Ibuki Chikano (伊吹誓乃)",
+        "korean": "Serena Lee (이세레나)"
       }
     },
     {
@@ -186,6 +266,14 @@
         "hp": { "min": 824, "max": 10300 },
         "atk": { "min": 37, "max": 463 },
         "def": { "min": 91, "max": 1112 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.7,
+      "voiceActors": {
+        "english": "Devora Wilde",
+        "chinese": "Zhang Wenjie (张文婕)",
+        "japanese": "Shōji Umeka (庄司宇芽香)",
+        "korean": "Lee Da-seul (이다슬)"
       }
     },
     {
@@ -201,6 +289,14 @@
         "hp": { "min": 842, "max": 10525 },
         "atk": { "min": 36, "max": 450 },
         "def": { "min": 92, "max": 1124 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.6,
+      "voiceActors": {
+        "english": "Ella Boyes",
+        "chinese": "Jiang Yingjun (姜英俊)",
+        "japanese": "Lynn (りん)",
+        "korean": "Yoon Eun-seo (윤은서)"
       }
     },
     {
@@ -216,6 +312,14 @@
         "hp": { "min": 1129, "max": 14113 },
         "atk": { "min": 27, "max": 338 },
         "def": { "min": 92, "max": 1124 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.0,
+      "voiceActors": {
+        "english": "Ioanna Kimbook",
+        "chinese": "Yu Tou (昱头)",
+        "japanese": "Anzai Chika (安済知佳)",
+        "korean": "Lee Eunjo (이은조)"
       }
     },
     {
@@ -231,6 +335,14 @@
         "hp": { "min": 866, "max": 10825 },
         "atk": { "min": 33, "max": 413 },
         "def": { "min": 103, "max": 1259 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.1,
+      "voiceActors": {
+        "english": "Anna Devlin",
+        "chinese": "Jiang Yue (江月)",
+        "japanese": "Aoyama Yoshino (青山吉能)",
+        "korean": "Park Ha-jin (박하진)"
       }
     },
     {
@@ -246,6 +358,14 @@
         "hp": { "min": 839, "max": 10488 },
         "atk": { "min": 35, "max": 438 },
         "def": { "min": 97, "max": 1186 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.0,
+      "voiceActors": {
+        "english": "Alex Jordan",
+        "chinese": "Sun Ye (孙晔)",
+        "japanese": "Ono Yūki (小野友樹)",
+        "korean": "Nam Doh-hyeong (남도형)"
       }
     },
     {
@@ -261,6 +381,14 @@
         "hp": { "min": 831, "max": 10388 },
         "atk": { "min": 35, "max": 438 },
         "def": { "min": 99, "max": 1210 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.0,
+      "voiceActors": {
+        "english": "Aleksander Varadian",
+        "chinese": "Jinli (锦鲤)",
+        "japanese": "Hanae Natsuki (花江夏樹)",
+        "korean": "Lee Sangho (이상호)"
       }
     },
     {
@@ -276,6 +404,14 @@
         "hp": { "min": 953, "max": 11913 },
         "atk": { "min": 31, "max": 388 },
         "def": { "min": 97, "max": 1186 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.4,
+      "voiceActors": {
+        "english": "Kaja Chan",
+        "chinese": "Shuo Xiaotu (朔小兔)",
+        "japanese": "Takahashi Minami (髙橋ミナミ)",
+        "korean": "Kim Ye-ryeong (김예령)"
       }
     },
     {
@@ -319,6 +455,14 @@
         "hp": { "min": 866, "max": 10825 },
         "atk": { "min": 33, "max": 413 },
         "def": { "min": 103, "max": 1259 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.1,
+      "voiceActors": {
+        "english": "Rebecca LaChance",
+        "chinese": "Fu Tingyun (傅婷云)",
+        "japanese": "Hondo Kaede (本渡楓)",
+        "korean": "Lee Bo-yong (이보용)"
       }
     },
     {
@@ -334,6 +478,14 @@
         "hp": { "min": 862, "max": 10775 },
         "atk": { "min": 35, "max": 438 },
         "def": { "min": 93, "max": 1137 }
+      },
+      "nation": "Unknown",
+      "versionRelease": 2.5,
+      "voiceActors": {
+        "english": "Rae Lim",
+        "chinese": "Zhang Qi (张琦)",
+        "japanese": "Fujita Saki (藤田咲)",
+        "korean": "Choi Hari (최하리)"
       }
     },
     {
@@ -349,6 +501,14 @@
         "hp": { "min": 979, "max": 12238 },
         "atk": { "min": 30, "max": 375 },
         "def": { "min": 98, "max": 1198 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 2.7,
+      "voiceActors": {
+        "english": "Jeremy Ang Jones",
+        "chinese": "Gan Ziqi (淦子齐)",
+        "japanese": "Miki Shinichirō (三木眞一郎)",
+        "korean": "Kim Min-ju (김민주)"
       }
     },
     {
@@ -364,6 +524,14 @@
         "hp": { "min": 980, "max": 12250 },
         "atk": { "min": 30, "max": 375 },
         "def": { "min": 98, "max": 1198 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.0,
+      "voiceActors": {
+        "english": "Holly Earl",
+        "chinese": "Shen Huasang (沈话桑)",
+        "japanese": "Kohara Konomi (小原好美)",
+        "korean": "Jang Mi (장미)"
       }
     },
     {
@@ -379,6 +547,14 @@
         "hp": { "min": 1337, "max": 16713 },
         "atk": { "min": 23, "max": 288 },
         "def": { "min": 90, "max": 1100 }
+      },
+      "nation": "The Black Shores",
+      "versionRelease": 1.3,
+      "voiceActors": {
+        "english": "Stephanie McKeon",
+        "chinese": "Tang Yajing (唐雅菁)",
+        "japanese": "Suwa Ayaka (諏訪彩花)",
+        "korean": "Kim Bo-na (김보나)"
       }
     },
     {
@@ -394,6 +570,14 @@
         "hp": { "min": 1139, "max": 14238 },
         "atk": { "min": 27, "max": 338 },
         "def": { "min": 90, "max": 1100 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.3,
+      "voiceActors": {
+        "english": "Heather Nicol",
+        "chinese": "Zhao Shuang (赵爽)",
+        "japanese": "Sasahara Yū (篠原侑)",
+        "korean": "Kang Saebom (강새봄)"
       }
     },
     {
@@ -409,6 +593,14 @@
         "hp": { "min": 850, "max": 10625 },
         "atk": { "min": 34, "max": 425 },
         "def": { "min": 100, "max": 1222 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.2,
+      "voiceActors": {
+        "english": "Shaun Mendum",
+        "chinese": "Banma (斑马)",
+        "japanese": "Kobayashi Chiaki (小林千晃)",
+        "korean": "Jung Eui-jin (정의진)"
       }
     },
     {
@@ -424,6 +616,14 @@
         "hp": { "min": 880, "max": 11000 },
         "atk": { "min": 32, "max": 400 },
         "def": { "min": 105, "max": 1283 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.0,
+      "voiceActors": {
+        "english": "Naomi McDonald",
+        "chinese": "Xiao Liansha (小连杀)",
+        "japanese": "Koshimizu Ami (小清水亜美)",
+        "korean": "Kang Sae-bom (강새봄)"
       }
     },
     {
@@ -439,6 +639,14 @@
         "hp": { "min": 862, "max": 10775 },
         "atk": { "min": 35, "max": 438 },
         "def": { "min": 93, "max": 1137 }
+      },
+      "nation": "Rinascita",
+      "versionRelease": 2.3,
+      "voiceActors": {
+        "english": "Alexandra Metaxa",
+        "chinese": "Nie Xiying (聂曦映)",
+        "japanese": "Ueda Hitomi (上田瞳)",
+        "korean": "Won Esther (원에스더)"
       }
     },
     {
@@ -454,6 +662,14 @@
         "hp": { "min": 980, "max": 12250 },
         "atk": { "min": 30, "max": 375 },
         "def": { "min": 98, "max": 1198 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 1.2,
+      "voiceActors": {
+        "english": "Shin-Fei Chen",
+        "chinese": "Miao Zi (苗子)",
+        "japanese": "Makino Yui (牧野由依)",
+        "korean": "Kim Ha-ru (김하루)"
       }
     },
 
@@ -638,3 +854,5 @@
     }
   ]
 }
+
+
