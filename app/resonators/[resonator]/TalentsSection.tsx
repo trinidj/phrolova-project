@@ -24,11 +24,9 @@ interface TalentsSectionProps {
 }
 
 function SkillTabs({
-  title,
   items,
   activeColor,
 }: {
-  title: string
   items: SkillItem[]
   activeColor: string
 }) {
@@ -119,9 +117,10 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
         <Separator />
         <CardContent className="px-0">
           <div className="flex flex-col gap-8">
-            <SkillTabs title="Skills" items={skillItems} activeColor={attributeColor} />
+            <SkillTabs items={skillItems} activeColor={attributeColor} />
             <Separator />
-            <SkillTabs title="Inherent Skills" items={inheritSkillItems} activeColor={attributeColor} />          </div>
+            <SkillTabs items={inheritSkillItems} activeColor={attributeColor} />          
+          </div>
         </CardContent>
       </Card>
     </section>
