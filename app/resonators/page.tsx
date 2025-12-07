@@ -330,6 +330,7 @@ export default function ResonatorsPage() {
                     alt="Attribute"
                     width={20}
                     height={20}
+                    quality={100}
                     src={attributeIcon}
                   />
                 </div>
@@ -338,6 +339,7 @@ export default function ResonatorsPage() {
                   alt="Weapon Type"
                   width={20}
                   height={20}
+                  quality={100}
                   src={weaponTypeIcon}
                   className="mt-2"
                 />
@@ -405,6 +407,7 @@ export default function ResonatorsPage() {
                       alt={resonator.name}
                       width={64}
                       height={64}
+                      quality={100}
                       className={displayPreviewImageClassName}
                     />
 
@@ -425,6 +428,7 @@ export default function ResonatorsPage() {
                             alt={attributeLabel}
                             width={20}
                             height={20}
+                            quality={100}
                           />
                           <span style={{ color: getAttributeColor(resonator.attribute) }}>
                             {resonator.attribute}
@@ -436,6 +440,7 @@ export default function ResonatorsPage() {
                             alt={weaponTypeLabel}
                             width={20}
                             height={20}
+                            quality={100}
                           />
                           {resonator.weaponType}
                         </Badge>

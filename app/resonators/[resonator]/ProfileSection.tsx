@@ -227,10 +227,6 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
           </Card>
 
           <Card className="px-4 sm:px-6">
-            <CardHeader className="px-0 gap-0">
-              <CardTitle className="text-2xl">Stats</CardTitle>
-            </CardHeader>
-            <Separator />
             <CardContent className="px-0">
               <LevelSlider resonator={resonator} />
             </CardContent>
