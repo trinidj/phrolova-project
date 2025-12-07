@@ -235,7 +235,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
 
         {/* Right Side: Character Sprite */}
         <div className="flex flex-col gap-4">
-          <Card className="p-0 w-full max-w-[500px] h-full self-stretch mx-auto lg:mx-0 gap-0">
+          <Card className="p-0 w-full max-w-[500px] self-stretch mx-auto lg:mx-0 gap-0">
             <CardContent className="relative p-0 overflow-hidden">
               <Image
                 alt={`${resonator.name} sprite`}
@@ -243,7 +243,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                 width={524}
                 height={600}
                 quality={100}
-                className="object-cover w-full h-80 sm:h-[440px] lg:h-[575px]"
+                className="object-cover w-full h-[400px] sm:h-[440px] lg:h-[575px]"
               />
 
               <Dialog>

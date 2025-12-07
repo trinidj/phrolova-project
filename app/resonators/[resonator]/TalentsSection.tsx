@@ -41,27 +41,24 @@ function SkillTabs({
 
   return (
     <Tabs defaultValue={defaultValue} className="space-y-3 sm:space-y-4">
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg sm:text-xl font-bold">{title}</h3>
-        <TabsList className="justify-start w-fit p-0 flex-wrap grid grid-cols-4 sm:flex md:flex lg:flex">
-          {validItems.map((skill, index) => (
-            <TabsTrigger
-              value={toValue(skill, index)}
-              key={toValue(skill, index)}
-              className="flex flex-col rounded-none items-center gap-2 w-fit h-fit border-0 border-b-[3px]"
-              activeColor={activeColor}
-            >
-              <Image
-                alt={`${skill.type} icon`}
-                src={skill.asset || ""}
-                width={48}
-                height={48}
-                className="object-contain scale-90"
-              />
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </div>
+      <TabsList className="justify-start w-fit p-0 flex-wrap grid grid-cols-4 sm:flex md:flex lg:flex">
+        {validItems.map((skill, index) => (
+          <TabsTrigger
+            value={toValue(skill, index)}
+            key={toValue(skill, index)}
+            className="flex flex-col rounded-none items-center gap-2 w-fit h-fit border-0 border-b-[3px]"
+            activeColor={activeColor}
+          >
+            <Image
+              alt={`${skill.type} icon`}
+              src={skill.asset || ""}
+              width={48}
+              height={48}
+              className="object-contain scale-90"
+            />
+          </TabsTrigger>
+        ))}
+      </TabsList>
 
       {validItems.map((skill, index) => (
         <TabsContent
@@ -122,7 +119,7 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
         <Separator />
         <CardContent className="px-0">
           <div className="flex flex-col gap-8">
-            <SkillTabs title="Active Skills" items={skillItems} activeColor={attributeColor} />
+            <SkillTabs title="Skills" items={skillItems} activeColor={attributeColor} />
             <Separator />
             <SkillTabs title="Inherent Skills" items={inheritSkillItems} activeColor={attributeColor} />          </div>
         </CardContent>
