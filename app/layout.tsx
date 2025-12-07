@@ -18,11 +18,13 @@ import { Button } from "@/components/ui/button";
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { InputGroup, InputGroupInput, InputGroupAddon } from "@/components/ui/input-group";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -71,18 +73,28 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
                     <NavBar />
                   </div>
 
-                  <div className="shrink-0">
+                  <div className="shrink-0 flex items-center gap-2">
                     <Dialog>
-                      <DialogTrigger asChild>
-                        <Button variant="ghost" size="icon">
-                          <Search />
-                        </Button>
-                      </DialogTrigger>
+                      <div>
+                        <DialogTrigger asChild>
+                          <Button variant="ghost" className="lg:hidden">
+                            <Search />
+                          </Button>
+                        </DialogTrigger>
+
+                        <DialogTrigger asChild>
+                          <Button variant="secondary" className="hidden lg:flex">
+                            <Search />
+                            Search
+                          </Button>
+                        </DialogTrigger>
+                      </div>
+
                       <DialogContent>
-                        <DialogHeader>
-                          <DialogTitle>Search Resonators</DialogTitle>
+                        <DialogHeader className="gap-0">
+                          <DialogTitle></DialogTitle>
+                          <SearchDialogContent resonators={resonatorsData.resonators as Resonator[]} />
                         </DialogHeader>
-                        <SearchDialogContent resonators={resonatorsData.resonators as Resonator[]} />
                       </DialogContent>
                     </Dialog>
                   </div>

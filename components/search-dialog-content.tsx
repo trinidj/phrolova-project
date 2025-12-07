@@ -38,13 +38,12 @@ export function SearchDialogContent({ resonators }: SearchDialogContentProps) {
   }, [query, resonators])
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <InputGroup>
         <InputGroupInput
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          autoFocus
         />
         <InputGroupAddon>
           <Search />
@@ -52,7 +51,7 @@ export function SearchDialogContent({ resonators }: SearchDialogContentProps) {
       </InputGroup>
 
       {/* Search Results */}
-      <ScrollArea className="h-[400px]">
+      <ScrollArea className="h-[450px]">
         {query && results.length === 0 && (
           <div className="py-8 text-center text-sm text-muted-foreground">
             No resonators found matching &quot;{query}&quot;
@@ -74,7 +73,7 @@ export function SearchDialogContent({ resonators }: SearchDialogContentProps) {
                 className="w-full h-fit"
               >
                 <Link
-                  href={`/resonators/${resonator.id}`}
+                  href={`/resonators/${resonator.name}`}
                   className="flex items-center gap-3 w-full"
                 >
                   <Image
@@ -100,6 +99,6 @@ export function SearchDialogContent({ resonators }: SearchDialogContentProps) {
           </div>
         )}
       </ScrollArea>
-    </>
+    </div>
   )
 }
