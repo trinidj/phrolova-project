@@ -294,7 +294,7 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                 {details.map((detail) => (
                   <TableRow
                     key={detail.label}
-                    className="grid grid-cols-2 items-center gap-2 sm:table-row sm:gap-0"
+                    className="items-center gap-2 sm:table-row sm:gap-0"
                   >
                     <TableCell className="font-medium p-3 sm:p-2 sm:table-cell">
                       {detail.label}
