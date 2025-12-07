@@ -44,7 +44,7 @@ export default async function ResonatorDetails({
 
   return (
     <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20">
-      <ProfileSection resonator={resonator} />
+      <ProfileSection resonator={resonator} ascensionData={ascensionData} />
       <Separator />
       <TalentsSection
         talents={parsedTalents}

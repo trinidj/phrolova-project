@@ -1,5 +1,7 @@
 import fs from "fs"
 import path from "path"
+import { useMemo } from "react"
+
 import { Resonator, getResonatorAssets } from "@/app/types/resonator"
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
@@ -9,6 +11,8 @@ import { Expand, Ellipsis } from "lucide-react"
 import LevelSlider from "./LevelSlider"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { AscensionPhase } from "@/app/types/resonator"
+import { getMaterialAssetPath } from "@/lib/utils"
 
 import {
   Tooltip,
@@ -37,6 +41,7 @@ import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
 interface ProfileSectionProps {
   resonator: Resonator
+  ascensionData: AscensionPhase[] | null
 }
 
 interface InfoConfig {
@@ -44,7 +49,29 @@ interface InfoConfig {
   value: string | number
 }
 
-export default function ProfileSection({ resonator }: ProfileSectionProps) {
+export default function ProfileSection({ resonator, ascensionData }: ProfileSectionProps) {
+  const totalMaterials = useMemo(() => {
+    if (!ascensionData) return null;
+
+    const materialsMap = new Map<string, { amount: number; type?: string }>();
+    ascensionData.forEach(phase => {
+      phase.materials.forEach(material => {
+        const current = materialsMap.get(material.name);
+        materialsMap.set(material.name, {
+          amount: (current?.amount || 0) + material.amount,
+          type: material.type || current?.type
+        });
+      });
+    });
+
+    return Array.from(materialsMap.entries()).map(([name, data]) => ({
+      name,
+      amount: data.amount,
+      type: data.type,
+    }));
+  }, [ascensionData]);
+
+
   const assets = getResonatorAssets(resonator)
   const splashArtPath = path.join(
     process.cwd(),
@@ -234,6 +261,41 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
           <Card className="px-4 sm:px-6">
             <CardContent className="px-0">
               <LevelSlider resonator={resonator} />
+            </CardContent>
+          </Card>
+
+          <Card className="px-4 sm:px-6">
+            <CardHeader className="px-0 gap-0">
+              <CardTitle className="text-xl">Ascension</CardTitle>
+            </CardHeader>
+            <Separator />
+            <CardContent className="px-0">
+              {!totalMaterials || totalMaterials.length === 0 ? (
+                <p className="text-muted-foreground">No materials data available</p>
+              ) : (
+                <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4 items-center">
+                  {totalMaterials.map((material, index) => (
+                    <Card
+                      key={index}
+                      className="flex flex-col w-fit items-center gap-0 p-0 rounded-sm overflow-hidden"
+                      style={{ backfaceVisibility: 'hidden', perspective: 1000 }}
+                    >
+                      <CardContent className="px-0">
+                        <Image
+                          src={getMaterialAssetPath(material.name, material.type)}
+                          alt={material.name}
+                          width={80}
+                          height={80}
+                          className="object-contain w-16 h-16 md:w-20 md:h-20"
+                        />
+                        <div className="bg-accent/90 p-1 text-center border-t-2 border-t-rarity-5">
+                          <Label className="text-sm justify-center">{material.amount.toLocaleString()}</Label>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

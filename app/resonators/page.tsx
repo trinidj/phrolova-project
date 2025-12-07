@@ -28,6 +28,7 @@ import {
 
 import {
   Card,
+  CardContent,
   CardTitle,
 } from "@/components/ui/card"
 
@@ -45,6 +46,7 @@ import { ATTRIBUTES, WEAPON_TYPES, RARITIES } from "@/app/lib/constants"
 
 import Image from "next/image"
 import Link from "next/link"
+import { Label } from "@/components/ui/label"
 
 type ResonatorIndexEntry = {
   id: string
@@ -317,66 +319,68 @@ export default function ResonatorsPage() {
               )}
               style={{ backfaceVisibility: 'hidden', perspective: 1000 }}
             >
-              <div className="absolute right-1 top-1 z-10 transform-gpu bg-accent p-1 rounded-full">
-                <div 
-                  className="rounded-full" 
-                  style={{ 
-                    backfaceVisibility: 'hidden',
-                    borderColor: getAttributeColor(resonator.attribute),
-                    ...getAttributeBackgroundStyle(resonator.attribute, 0.5) 
-                  }}
-                >
-                  <Image
-                    alt="Attribute"
+              <CardContent className="px-0">
+                <div className="absolute right-1 top-1 z-10 transform-gpu bg-accent p-1 rounded-full">
+                  <div 
+                    className="rounded-full" 
+                    style={{ 
+                      backfaceVisibility: 'hidden',
+                      borderColor: getAttributeColor(resonator.attribute),
+                      ...getAttributeBackgroundStyle(resonator.attribute, 0.5) 
+                    }}
+                  >
+                    <Image
+                      alt="Attribute"
+                      width={20}
+                      height={20}
+                      quality={100}
+                      src={attributeIcon}
+                    />
+                  </div>
+
+                  <Image 
+                    alt="Weapon Type"
                     width={20}
                     height={20}
                     quality={100}
-                    src={attributeIcon}
+                    src={weaponTypeIcon}
+                    className="mt-2"
                   />
                 </div>
 
-                <Image 
-                  alt="Weapon Type"
-                  width={20}
-                  height={20}
-                  quality={100}
-                  src={weaponTypeIcon}
-                  className="mt-2"
-                />
-              </div>
-
-              {resonator.isNew && (
-                <div className="absolute left-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
-                  <Badge className="text-white text-xs bg-red-600/80 ">
-                    New
-                  </Badge>
+                {resonator.isNew && (
+                  <div className="absolute left-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
+                    <Badge className="text-white text-xs bg-red-600/80 ">
+                      New
+                    </Badge>
+                  </div>
+                )}
+                {!hasDetailData && (
+                  <div className="absolute left-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
+                    <Badge variant="outline" className="bg-background/80 text-xs">
+                      Unavailable
+                    </Badge>
+                  </div>
+                )}
+                <div 
+                  className={cn(
+                    "overflow-hidden",
+                    getRarityGradient(resonator.rarity)
+                )}>
+                  <Image
+                    alt={resonator.name}
+                    src={displayImage}
+                    width={200}
+                    height={200}
+                    quality={100}
+                    className={cn("block", displayCardImageClassName)}
+                    style={{ backfaceVisibility: "hidden" }}
+                  />
                 </div>
-              )}
-              {!hasDetailData && (
-                <div className="absolute left-1 top-1 z-10 transform-gpu" style={{ backfaceVisibility: 'hidden' }}>
-                  <Badge variant="outline" className="bg-background/80 text-xs">
-                    Unavailable
-                  </Badge>
+                <div className="bg-accent/90 p-1 text-center border-t-2 border-t-rarity-5">
+                  <Label className="text-sm justify-center">{resonator.name}</Label>
                 </div>
-              )}
-              <div 
-                className={cn(
-                  "overflow-hidden",
-                  getRarityGradient(resonator.rarity)
-              )}>
-                <Image
-                  alt={resonator.name}
-                  src={displayImage}
-                  width={200}
-                  height={200}
-                  quality={100}
-                  className={cn("block", displayCardImageClassName)}
-                  style={{ backfaceVisibility: "hidden" }}
-                />
-              </div>
-              <div className="bg-accent/90 p-1 text-center border-t-2 border-t-rarity-5">
-                <CardTitle className="text-sm">{resonator.name}</CardTitle>
-              </div>
+              </CardContent>
             </Card>
           )
 
