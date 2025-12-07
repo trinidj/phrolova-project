@@ -32,48 +32,54 @@ export default function ResonanceChainSection({ sequenceNodes, resonator }: Reso
 
   return (
     <section id="resonance-chain">
-      <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Resonance Chain</h2>
+      <Card className="px-6">
+        <CardHeader className="gap-0 px-0">
+          <CardTitle className="text-xl sm:text-2xl font-bold">Resonance Chain</CardTitle>
+        </CardHeader>
+        <Separator />
+        <CardContent className="px-0">
+          {/* Sequence Nodes Content */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+            {sequenceNodes.map((node, index) => {
+              const nodeKey = `sequenceNode${index + 1}` as keyof typeof assets
+              const nodeImage = assets[nodeKey]
 
-      {/* Sequence Nodes Content */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-        {sequenceNodes.map((node, index) => {
-          const nodeKey = `sequenceNode${index + 1}` as keyof typeof assets
-          const nodeImage = assets[nodeKey]
+              return (
+                <Card key={`${node.name}-${index}`} className="p-6 bg-accent">
+                  <CardHeader className="p-0 gap-0">
+                    <div className="flex items-center gap-2">
+                      {nodeImage ? (
+                        <Image
+                          src={nodeImage}
+                          alt={`${node.name} icon`}
+                          width={64}
+                          height={64}
+                          className="size-12 sm:size-14 md:size-16 rounded-full object-cover shrink-0"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center size-12 sm:size-14 md:size-16 rounded-full bg-primary/10 text-primary font-bold text-base sm:text-lg shrink-0">
+                          S{index + 1}
+                        </div>
+                      )}
 
-          return (
-            <Card key={`${node.name}-${index}`} className="p-6">
-              <CardHeader className="p-0 gap-0">
-                <div className="flex items-center gap-2">
-                  {nodeImage ? (
-                    <Image
-                      src={nodeImage}
-                      alt={`${node.name} icon`}
-                      width={64}
-                      height={64}
-                      className="size-12 sm:size-14 md:size-16 rounded-full object-cover shrink-0"
-                    />
-                  ) : (
-                    <div className="flex items-center justify-center size-12 sm:size-14 md:size-16 rounded-full bg-primary/10 text-primary font-bold text-base sm:text-lg shrink-0">
-                      S{index + 1}
+                      <div className="flex flex-col gap-2">
+                        <CardTitle>{node.name}</CardTitle>
+                        <CardDescription>Sequence Node {index + 1}</CardDescription>
+                      </div>
                     </div>
-                  )}
-
-                  <div className="flex flex-col gap-2">
-                    <CardTitle>{node.name}</CardTitle>
-                    <CardDescription>Sequence Node {index + 1}</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <Separator />
-              <CardContent className="p-0">
-                <div className="text-sm font-medium sm:text-base space-y-2 sm:space-y-3">
-                  {renderDescription(node.description)}
-                </div>
-              </CardContent>
-            </Card>
-          )
-        })}
-      </div>
+                  </CardHeader>
+                  <Separator />
+                  <CardContent className="p-0">
+                    <div className="text-sm font-medium sm:text-base space-y-2 sm:space-y-3">
+                      {renderDescription(node.description)}
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        </CardContent>
+      </Card>
     </section>
   )
 }
