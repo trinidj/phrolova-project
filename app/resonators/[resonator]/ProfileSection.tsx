@@ -149,8 +149,8 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
             <Separator/>
             <CardContent className="px-0">
               {resonator.combatRoles?.length ? (
-                <div className="flex justify-between gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <ul className="flex flex-wrap items-center gap-3 sm:gap-2">
+                <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between">
+                  <ul className="flex flex-wrap items-center gap-2 sm:gap-2">
                     {resonator.combatRoles.map((role) => {
                       return (
                         <li key={role} className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
@@ -179,8 +179,13 @@ export default function ProfileSection({ resonator }: ProfileSectionProps) {
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <DialogTrigger asChild>
-                          <Button variant="outline" size="icon" className="cursor-pointer">
-                            <Ellipsis />
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="cursor-pointer flex items-center gap-2 sm:size-10 sm:justify-center"
+                          >
+                            <span className="sm:hidden">View Combat Roles</span>
+                            <Ellipsis className="hidden sm:block" />
                           </Button>
                         </DialogTrigger>
                       </TooltipTrigger>
