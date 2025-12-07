@@ -32,11 +32,8 @@ export default function ResonanceChainSection({ sequenceNodes, resonator }: Reso
 
   return (
     <section id="resonance-chain">
+      <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Resonance Chain</h2>
       <Card className="px-6">
-        <CardHeader className="gap-0 px-0">
-          <CardTitle className="text-xl sm:text-2xl font-bold">Resonance Chain</CardTitle>
-        </CardHeader>
-        <Separator />
         <CardContent className="px-0">
           {/* Sequence Nodes Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">

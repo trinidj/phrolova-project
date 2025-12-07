@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { getAttributeColor } from "@/lib/utils"
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 
 interface SkillItem {
@@ -44,16 +44,21 @@ function SkillTabs({
           <TabsTrigger
             value={toValue(skill, index)}
             key={toValue(skill, index)}
-            className="flex flex-col rounded-none items-center gap-2 w-fit h-fit border-0 border-b-[3px]"
+            className="group flex flex-col rounded-none items-center py-3 gap-4 w-fit h-fit border-0 border-b-[3px]"
             activeColor={activeColor}
           >
-            <Image
-              alt={`${skill.type} icon`}
-              src={skill.asset || ""}
-              width={48}
-              height={48}
-              className="object-contain scale-90"
-            />
+            <div
+              className="border-2 p-1 rounded-full transition-shadow group-data-[state=active]:shadow-[0_0_15px_var(--tab-active-color)]"
+              style={{ borderColor: activeColor }}
+            >
+              <Image
+                alt={`${skill.type} icon`}
+                src={skill.asset || ""}
+                width={48}
+                height={48}
+                className="object-contain scale-75"
+              />
+            </div>
           </TabsTrigger>
         ))}
       </TabsList>
@@ -110,11 +115,8 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
 
   return (
     <section id="skills">
+      <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Forte</h2>
       <Card className="px-6">
-        <CardHeader className="gap-0 px-0">
-          <CardTitle className="text-xl sm:text-2xl font-bold">Forte</CardTitle>
-        </CardHeader>
-        <Separator />
         <CardContent className="px-0">
           <div className="flex flex-col gap-8">
             <SkillTabs items={skillItems} activeColor={attributeColor} />
