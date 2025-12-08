@@ -1,12 +1,10 @@
 import { getResonatorByName, getResonatorTalents, parseTalentsMarkdown, getResonatorSequenceNodes, parseSequenceNodesMarkdown, getResonatorAscension, getResonatorSkillAscension } from "@/app/lib/resonators"
 import { Separator } from "@/components/ui/separator"
 import ProfileSection from "./ProfileSection"
-import AscensionSection from "./AscensionSection"
 import TalentsSection from "./TalentsSection"
 import ResonanceChainSection from "./ResonanceChainSection"
 import Link from "next/link"
 import resonatorsData from "@/app/data/resonators/index.json"
-import { getAttributeColor } from "@/lib/utils"
 
 import {
   NavigationMenu,
@@ -40,7 +38,6 @@ export default async function ResonatorDetails({
 
   // Load skill ascension data if available
   const skillAscensionData = await getResonatorSkillAscension(resonator.id)
-  const attributeColor = getAttributeColor(resonator.attribute)
 
   return (
     <div className="flex flex-col gap-12 sm:gap-16 lg:gap-20">
@@ -51,12 +48,7 @@ export default async function ResonatorDetails({
         resonatorName={resonator.name}
         resonatorRarity={resonator.rarity}
         resonatorAttribute={resonator.attribute}
-      />
-      <Separator />
-      <AscensionSection
-        ascensionData={ascensionData}
         skillAscensionData={skillAscensionData}
-        attributeColor={attributeColor}
       />
       <Separator />
       <ResonanceChainSection sequenceNodes={parsedSequenceNodes} resonator={resonator} />
@@ -69,10 +61,6 @@ export default async function ResonatorDetails({
 
           <NavigationMenuLink asChild className="text-xs font-semibold">
             <Link href="#skills">Skills</Link>
-          </NavigationMenuLink>
-
-          <NavigationMenuLink asChild className="text-xs font-semibold">
-            <Link href="#ascension">Ascension</Link>
           </NavigationMenuLink>
 
           <NavigationMenuLink asChild className="text-xs font-semibold">

@@ -1,14 +1,17 @@
 'use client'
 
-import { Resonator, getResonatorSkillAssets, TalentData } from "@/app/types/resonator"
+import { useMemo } from "react"
+
+import { Resonator, SkillAscensionPhase, TalentData, getResonatorSkillAssets } from "@/app/types/resonator"
 import { renderDescription } from "@/app/lib/talents"
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { getAttributeColor } from "@/lib/utils"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
+
+import { getAttributeColor, getMaterialAssetPath } from "@/lib/utils"
 
 interface SkillItem {
   type: string
@@ -21,6 +24,7 @@ interface TalentsSectionProps {
   resonatorName: string
   resonatorRarity: number
   resonatorAttribute: Resonator["attribute"]
+  skillAscensionData: SkillAscensionPhase[] | null
 }
 
 function SkillTabs({
@@ -79,7 +83,7 @@ function SkillTabs({
   )
 }
 
-export default function TalentsSection({ talents, resonatorName, resonatorRarity, resonatorAttribute }: TalentsSectionProps) {
+export default function TalentsSection({ talents, resonatorName, resonatorRarity, resonatorAttribute, skillAscensionData }: TalentsSectionProps) {
   const resonator = {
     rarity: resonatorRarity,
     name: resonatorName,
@@ -102,6 +106,13 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
     { type: "Inherent Skill", asset: assets.inheritSkill2, talent: talents?.inheritSkill2 },
   ]
 
+  const totalSkillMaterials = useMemo(() => {
+    if (!skillAscensionData || skillAscensionData.length === 0) return null
+
+    // Just return the materials from the JSON file as-is
+    return skillAscensionData[0].materials
+  }, [skillAscensionData])
+
   if (!talents) {
     return (
       <section id="skills">
@@ -121,8 +132,42 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
           <div className="flex flex-col gap-8">
             <SkillTabs items={skillItems} activeColor={attributeColor} />
             <Separator />
-            <SkillTabs items={inheritSkillItems} activeColor={attributeColor} />          
+            <SkillTabs items={inheritSkillItems} activeColor={attributeColor} />
           </div>
+
+          <Card className="border-none">
+            <CardHeader className="px-0 gap-0">
+              <CardTitle className="font-semibold text-xl">Ascension</CardTitle>
+            </CardHeader>
+            <Separator />
+            <CardContent className="px-0">
+              {!totalSkillMaterials || totalSkillMaterials.length === 0 ? (
+                  <p className="text-muted-foreground text-sm">No skill ascension data available.</p>
+                ) : (
+                  <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-12 gap-4 items-center">
+                    {totalSkillMaterials.map((material, materialIndex) => (
+                      <Card
+                        key={materialIndex}
+                        className="flex flex-col w-fit items-center gap-0 p-0 rounded-sm overflow-hidden"
+                      >
+                        <CardContent className="px-0">
+                          <Image
+                            src={getMaterialAssetPath(material.name, material.type)}
+                            alt={material.name}
+                            width={80}
+                            height={80}
+                            className="object-contain w-16 h-16 md:w-20 md:h-20"
+                          />
+                          <div className="bg-accent/90 p-1 text-center border-t-2 border-t-rarity-5">
+                            <Label className="text-sm justify-center">{material.amount.toLocaleString()}</Label>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+            </CardContent>
+          </Card>
         </CardContent>
       </Card>
     </section>
