@@ -60,7 +60,7 @@ export default async function ResonatorDetails({
           </NavigationMenuLink>
 
           <NavigationMenuLink asChild className="text-xs font-semibold">
-            <Link href="#skills">Skills</Link>
+            <Link href="#forte">Forte</Link>
           </NavigationMenuLink>
 
           <NavigationMenuLink asChild className="text-xs font-semibold">

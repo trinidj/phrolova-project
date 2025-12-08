@@ -125,7 +125,7 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
   }
 
   return (
-    <section id="skills">
+    <section id="forte">
       <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Forte</h2>
       <Card className="px-6">
         <CardContent className="flex flex-col gap-8 px-0">
