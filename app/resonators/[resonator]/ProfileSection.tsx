@@ -277,18 +277,18 @@ export default function ProfileSection({ resonator, ascensionData }: ProfileSect
                   {totalMaterials.map((material, index) => (
                     <Card
                       key={index}
-                      className="flex flex-col w-fit items-center gap-0 p-0 rounded-sm overflow-hidden"
+                      className="flex flex-col items-center gap-0 p-0 rounded-sm overflow-hidden"
                       style={{ backfaceVisibility: 'hidden', perspective: 1000 }}
                     >
-                      <CardContent className="px-0">
+                      <CardContent className="px-0 w-full">
                         <Image
                           src={getMaterialAssetPath(material.name, material.type)}
                           alt={material.name}
                           width={80}
                           height={80}
-                          className="object-contain w-16 h-16 md:w-20 md:h-20"
+                          className="object-contain w-full"
                         />
-                        <div className="bg-accent/90 p-1 text-center border-t-2 border-t-rarity-5">
+                        <div className="bg-accent/50 p-1 text-center border-t-2 border-t-rarity-5">
                           <Label className="text-sm justify-center">{material.amount.toLocaleString()}</Label>
                         </div>
                       </CardContent>

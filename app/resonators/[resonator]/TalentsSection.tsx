@@ -128,37 +128,36 @@ export default function TalentsSection({ talents, resonatorName, resonatorRarity
     <section id="skills">
       <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Forte</h2>
       <Card className="px-6">
-        <CardContent className="px-0">
-          <div className="flex flex-col gap-8">
-            <SkillTabs items={skillItems} activeColor={attributeColor} />
-            <Separator />
-            <SkillTabs items={inheritSkillItems} activeColor={attributeColor} />
-          </div>
+        <CardContent className="flex flex-col gap-8 px-0">
+          <SkillTabs items={skillItems} activeColor={attributeColor} />
+          <Separator />
+          <SkillTabs items={inheritSkillItems} activeColor={attributeColor} />
+          <Separator />
 
-          <Card className="border-none">
-            <CardHeader className="px-0 gap-0">
-              <CardTitle className="font-semibold text-xl">Ascension</CardTitle>
+          <Card className="bg-accent">
+            <CardHeader className="gap-0">
+              <CardTitle className="font-semibold text-xl">Total Ascension Materials</CardTitle>
             </CardHeader>
             <Separator />
-            <CardContent className="px-0">
+            <CardContent>
               {!totalSkillMaterials || totalSkillMaterials.length === 0 ? (
                   <p className="text-muted-foreground text-sm">No skill ascension data available.</p>
                 ) : (
-                  <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-12 gap-4 items-center">
+                  <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-12 gap-4 items-center">
                     {totalSkillMaterials.map((material, materialIndex) => (
                       <Card
                         key={materialIndex}
-                        className="flex flex-col w-fit items-center gap-0 p-0 rounded-sm overflow-hidden"
+                        className="flex flex-col items-center gap-0 p-0 rounded-sm overflow-hidden"
                       >
-                        <CardContent className="px-0">
+                        <CardContent className="px-0 w-full">
                           <Image
                             src={getMaterialAssetPath(material.name, material.type)}
                             alt={material.name}
                             width={80}
                             height={80}
-                            className="object-contain w-16 h-16 md:w-20 md:h-20"
+                            className="object-contain w-full"
                           />
-                          <div className="bg-accent/90 p-1 text-center border-t-2 border-t-rarity-5">
+                          <div className="bg-accent/50 p-1 text-center border-t-2 border-t-rarity-5">
                             <Label className="text-sm justify-center">{material.amount.toLocaleString()}</Label>
                           </div>
                         </CardContent>
