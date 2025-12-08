@@ -35,18 +35,63 @@ function hasCompleteStats(entry: unknown): entry is ResonatorStats {
   )
 }
 
+type ResonatorVariant = Partial<Resonator> & {
+  id?: string
+  attribute?: string
+  name?: string
+  variants?: never
+}
+
+function resolveVariantResonator(base: Resonator, variant: ResonatorVariant): Resonator {
+  const { variants: _ignored, ...baseResonator } = base as Resonator & { variants?: unknown }
+  const attribute = variant.attribute ?? base.attribute
+  const name = variant.name ?? `${base.name} (${attribute})`
+  const id = variant.id ?? `${base.id}_${attribute.toLowerCase()}`
+
+  return {
+    ...baseResonator,
+    ...variant,
+    id,
+    attribute,
+    name,
+    description: variant.description ?? base.description,
+    combatRoles: variant.combatRoles ?? base.combatRoles,
+    stats: variant.stats ?? base.stats,
+    nation: variant.nation ?? base.nation,
+    versionRelease: variant.versionRelease ?? base.versionRelease,
+    voiceActors: (variant as Resonator).voiceActors ?? base.voiceActors,
+    weaponType: variant.weaponType ?? base.weaponType,
+  } as Resonator
+}
+
+function resolveResonatorEntries(): Resonator[] {
+  return (resonatorsData.resonators as unknown as Resonator[]).flatMap((entry) => {
+    const variants = (entry as Resonator & { variants?: ResonatorVariant[] }).variants
+    if (!variants || variants.length === 0) {
+      return entry
+    }
+
+    const { variants: _ignored, ...baseResonator } = entry as Resonator & { variants?: unknown }
+    const resolvedVariants = variants.map((variant) => resolveVariantResonator(baseResonator as Resonator, variant))
+
+    return [baseResonator as Resonator, ...resolvedVariants]
+  })
+}
+
+const RESOLVED_RESONATORS = resolveResonatorEntries()
+
 /**
  * Get all resonator IDs from the index.json file
  */
 export async function getAllResonatorIds(): Promise<string[]> {
-  return resonatorsData.resonators.map(r => r.id)
+  return RESOLVED_RESONATORS.map(r => r.id)
 }
 
 /**
  * Get basic stats for a resonator from index.json
  */
 export async function getResonatorStats(id: string): Promise<ResonatorStats | null> {
-  const resonator = resonatorsData.resonators.find((r) => r.id === id)
+  const resonator = RESOLVED_RESONATORS.find((r) => r.id === id)
   if (!resonator || !hasCompleteStats(resonator)) return null
   return resonator
 }
@@ -235,13 +280,15 @@ export async function getAllResonators(): Promise<Resonator[]> {
  * Get a resonator by name (case-insensitive)
  */
 export async function getResonatorByName(name: string): Promise<Resonator | null> {
+  const nameLower = name.toLowerCase()
+
   // Fast path: get base data directly from index.json without loading all resonators
-  const base = resonatorsData.resonators.find(r => r.name.toLowerCase() === name.toLowerCase())
-  if (!base) return null
+  const resolved = RESOLVED_RESONATORS.find(r => r.name.toLowerCase() === nameLower)
+  if (!resolved) return null
 
   // Load talents lazily for this single resonator
-  const talentsMarkdown = await getResonatorTalents(base.id)
+  const talentsMarkdown = await getResonatorTalents(resolved.id)
   const talents = talentsMarkdown ? parseTalentsMarkdown(talentsMarkdown) : undefined
 
-  return { ...(base as unknown as Resonator), talents }
+  return { ...(resolved as Resonator), talents }
 }

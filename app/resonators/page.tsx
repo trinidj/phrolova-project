@@ -60,6 +60,16 @@ type ResonatorIndexEntry = {
   weaponType?: Resonator["weaponType"]
   stats?: Resonator["stats"]
   combatRoles?: Resonator["combatRoles"] | string
+  variants?: Array<{
+    id?: string
+    attribute: Resonator["attribute"]
+    name?: string
+    description?: string
+    combatRoles?: Resonator["combatRoles"] | string
+    stats?: Resonator["stats"]
+    nation?: Resonator["nation"]
+    versionRelease?: Resonator["versionRelease"]
+  }>
 }
 
 export default function ResonatorsPage() {
@@ -82,8 +92,35 @@ export default function ResonatorsPage() {
     ? (resonatorsData.resonators as ResonatorIndexEntry[])
     : []
 
+  const flattenedResonators: ResonatorIndexEntry[] = resonators.flatMap((resonator) => {
+    if (!resonator.variants || resonator.variants.length === 0) {
+      return resonator
+    }
+
+    const { variants, ...baseResonator } = resonator
+
+    return variants.map((variant) => {
+      const variantAttribute = variant.attribute ?? baseResonator.attribute
+      const variantName = variant.name ?? `${baseResonator.name} (${variantAttribute})`
+      const variantId = variant.id ?? `${baseResonator.id}_${variantAttribute.toLowerCase()}`
+
+      return {
+        ...baseResonator,
+        ...variant,
+        id: variantId,
+        attribute: variantAttribute,
+        name: variantName,
+        description: variant.description ?? baseResonator.description,
+        combatRoles: variant.combatRoles ?? baseResonator.combatRoles,
+        stats: variant.stats ?? baseResonator.stats,
+        nation: variant.nation ?? baseResonator.nation,
+        versionRelease: variant.versionRelease ?? baseResonator.versionRelease,
+      }
+    })
+  })
+
   // Filter resonators based on search query and filters
-  const filteredResonators = resonators.filter((resonator) => {
+  const filteredResonators = flattenedResonators.filter((resonator) => {
     const searchLower = searchQuery.toLowerCase()
     const matchesSearch = resonator.name.toLowerCase().includes(searchLower)
 
@@ -298,9 +335,13 @@ export default function ResonatorsPage() {
           const spriteCardImageClassName =
             "object-cover w-full h-full scale-125"
 
+          const isRover = resonator.id.startsWith("rover")
+          const assetFolderName = isRover ? "Rover" : resonator.name
+          const spriteFileName = isRover ? "female_sprite.png" : "sprite.png"
+
           const assets = resonator.weaponType ? getResonatorAssets(resonator as Resonator) : undefined
-          const fallbackSprite = `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/sprite.png`
-          const fallbackIcon = `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/icon.png`
+          const fallbackSprite = `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}/${spriteFileName}`
+          const fallbackIcon = `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}/icon.png`
           const displayImage = showSprites
             ? assets?.sprite ?? fallbackSprite
             : assets?.image ?? fallbackIcon

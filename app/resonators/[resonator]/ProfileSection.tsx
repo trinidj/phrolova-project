@@ -6,7 +6,7 @@ import { Resonator, getResonatorAssets } from "@/app/types/resonator"
 import Image from "next/image"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { getAttributeColor, getAttributeBackgroundStyle } from "@/lib/utils"
-import { Expand, Ellipsis } from "lucide-react"
+import { Ellipsis } from "lucide-react"
 
 import LevelSlider from "./LevelSlider"
 import { Button } from "@/components/ui/button"
@@ -36,9 +36,9 @@ import {
 } from "@/components/ui/table"
 
 import combatRolesData from "@/app/data/combat_roles.json"
-import { Skeleton } from "@/components/ui/skeleton"
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
+import RoverSprite from "./RoverSprite"
 interface ProfileSectionProps {
   resonator: Resonator
   ascensionData: AscensionPhase[] | null
@@ -73,17 +73,24 @@ export default function ProfileSection({ resonator, ascensionData }: ProfileSect
 
 
   const assets = getResonatorAssets(resonator)
+  const assetFolderName = resonator.id.startsWith("rover") ? "Rover" : resonator.name
+  const roverFemaleSprite = resonator.id.startsWith("rover")
+    ? `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}/female_sprite.png`
+    : assets.sprite
+  const roverMaleSprite = resonator.id.startsWith("rover")
+    ? `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}/male_sprite.png`
+    : undefined
   const splashArtPath = path.join(
     process.cwd(),
     "public",
     "assets",
     "resonators",
     `${resonator.rarity}_stars`,
-    resonator.name,
+    assetFolderName,
     "splash_art.png"
   )
   const hasSplashArt = fs.existsSync(splashArtPath)
-  const splashArt = hasSplashArt ? assets.splashArt : assets.sprite
+  const splashArt = hasSplashArt ? assets.splashArt : roverFemaleSprite
   const combatRoleMap = combatRolesData.combat_roles.reduce<
     Record<string, { description: string }>
   >((acc, role) => {
@@ -302,53 +309,13 @@ export default function ProfileSection({ resonator, ascensionData }: ProfileSect
 
         {/* Right Side: Character Sprite */}
         <div className="flex flex-col gap-4">
-          <Card className="p-0 w-full max-w-[500px] self-stretch mx-auto lg:mx-0 gap-0">
-            <CardContent className="relative p-0 overflow-hidden">
-              <Image
-                alt={`${resonator.name} sprite`}
-                src={assets.sprite}
-                width={524}
-                height={600}
-                quality={100}
-                className="object-cover w-full h-[400px] sm:h-[440px] lg:h-[575px]"
-              />
-
-              <Dialog>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <DialogTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className="absolute right-2 top-2 sm:right-3 sm:top-3 z-10 cursor-pointer"
-                        size="icon"
-                        disabled={!hasSplashArt}
-                      >
-                        <Expand />
-                      </Button>
-                    </DialogTrigger>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <span>View Splash Art</span>
-                  </TooltipContent>
-                </Tooltip>
-                <DialogContent className="max-w-[95vw] sm:max-w-[90vw] lg:max-w-fit">
-                  <DialogHeader>
-                    <DialogTitle>{resonator.name}</DialogTitle>
-                  </DialogHeader>
-                  <Skeleton className="max-h-[75vh] w-full sm:w-auto object-contain" />
-                  <Image
-                    src={splashArt}
-                    alt={`${resonator.name} splash art`}
-                    width={2840}
-                    height={1873}
-                    quality={100}
-                    loading="lazy"
-                    className="max-h-[75vh] w-full sm:w-auto object-contain"
-                  />
-                </DialogContent>
-              </Dialog>
-            </CardContent>
-          </Card>
+          <RoverSprite
+            resonatorName={resonator.name}
+            primarySprite={roverFemaleSprite}
+            maleSprite={roverMaleSprite}
+            splashArt={splashArt}
+            hasSplashArt={hasSplashArt}
+          />
 
           <div className="w-full">
             <Table className="bg-accent rounded-sm overflow-hidden w-full text-sm ">

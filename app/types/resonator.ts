@@ -104,10 +104,14 @@ export function getResonatorAssets(resonator: Resonator): ResonatorAssets {
     Gauntlet: "Gauntlets_Icon.png",
   };
 
+  // Rover variants share a common icon asset folder name
+  const assetFolderName = resonator.id.startsWith("rover") ? "Rover" : resonator.name;
+  const spriteFileName = resonator.id.startsWith("rover") ? "female_sprite.png" : "sprite.png";
+
   return {
-    image: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/icon.png`,
-    sprite: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/sprite.png`,
-    splashArt: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/splash_art.png`,
+    image: `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}/icon.png`,
+    sprite: `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}/${spriteFileName}`,
+    splashArt: `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}/splash_art.png`,
     attribute: `/assets/attributes/${resonator.attribute}.png`,
     weaponType: `/assets/weapons/${weaponIconMap[resonator.weaponType]}`,
   };

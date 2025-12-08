@@ -674,6 +674,61 @@
     },
 
     {
+      "id": "rover",
+      "name": "Rover",
+      "rarity": 5,
+      "attribute": "Spectro",
+      "weaponType": "Sword",
+      "isNew": false,
+      "description": "Adaptive Pathfinder",
+      "defaultAttribute": "Spectro",
+      "variants": [
+        {
+          "id": "rover_spectro",
+          "attribute": "Spectro",
+          "name": "Rover (Spectro)",
+          "description": "Light-carved path.",
+          "combatRoles": ["Concerto Efficiency", "Stagnation", "Spectro Frazzle"],
+          "stats": {
+            "hp": { "min": 860, "max": 10800 },
+            "atk": { "min": 34, "max": 425 },
+            "def": { "min": 95, "max": 1160 }
+          },
+          "nation": "Huanglong",
+          "versionRelease": 1.0
+        },
+        {
+          "id": "rover_havoc",
+          "attribute": "Havoc",
+          "name": "Rover (Havoc)",
+          "description": "Shadow-touched path.",
+          "combatRoles": ["Main Damage Dealer"],
+          "stats": {
+            "hp": { "min": 860, "max": 10800 },
+            "atk": { "min": 34, "max": 425 },
+            "def": { "min": 95, "max": 1160 }
+          },
+          "nation": "Huanglong",
+          "versionRelease": 1.4
+        },
+        {
+          "id": "rover_aero",
+          "attribute": "Aero",
+          "name": "Rover (Aero)",
+          "description": "Wind-guided path.",
+          "combatRoles": ["Support and Healer", "Resonance Skill Damage", "Aero Erosion"],
+          "stats": {
+            "hp": { "min": 860, "max": 10800 },
+            "atk": { "min": 34, "max": 425 },
+            "def": { "min": 95, "max": 1160 }
+          },
+          "nation": "Huanglong",
+          "versionRelease": 1.0
+        }
+      ]
+    },
+
+    {
       "id": "aalto",
       "name": "Aalto",
       "rarity": 4,

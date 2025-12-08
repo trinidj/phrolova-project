@@ -76,5 +76,18 @@ export default async function ResonatorDetails({
 export const dynamicParams = false
 
 export async function generateStaticParams() {
-  return (resonatorsData.resonators as { name: string }[]).map((r) => ({ resonator: r.name }))
+  return (resonatorsData.resonators as { name: string; variants?: { name?: string; attribute?: string }[] }[])
+    .flatMap((resonator) => {
+      const baseParam = { resonator: resonator.name }
+
+      if (!resonator.variants || resonator.variants.length === 0) {
+        return [baseParam]
+      }
+
+      const variantParams = resonator.variants.map((variant) => ({
+        resonator: variant.name ?? `${resonator.name} (${variant.attribute})`,
+      }))
+
+      return [baseParam, ...variantParams]
+    })
 }
