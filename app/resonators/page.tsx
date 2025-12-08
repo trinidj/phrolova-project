@@ -92,14 +92,14 @@ export default function ResonatorsPage() {
     ? (resonatorsData.resonators as ResonatorIndexEntry[])
     : []
 
-  const flattenedResonators: ResonatorIndexEntry[] = resonators.flatMap((resonator) => {
+  const flattenedResonators: ResonatorIndexEntry[] = resonators.flatMap((resonator): ResonatorIndexEntry[] => {
     if (!resonator.variants || resonator.variants.length === 0) {
-      return resonator
+      return [resonator]
     }
 
     const { variants, ...baseResonator } = resonator
 
-    return variants.map((variant) => {
+    return variants.map((variant): ResonatorIndexEntry => {
       const variantAttribute = variant.attribute ?? baseResonator.attribute
       const variantName = variant.name ?? `${baseResonator.name} (${variantAttribute})`
       const variantId = variant.id ?? `${baseResonator.id}_${variantAttribute.toLowerCase()}`
