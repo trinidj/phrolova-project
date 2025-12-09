@@ -138,13 +138,23 @@ export const getResonatorTalents = cache(async (id: string): Promise<string | nu
  * Get sequence nodes (resonance chains) markdown content for a resonator
  */
 export const getResonatorSequenceNodes = cache(async (id: string): Promise<string | null> => {
-  try {
-    const sequenceNodesPath = path.join(RESONATORS_DIR, id, 'sequence-nodes.md')
-    return await fs.readFile(sequenceNodesPath, 'utf-8')
-  } catch {
-    // It's okay if sequence-nodes.md doesn't exist
-    return null
+  const roverAttribute = getRoverAttribute(id)
+
+  const paths = [
+    roverAttribute ? path.join(RESONATORS_DIR, 'rover', roverAttribute, 'sequence-nodes.md') : null,
+    id.startsWith('rover') ? path.join(RESONATORS_DIR, 'rover', 'sequence-nodes.md') : null,
+    path.join(RESONATORS_DIR, id, 'sequence-nodes.md'),
+  ].filter((p): p is string => Boolean(p))
+
+  for (const sequenceNodesPath of paths) {
+    try {
+      return await fs.readFile(sequenceNodesPath, 'utf-8')
+    } catch {
+      // It's okay if sequence-nodes.md doesn't exist in this location
+    }
   }
+
+  return null
 })
 
 /**
