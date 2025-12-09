@@ -8,6 +8,7 @@ import resonatorsData from "@/app/data/resonators/index.json"
 
 import {
   NavigationMenu,
+  NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuLink,
 } from "@/components/ui/navigation-menu"
@@ -54,20 +55,29 @@ export default async function ResonatorDetails({
       <Separator />
       <ResonanceChainSection sequenceNodes={parsedSequenceNodes} resonator={resonator} />
 
-      <NavigationMenu className="hidden xl:block fixed top-1/5 right-10 -translate-y-1/2">
-        <NavigationMenuItem className="flex flex-col gap-2 list-none text-right">
-          <NavigationMenuLink asChild className="text-xs font-semibold">
-            <Link href="#profile">Profile</Link>
-          </NavigationMenuLink>
+      <NavigationMenu
+        viewport={false}
+        className="hidden xl:block fixed right-10 top-[20%] -translate-y-1/2 z-40"
+      >
+        <NavigationMenuList className="flex-col items-end gap-2 text-right">
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className="text-xs font-semibold">
+              <Link href="#profile">Profile</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
 
-          <NavigationMenuLink asChild className="text-xs font-semibold">
-            <Link href="#forte">Forte</Link>
-          </NavigationMenuLink>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className="text-xs font-semibold">
+              <Link href="#forte">Forte</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
 
-          <NavigationMenuLink asChild className="text-xs font-semibold">
-            <Link href="#resonance-chain">Resonance Chain</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild className="text-xs font-semibold">
+              <Link href="#resonance-chain">Resonance Chain</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
       </NavigationMenu>
     </div>
   )

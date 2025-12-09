@@ -53,6 +53,7 @@ After Resonance Skill Resonating Spin ends, Rover performs Resonance Skill Reson
 **Diminutive Sound**
 
 Rover can hold up to 100 "Diminutive Sounds". Rover obtains "Diminutive Sound" for every Normal Attack Vibration Manifestation on hit. Rover obtains "Diminutive Sound" for every Heavy Attack aftertune on hit. Rover obtains "Diminutive Sound" upon casting Intro Skill Waveshock.
+
 ---
 
 ## Inherent Skills

@@ -110,13 +110,26 @@ function normalizeMarkdown(markdown: string): string {
  * Get talents markdown content for a resonator
  */
 export const getResonatorTalents = cache(async (id: string): Promise<string | null> => {
-  try {
-    const talentsPath = path.join(RESONATORS_DIR, id, 'talents.md')
-    return await fs.readFile(talentsPath, 'utf-8')
-  } catch {
-    // It's okay if talents.md doesn't exist
-    return null
+  const roverAttribute = (() => {
+    if (!id.startsWith('rover')) return null
+    const resonator = RESOLVED_RESONATORS.find(r => r.id === id)
+    return (resonator?.attribute ?? id.split('_')[1])?.toLowerCase() ?? null
+  })()
+
+  const paths = [
+    roverAttribute ? path.join(RESONATORS_DIR, 'rover', roverAttribute, 'talents.md') : null,
+    path.join(RESONATORS_DIR, id, 'talents.md')
+  ].filter((p): p is string => Boolean(p))
+
+  for (const talentsPath of paths) {
+    try {
+      return await fs.readFile(talentsPath, 'utf-8')
+    } catch {
+      // It's okay if talents.md doesn't exist in this location
+    }
   }
+
+  return null
 })
 
 /**
