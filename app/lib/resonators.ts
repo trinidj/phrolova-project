@@ -80,6 +80,12 @@ function resolveResonatorEntries(): Resonator[] {
 
 const RESOLVED_RESONATORS = resolveResonatorEntries()
 
+function getRoverAttribute(id: string): string | null {
+  if (!id.startsWith('rover')) return null
+  const resonator = RESOLVED_RESONATORS.find(r => r.id === id)
+  return (resonator?.attribute ?? id.split('_')[1])?.toLowerCase() ?? null
+}
+
 /**
  * Get all resonator IDs from the index.json file
  */
@@ -110,11 +116,7 @@ function normalizeMarkdown(markdown: string): string {
  * Get talents markdown content for a resonator
  */
 export const getResonatorTalents = cache(async (id: string): Promise<string | null> => {
-  const roverAttribute = (() => {
-    if (!id.startsWith('rover')) return null
-    const resonator = RESOLVED_RESONATORS.find(r => r.id === id)
-    return (resonator?.attribute ?? id.split('_')[1])?.toLowerCase() ?? null
-  })()
+  const roverAttribute = getRoverAttribute(id)
 
   const paths = [
     roverAttribute ? path.join(RESONATORS_DIR, 'rover', roverAttribute, 'talents.md') : null,
@@ -149,28 +151,48 @@ export const getResonatorSequenceNodes = cache(async (id: string): Promise<strin
  * Get ascension data for a resonator
  */
 export const getResonatorAscension = cache(async (id: string): Promise<AscensionPhase[] | null> => {
-  try {
-    const ascensionPath = path.join(RESONATORS_DIR, id, 'ascension.json')
-    const content = await fs.readFile(ascensionPath, 'utf-8')
-    return JSON.parse(content)
-  } catch {
-    // It's okay if ascension.json doesn't exist
-    return null
+  const roverAttribute = getRoverAttribute(id)
+
+  const paths = [
+    roverAttribute ? path.join(RESONATORS_DIR, 'rover', roverAttribute, 'ascension.json') : null,
+    id.startsWith('rover') ? path.join(RESONATORS_DIR, 'rover', 'ascension.json') : null,
+    path.join(RESONATORS_DIR, id, 'ascension.json'),
+  ].filter((p): p is string => Boolean(p))
+
+  for (const ascensionPath of paths) {
+    try {
+      const content = await fs.readFile(ascensionPath, 'utf-8')
+      return JSON.parse(content)
+    } catch {
+      // It's okay if ascension.json doesn't exist in this location
+    }
   }
+
+  return null
 })
 
 /**
  * Get skill ascension data for a resonator
  */
 export const getResonatorSkillAscension = cache(async (id: string): Promise<SkillAscensionPhase[] | null> => {
-  try {
-    const skillAscensionPath = path.join(RESONATORS_DIR, id, 'skill-ascension.json')
-    const content = await fs.readFile(skillAscensionPath, 'utf-8')
-    return JSON.parse(content)
-  } catch {
-    // It's okay if skill-ascension.json doesn't exist
-    return null
+  const roverAttribute = getRoverAttribute(id)
+
+  const paths = [
+    roverAttribute ? path.join(RESONATORS_DIR, 'rover', roverAttribute, 'skill-ascension.json') : null,
+    id.startsWith('rover') ? path.join(RESONATORS_DIR, 'rover', 'skill-ascension.json') : null,
+    path.join(RESONATORS_DIR, id, 'skill-ascension.json'),
+  ].filter((p): p is string => Boolean(p))
+
+  for (const skillAscensionPath of paths) {
+    try {
+      const content = await fs.readFile(skillAscensionPath, 'utf-8')
+      return JSON.parse(content)
+    } catch {
+      // It's okay if skill-ascension.json doesn't exist in this location
+    }
   }
+
+  return null
 })
 
 /**
