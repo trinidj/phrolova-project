@@ -320,7 +320,7 @@ export default function ResonatorsPage() {
         </div>
       </header>
 
-      <main className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 gap-4 sm:gap-6">
+      <main className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4 sm:gap-6">
         {filteredResonators.map((resonator) => {
           const hasDetailData = Boolean(
             resonator.weaponType &&

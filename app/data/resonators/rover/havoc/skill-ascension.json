@@ -1,0 +1,57 @@
+[
+  {
+    "level": 10,
+    "materials": [
+      {
+        "name": "LF Whisperin Core",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "MF Whisperin Core",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "HF Whisperin Core",
+        "amount": 40,
+        "type": "common"
+      },
+      {
+        "name": "FF Whisperin Core",
+        "amount": 57,
+        "type": "common"
+      },
+      {
+        "name": "Inert Metallic Drip",
+        "amount": 25,
+        "type": "common"
+      },
+      {
+        "name": "Reactive Metallic Drip",
+        "amount": 28,
+        "type": "common"
+      },
+      {
+        "name": "Polarized Metallic Drip",
+        "amount": 55,
+        "type": "common"
+      },
+      {
+        "name": "Heterized Metallic Drip",
+        "amount": 67,
+        "type": "common"
+      },
+      {
+        "name": "Dreamless Feather",
+        "amount": 26,
+        "type": "boss"
+      },
+      {
+        "name": "Shell Credits",
+        "amount": 2030000,
+        "type": "currency"
+      }
+    ]
+  }
+]
