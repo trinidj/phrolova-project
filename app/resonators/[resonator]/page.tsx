@@ -45,6 +45,7 @@ export default async function ResonatorDetails({
       <Separator />
       <TalentsSection
         talents={parsedTalents}
+        resonatorId={resonator.id}
         resonatorName={resonator.name}
         resonatorRarity={resonator.rarity}
         resonatorAttribute={resonator.attribute}

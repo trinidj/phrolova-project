@@ -21,6 +21,7 @@ interface SkillItem {
 
 interface TalentsSectionProps {
   talents?: Resonator["talents"]
+  resonatorId: Resonator["id"]
   resonatorName: string
   resonatorRarity: number
   resonatorAttribute: Resonator["attribute"]
@@ -83,10 +84,12 @@ function SkillTabs({
   )
 }
 
-export default function TalentsSection({ talents, resonatorName, resonatorRarity, resonatorAttribute, skillAscensionData }: TalentsSectionProps) {
+export default function TalentsSection({ talents, resonatorId, resonatorName, resonatorRarity, resonatorAttribute, skillAscensionData }: TalentsSectionProps) {
   const resonator = {
     rarity: resonatorRarity,
     name: resonatorName,
+    id: resonatorId,
+    attribute: resonatorAttribute,
   } as Resonator
 
   const assets = getResonatorSkillAssets(resonator)

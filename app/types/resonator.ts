@@ -132,15 +132,19 @@ export interface ResonatorSkillAssets {
  * Get all skill/talent asset URLs for a resonator based on naming conventions
  */
 export function getResonatorSkillAssets(resonator: Resonator): ResonatorSkillAssets {
+  const assetFolderName = resonator.id.startsWith("rover") ? "Rover" : resonator.name
+  const roverVariantPath = resonator.id.startsWith("rover") ? `/${resonator.attribute}` : ""
+  const basePath = `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}${roverVariantPath}`
+
   return {
-    normalAttack: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/normal_attack.png`,
-    resonanceSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/resonance_skill.png`,
-    resonanceLiberation: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/resonance_liberation.png`,
-    forteCircuit: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/forte_circuit.png`,
-    inheritSkill1: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/inherent_skill_1.png`,
-    inheritSkill2: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/inherent_skill_2.png`,
-    introSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/intro_skill.png`,
-    outroSkill: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/outro_skill.png`
+    normalAttack: `${basePath}/normal_attack.png`,
+    resonanceSkill: `${basePath}/resonance_skill.png`,
+    resonanceLiberation: `${basePath}/resonance_liberation.png`,
+    forteCircuit: `${basePath}/forte_circuit.png`,
+    inheritSkill1: `${basePath}/inherent_skill_1.png`,
+    inheritSkill2: `${basePath}/inherent_skill_2.png`,
+    introSkill: `${basePath}/intro_skill.png`,
+    outroSkill: `${basePath}/outro_skill.png`
   }
 }
 
@@ -157,13 +161,17 @@ export interface SequenceNodeAssets {
  * Get all sequence node asset URLs for a resonator based on naming conventions
  */
 export function getSequenceNodeAssets(resonator: Resonator): SequenceNodeAssets {
+  const assetFolderName = resonator.id.startsWith("rover") ? "Rover" : resonator.name
+  const roverVariantPath = resonator.id.startsWith("rover") ? `/${resonator.attribute}` : ""
+  const basePath = `/assets/resonators/${resonator.rarity}_stars/${assetFolderName}${roverVariantPath}`
+
   return {
-    sequenceNode1: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_1.png`,
-    sequenceNode2: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_2.png`,
-    sequenceNode3: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_3.png`,
-    sequenceNode4: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_4.png`,
-    sequenceNode5: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_5.png`,
-    sequenceNode6: `/assets/resonators/${resonator.rarity}_stars/${resonator.name}/node_6.png`
+    sequenceNode1: `${basePath}/node_1.png`,
+    sequenceNode2: `${basePath}/node_2.png`,
+    sequenceNode3: `${basePath}/node_3.png`,
+    sequenceNode4: `${basePath}/node_4.png`,
+    sequenceNode5: `${basePath}/node_5.png`,
+    sequenceNode6: `${basePath}/node_6.png`
   }
 }
 
