@@ -53,7 +53,10 @@ export default async function ResonatorDetails({
         skillAscensionData={skillAscensionData}
       />
       <Separator />
-      <ResonanceChainSection sequenceNodes={parsedSequenceNodes} resonator={resonator} />
+      <ResonanceChainSection 
+        sequenceNodes={parsedSequenceNodes} resonator={resonator} 
+        resonatorAttribute={resonator.attribute}
+      />
 
       <NavigationMenu
         viewport={false}

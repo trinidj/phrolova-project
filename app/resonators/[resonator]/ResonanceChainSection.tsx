@@ -4,6 +4,7 @@ import { renderDescription } from "@/app/lib/talents"
 import { Resonator, getSequenceNodeAssets, SequenceNode } from "@/app/types/resonator"
 import Image from "next/image"
 import { Separator } from "@/components/ui/separator"
+import { getAttributeColor } from "@/lib/utils"
 
 import { 
   Card, 
@@ -16,10 +17,12 @@ import {
 interface ResonanceChainSectionProps {
   sequenceNodes?: SequenceNode[]
   resonator: Resonator
+  resonatorAttribute: Resonator["attribute"]
 }
 
-export default function ResonanceChainSection({ sequenceNodes, resonator }: ResonanceChainSectionProps) {
+export default function ResonanceChainSection({ sequenceNodes, resonator, resonatorAttribute }: ResonanceChainSectionProps) {
   const assets = getSequenceNodeAssets(resonator)
+  const attributeColor = getAttributeColor(resonatorAttribute)
 
   if (!sequenceNodes || sequenceNodes.length === 0) {
     return (
@@ -44,15 +47,20 @@ export default function ResonanceChainSection({ sequenceNodes, resonator }: Reso
               return (
                 <Card key={`${node.name}-${index}`} className="p-6 bg-accent">
                   <CardHeader className="p-0 gap-0">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-4">
                       {nodeImage ? (
-                        <Image
-                          src={nodeImage}
-                          alt={`${node.name} icon`}
-                          width={64}
-                          height={64}
-                          className="size-12 sm:size-14 md:size-16 rounded-full object-cover shrink-0"
-                        />
+                        <div 
+                          className="flex item-center justify-center border-2 rounded-full"
+                          style={{ borderColor: attributeColor }}
+                        >
+                          <Image
+                            src={nodeImage}
+                            alt={`${node.name} icon`}
+                            width={64}
+                            height={64}
+                            className="object-contain scale-75"
+                          />
+                        </div>
                       ) : (
                         <div className="flex items-center justify-center size-12 sm:size-14 md:size-16 rounded-full bg-primary/10 text-primary font-bold text-base sm:text-lg shrink-0">
                           S{index + 1}
