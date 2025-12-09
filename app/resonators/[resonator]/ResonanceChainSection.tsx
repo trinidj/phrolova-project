@@ -47,7 +47,7 @@ export default function ResonanceChainSection({ sequenceNodes, resonator, resona
               return (
                 <Card key={`${node.name}-${index}`} className="p-6 bg-accent">
                   <CardHeader className="p-0 gap-0">
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-col items-center text-center gap-4 lg:flex-row lg:text-left">
                       {nodeImage ? (
                         <div 
                           className="flex item-center justify-center border-2 rounded-full"
