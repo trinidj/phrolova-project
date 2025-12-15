@@ -354,7 +354,7 @@ export default function ResonatorsPage() {
           const cardContent = (
             <Card
               className={cn(
-                "gap-0 p-0 border-none rounded-sm overflow-hidden transition-transform will-change-transform duration-300 hover:scale-110",
+                "gap-0 p-0 border-none rounded-sm overflow-hidden",
                 !hasDetailData && "opacity-70 cursor-not-allowed"
               )}
               style={{ backfaceVisibility: 'hidden', perspective: 1000 }}
@@ -413,7 +413,7 @@ export default function ResonatorsPage() {
                     width={200}
                     height={200}
                     quality={100}
-                    className={cn("block", displayCardImageClassName)}
+                    className={cn("block transition-transform will-change-transform duration-300 hover:scale-110", displayCardImageClassName)}
                     style={{ backfaceVisibility: "hidden" }}
                   />
                 </div>
