@@ -760,12 +760,21 @@
       "rarity": 4,
       "attribute": "Electro",
       "weaponType": "Rectifier",
+      "isNew": true,
       "description": "Divine Hearing",
       "combatRoles": ["Support and Healer", "DMG Amplification", "Resonance Skill DMG Amplification", "Electro Flare"],
       "stats": {
         "hp": { "min": 850, "max": 10625 },
         "atk": { "min": 18, "max": 225 },
         "def": { "min": 103, "max": 1258 }
+      },
+      "nation": "Huanglong",
+      "versionRelease": 2.8,
+      "voiceActors": {
+        "english": "Elizabeth Chu",
+        "chinese": "Zhang Ye (张晔)",
+        "japanese": "Senbongi Sayaka (千本木彩花)",
+        "korean": "Lee I Ro (이이로)"
       }
     },
     {
