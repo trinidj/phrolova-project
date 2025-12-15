@@ -421,7 +421,7 @@
       "attribute": "Spectro",
       "weaponType": "Pistol",
       "description": "???",
-      "combatRoles": [],
+      "combatRoles": [""],
       "stats": {
         "hp": { "min": 953, "max": 11913 },
         "atk": { "min": 31, "max": 388 },
@@ -435,7 +435,7 @@
       "attribute": "Fusion",
       "weaponType": "Broadblade",
       "description": "???",
-      "combatRoles": [],
+      "combatRoles": [""],
       "stats": {
         "hp": { "min": 953, "max": 11913 },
         "atk": { "min": 31, "max": 388 },
